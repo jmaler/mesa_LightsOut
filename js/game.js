@@ -1,0 +1,391 @@
+/**
+ * Game Engine - Core game logic, grid state, and rendering
+ */
+
+const Game = (function() {
+    let canvas = null;
+    let ctx = null;
+    let gridSize = 5;
+    let stateCount = 2;
+    let grid = [];
+    let moveCount = 0;
+    let optimalMoves = 0;
+    let levelId = '';
+    let levelNumber = 1;
+    let isPlaying = false;
+
+    // Animation state
+    let animatingCells = [];
+    let lastFrameTime = 0;
+
+    // Colors
+    const colors = {
+        background: '#0a0a0f',
+        cellOff: '#1a1a2e',
+        cellDim: '#4a4a6a',
+        cellOn: '#00ff88',
+        border: '#2a2a4e',
+        glowOn: 'rgba(0, 255, 136, 0.6)',
+        glowDim: 'rgba(74, 74, 106, 0.4)'
+    };
+
+    /**
+     * Initialize the game canvas
+     */
+    function init() {
+        canvas = document.getElementById('game-canvas');
+        ctx = canvas.getContext('2d');
+
+        // Handle clicks/touches
+        canvas.addEventListener('click', handleClick);
+        canvas.addEventListener('touchstart', handleTouch, { passive: false });
+
+        // Handle resize
+        window.addEventListener('resize', resizeCanvas);
+    }
+
+    /**
+     * Resize canvas to fit container while maintaining aspect ratio
+     */
+    function resizeCanvas() {
+        const container = canvas.parentElement;
+        if (!container) return;
+
+        const containerWidth = container.clientWidth;
+        const containerHeight = container.clientHeight;
+
+        // Calculate size to fit container as a square
+        const size = Math.min(containerWidth, containerHeight, 400);
+
+        canvas.width = size;
+        canvas.height = size;
+
+        if (isPlaying) {
+            render();
+        }
+    }
+
+    /**
+     * Start a new level
+     * @param {Object} levelData - Level configuration
+     */
+    function startLevel(levelData) {
+        gridSize = levelData.gridSize;
+        stateCount = levelData.stateCount;
+        levelNumber = levelData.levelNumber;
+        levelId = levelData.id;
+        optimalMoves = levelData.optimalMoves;
+        moveCount = 0;
+
+        // Deep copy initial state
+        grid = levelData.initialState.map(row => [...row]);
+
+        isPlaying = true;
+        animatingCells = [];
+
+        resizeCanvas();
+        updateUI();
+        render();
+
+        Mesa.game.gameplayStart();
+    }
+
+    /**
+     * Reset current level to initial state
+     */
+    function reset() {
+        const levelData = Levels.getLevel(levelId);
+        if (levelData) {
+            grid = levelData.initialState.map(row => [...row]);
+            moveCount = 0;
+            animatingCells = [];
+            updateUI();
+            render();
+        }
+    }
+
+    /**
+     * Handle canvas click
+     */
+    function handleClick(e) {
+        if (!isPlaying) return;
+
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        processInput(x, y);
+    }
+
+    /**
+     * Handle touch input
+     */
+    function handleTouch(e) {
+        if (!isPlaying) return;
+        e.preventDefault();
+
+        const rect = canvas.getBoundingClientRect();
+        const touch = e.touches[0];
+        const x = touch.clientX - rect.left;
+        const y = touch.clientY - rect.top;
+
+        processInput(x, y);
+    }
+
+    /**
+     * Process input at canvas coordinates
+     */
+    function processInput(x, y) {
+        // Account for CSS scaling (canvas may be rendered smaller/larger than its actual size)
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+
+        const scaledX = x * scaleX;
+        const scaledY = y * scaleY;
+
+        const cellSize = canvas.width / gridSize;
+        const col = Math.floor(scaledX / cellSize);
+        const row = Math.floor(scaledY / cellSize);
+
+        if (row >= 0 && row < gridSize && col >= 0 && col < gridSize) {
+            toggleCell(row, col);
+        }
+    }
+
+    /**
+     * Toggle a cell and its neighbors
+     */
+    function toggleCell(row, col) {
+        const affected = [
+            [row, col],
+            [row - 1, col],
+            [row + 1, col],
+            [row, col - 1],
+            [row, col + 1]
+        ];
+
+        // Apply toggle and track animations
+        for (const [r, c] of affected) {
+            if (r >= 0 && r < gridSize && c >= 0 && c < gridSize) {
+                const oldState = grid[r][c];
+                grid[r][c] = (grid[r][c] + 1) % stateCount;
+
+                // Add animation
+                animatingCells.push({
+                    row: r,
+                    col: c,
+                    startTime: performance.now(),
+                    fromState: oldState,
+                    toState: grid[r][c]
+                });
+            }
+        }
+
+        moveCount++;
+        GameAudio.playClick(grid[row][col], stateCount);
+        updateUI();
+        render();
+
+        // Check win condition
+        if (checkWin()) {
+            handleWin();
+        }
+    }
+
+    /**
+     * Check if all cells are off
+     */
+    function checkWin() {
+        for (let row = 0; row < gridSize; row++) {
+            for (let col = 0; col < gridSize; col++) {
+                if (grid[row][col] !== 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Handle win condition
+     */
+    async function handleWin() {
+        isPlaying = false;
+        Mesa.game.gameplayStop();
+        GameAudio.playVictory();
+
+        // Calculate base points for this level
+        const basePoints = calculatePoints(levelNumber, gridSize, stateCount);
+
+        // Calculate stars based on performance
+        const ratio = moveCount / optimalMoves;
+        let stars = 1;
+        if (ratio <= 1) stars = 3;
+        else if (ratio <= 1.5) stars = 2;
+
+        // Save progress with star rating
+        const result = await Storage.completeLevel(levelId, basePoints, stars);
+
+        if (result.newUnlocks.length > 0) {
+            GameAudio.playUnlock();
+        }
+
+        // Submit to leaderboard
+        await Storage.submitToLeaderboard();
+
+        // Show victory screen (points earned = basePoints * stars)
+        UI.showVictory(moveCount, optimalMoves, result.pointsEarned, result.newUnlocks);
+    }
+
+    /**
+     * Calculate points for completing a level
+     * score = (level_number + 4) * (grid_size - 4) * (state_count == 3 ? 3 : 1)
+     */
+    function calculatePoints(level, size, states) {
+        return (level + 4) * (size - 4) * (states === 3 ? 3 : 1);
+    }
+
+    /**
+     * Update UI elements
+     */
+    function updateUI() {
+        document.getElementById('move-counter').textContent = moveCount;
+        document.getElementById('optimal-moves').textContent = optimalMoves;
+        document.getElementById('game-level-text').textContent =
+            `${gridSize}x${gridSize} ${stateCount}-State - Level ${levelNumber}`;
+    }
+
+    /**
+     * Render the game grid
+     */
+    function render() {
+        if (!ctx) return;
+
+        const now = performance.now();
+        const cellSize = canvas.width / gridSize;
+        const padding = 4;
+        const cellDrawSize = cellSize - padding * 2;
+        const borderRadius = 6;
+
+        // Clear canvas
+        ctx.fillStyle = colors.background;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Remove finished animations
+        animatingCells = animatingCells.filter(anim => now - anim.startTime < 200);
+
+        // Draw cells
+        for (let row = 0; row < gridSize; row++) {
+            for (let col = 0; col < gridSize; col++) {
+                const x = col * cellSize + padding;
+                const y = row * cellSize + padding;
+                const state = grid[row][col];
+
+                // Check for animation
+                const anim = animatingCells.find(a => a.row === row && a.col === col);
+                let animProgress = 1;
+                if (anim) {
+                    animProgress = Math.min(1, (now - anim.startTime) / 200);
+                }
+
+                // Determine color based on state
+                let color, glowColor, glowSize;
+                if (state === 0) {
+                    color = colors.cellOff;
+                    glowColor = null;
+                    glowSize = 0;
+                } else if (state === 1 && stateCount === 3) {
+                    color = colors.cellDim;
+                    glowColor = colors.glowDim;
+                    glowSize = 10;
+                } else {
+                    color = colors.cellOn;
+                    glowColor = colors.glowOn;
+                    glowSize = 20;
+                }
+
+                // Apply animation scale
+                const scale = anim ? 0.9 + 0.1 * animProgress : 1;
+                const scaledSize = cellDrawSize * scale;
+                const offset = (cellDrawSize - scaledSize) / 2;
+
+                // Draw glow
+                if (glowColor && glowSize > 0) {
+                    ctx.shadowColor = glowColor;
+                    ctx.shadowBlur = glowSize * animProgress;
+                }
+
+                // Draw cell with rounded corners
+                ctx.fillStyle = color;
+                ctx.beginPath();
+                roundRect(ctx, x + offset, y + offset, scaledSize, scaledSize, borderRadius);
+                ctx.fill();
+
+                // Reset shadow
+                ctx.shadowBlur = 0;
+
+                // Draw border for off cells
+                if (state === 0) {
+                    ctx.strokeStyle = colors.border;
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    roundRect(ctx, x + offset, y + offset, scaledSize, scaledSize, borderRadius);
+                    ctx.stroke();
+                }
+            }
+        }
+
+        // Continue animation loop if needed
+        if (animatingCells.length > 0) {
+            requestAnimationFrame(() => render());
+        }
+    }
+
+    /**
+     * Draw rounded rectangle path
+     */
+    function roundRect(ctx, x, y, width, height, radius) {
+        ctx.moveTo(x + radius, y);
+        ctx.lineTo(x + width - radius, y);
+        ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+        ctx.lineTo(x + width, y + height - radius);
+        ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+        ctx.lineTo(x + radius, y + height);
+        ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+        ctx.lineTo(x, y + radius);
+        ctx.quadraticCurveTo(x, y, x + radius, y);
+        ctx.closePath();
+    }
+
+    /**
+     * Get current level info
+     */
+    function getCurrentLevel() {
+        return {
+            id: levelId,
+            gridSize,
+            stateCount,
+            levelNumber
+        };
+    }
+
+    /**
+     * Stop the current game
+     */
+    function stop() {
+        isPlaying = false;
+        Mesa.game.gameplayStop();
+    }
+
+    return {
+        init,
+        startLevel,
+        reset,
+        stop,
+        getCurrentLevel,
+        resizeCanvas
+    };
+})();
+
+window.Game = Game;

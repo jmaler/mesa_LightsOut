@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Lights Out</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Main Menu Screen -->
+    <div id="screen-menu" class="screen active">
+        <div class="menu-container">
+            <h1 class="game-title">LIGHTS OUT</h1>
+            <div class="score-display">
+                <span class="score-label">TOTAL SCORE</span>
+                <span id="menu-score" class="score-value">0</span>
+            </div>
+            <div class="menu-buttons">
+                <button class="btn btn-primary" id="btn-play">PLAY</button>
+                <button class="btn btn-secondary" id="btn-tutorial">HOW TO PLAY</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Level Select Screen -->
+    <div id="screen-levels" class="screen">
+        <div class="levels-container">
+            <div class="levels-header">
+                <button class="btn btn-back" id="btn-back-menu">← BACK</button>
+                <h2 class="levels-title">SELECT LEVEL</h2>
+            </div>
+
+            <div class="grid-tabs">
+                <button class="tab active" data-size="5">5×5</button>
+                <button class="tab locked" data-size="6" id="tab-6x6">6×6</button>
+                <button class="tab locked" data-size="7" id="tab-7x7">7×7</button>
+            </div>
+
+            <div class="state-toggle" id="state-toggle-container">
+                <button class="state-btn active" data-states="2">2-STATE</button>
+                <button class="state-btn locked" data-states="3" id="btn-3state">3-STATE</button>
+            </div>
+
+            <div class="unlock-message" id="unlock-message">
+                Complete 10 levels in 5×5 to unlock more options
+            </div>
+
+            <div class="levels-grid" id="levels-grid">
+                <!-- Level buttons will be generated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="screen-game" class="screen">
+        <div class="game-container">
+            <div class="game-header">
+                <span id="game-level-text">5×5 2-State - Level 1</span>
+            </div>
+
+            <div class="game-stats">
+                <div class="stat">
+                    <span class="stat-label">MOVES</span>
+                    <span id="move-counter" class="stat-value">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">OPTIMAL</span>
+                    <span id="optimal-moves" class="stat-value">?</span>
+                </div>
+            </div>
+
+            <div class="game-board-container">
+                <canvas id="game-canvas"></canvas>
+            </div>
+
+            <div class="game-controls">
+                <button class="btn btn-secondary" id="btn-back-levels">LEVELS</button>
+                <button class="btn btn-secondary" id="btn-reset">RESET</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tutorial Overlay -->
+    <div id="screen-tutorial" class="overlay">
+        <div class="tutorial-content">
+            <h2>HOW TO PLAY</h2>
+            <div class="tutorial-section">
+                <div class="tutorial-demo" id="tutorial-demo">
+                    <canvas id="tutorial-canvas" width="150" height="150"></canvas>
+                </div>
+                <p>Click a cell to toggle it and its <strong>adjacent neighbors</strong> (up, down, left, right).</p>
+            </div>
+            <div class="tutorial-section">
+                <div class="tutorial-states">
+                    <div class="state-example">
+                        <div class="cell-demo off"></div>
+                        <span>OFF</span>
+                    </div>
+                    <div class="state-example">
+                        <div class="cell-demo on"></div>
+                        <span>ON</span>
+                    </div>
+                </div>
+                <p>In <strong>2-state</strong> mode, cells toggle between OFF and ON.</p>
+            </div>
+            <div class="tutorial-section tutorial-3state" id="tutorial-3state">
+                <div class="tutorial-states">
+                    <div class="state-example">
+                        <div class="cell-demo off"></div>
+                        <span>OFF</span>
+                    </div>
+                    <div class="state-example">
+                        <div class="cell-demo dim"></div>
+                        <span>DIM</span>
+                    </div>
+                    <div class="state-example">
+                        <div class="cell-demo on"></div>
+                        <span>BRIGHT</span>
+                    </div>
+                </div>
+                <p>In <strong>3-state</strong> mode, cells cycle: OFF → DIM → BRIGHT → OFF</p>
+            </div>
+            <div class="tutorial-goal">
+                <span class="goal-icon">🎯</span>
+                <p><strong>GOAL:</strong> Turn ALL lights OFF to complete the level!</p>
+            </div>
+            <button class="btn btn-primary" id="btn-got-it">GOT IT!</button>
+        </div>
+    </div>
+
+    <!-- Victory Popup -->
+    <div id="screen-victory" class="overlay">
+        <div class="victory-content">
+            <h2 class="victory-title">LEVEL COMPLETE!</h2>
+            <div class="victory-stats">
+                <div class="victory-stat">
+                    <span class="stat-label">YOUR MOVES</span>
+                    <span id="victory-moves" class="stat-value">0</span>
+                </div>
+                <div class="victory-stat">
+                    <span class="stat-label">OPTIMAL</span>
+                    <span id="victory-optimal" class="stat-value">0</span>
+                </div>
+                <div class="victory-stat">
+                    <span class="stat-label">POINTS EARNED</span>
+                    <span id="victory-points" class="stat-value highlight">+0</span>
+                </div>
+            </div>
+            <div class="victory-rating" id="victory-rating">
+                <!-- Stars will be added here -->
+            </div>
+            <div class="victory-buttons">
+                <button class="btn btn-secondary" id="btn-victory-levels">LEVELS</button>
+                <button class="btn btn-primary" id="btn-next-level">NEXT LEVEL</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="sdk/mesa-sdk.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/solver.js"></script>
+    <script src="js/levels.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
