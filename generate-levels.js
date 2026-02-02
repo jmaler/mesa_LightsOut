@@ -236,6 +236,44 @@ function getEasyLevel(size, stateCount, levelNum) {
     return null;
 }
 
+// Difficulty ranges by grid size
+// Format: { easy: [min, max], medium: [min, max], hard: [min, max] }
+const difficultyRanges = {
+    5: { easy: [3, 8], medium: [8, 14], hard: [14, 25] },
+    6: { easy: [3, 10], medium: [10, 16], hard: [16, 30] },
+    7: { easy: [3, 12], medium: [12, 20], hard: [20, 35] }
+};
+
+/**
+ * Get optimal range for a specific level
+ */
+function getOptimalRange(size, levelNum) {
+    const ranges = difficultyRanges[size];
+
+    if (levelNum <= 10) {
+        // Easy: Levels 1-10, gradually increase within easy range
+        const [min, max] = ranges.easy;
+        const progress = (levelNum - 1) / 9; // 0 to 1
+        const targetMin = Math.round(min + progress * (max - min) * 0.5);
+        const targetMax = Math.round(min + progress * (max - min) + 1);
+        return { min: Math.max(min, targetMin), max: Math.min(max, targetMax), difficulty: 'easy' };
+    } else if (levelNum <= 20) {
+        // Medium: Levels 11-20
+        const [min, max] = ranges.medium;
+        const progress = (levelNum - 11) / 9; // 0 to 1
+        const targetMin = Math.round(min + progress * (max - min) * 0.5);
+        const targetMax = Math.round(min + progress * (max - min) + 2);
+        return { min: Math.max(min, targetMin), max: Math.min(max, targetMax), difficulty: 'medium' };
+    } else {
+        // Hard: Levels 21-30
+        const [min, max] = ranges.hard;
+        const progress = (levelNum - 21) / 9; // 0 to 1
+        const targetMin = Math.round(min + progress * (max - min) * 0.5);
+        const targetMax = Math.round(min + progress * (max - min) + 3);
+        return { min: Math.max(min, targetMin), max: Math.min(max, targetMax), difficulty: 'hard' };
+    }
+}
+
 // Generate all levels
 function generateAllLevels() {
     const allLevels = [];
@@ -249,47 +287,37 @@ function generateAllLevels() {
     ];
 
     for (const { size, states } of variants) {
-        console.log(`Generating ${size}x${size} ${states}-state levels...`);
+        console.log(`\nGenerating ${size}x${size} ${states}-state levels...`);
 
         for (let levelNum = 1; levelNum <= 30; levelNum++) {
+            const { min, max, difficulty } = getOptimalRange(size, levelNum);
             let result = null;
-            let difficulty = 'easy';
 
-            if (levelNum <= 5) {
-                // Easy levels 1-5: specific optimal moves 1-5
+            // For very first levels, try to get specific low optimal
+            if (levelNum <= 3) {
                 result = getEasyLevel(size, states, levelNum);
-                if (!result || result.optimalMoves !== levelNum) {
-                    // Fallback: try to generate with exact optimal
-                    result = generateWithOptimal(size, states, levelNum, 1000);
+                if (result && result.optimalMoves >= min && result.optimalMoves <= max) {
+                    // Good, use it
+                } else {
+                    result = null;
                 }
-                if (!result) {
-                    // Last resort: accept close enough
-                    result = generateWithRange(size, states, Math.max(1, levelNum - 1), levelNum + 1, 500);
-                }
-            } else if (levelNum <= 10) {
-                // Easy levels 6-10: optimal 5-10
-                difficulty = 'easy';
-                const minOpt = 4 + levelNum - 5;
-                const maxOpt = minOpt + 2;
-                result = generateWithRange(size, states, minOpt, maxOpt);
-            } else if (levelNum <= 20) {
-                // Medium levels 11-20: optimal 8-15
-                difficulty = 'medium';
-                const minOpt = 6 + Math.floor((levelNum - 10) * 0.8);
-                const maxOpt = minOpt + 3;
-                result = generateWithRange(size, states, minOpt, maxOpt);
-            } else {
-                // Hard levels 21-30: optimal 12-20
-                difficulty = 'hard';
-                const minOpt = 10 + Math.floor((levelNum - 20) * 0.8);
-                const maxOpt = minOpt + 4;
-                result = generateWithRange(size, states, minOpt, maxOpt);
+            }
+
+            // Generate within range
+            if (!result) {
+                result = generateWithRange(size, states, min, max, 2000);
+            }
+
+            // Fallback: widen range
+            if (!result) {
+                console.warn(`  Warning: Widening range for level ${levelNum}`);
+                result = generateWithRange(size, states, Math.max(1, min - 2), max + 2, 3000);
             }
 
             if (!result) {
-                console.error(`Failed to generate ${size}x${size}_${states}state_${levelNum}`);
+                console.error(`  ERROR: Failed to generate level ${levelNum}`);
                 // Emergency fallback
-                result = generateWithRange(size, states, 1, 25, 2000);
+                result = generateWithRange(size, states, 1, 30, 5000);
             }
 
             const level = {
@@ -303,7 +331,7 @@ function generateAllLevels() {
             };
 
             allLevels.push(level);
-            console.log(`  Level ${levelNum}: optimal=${result.optimalMoves}`);
+            console.log(`  Level ${levelNum}: optimal=${result.optimalMoves} (target: ${min}-${max})`);
         }
     }
 
