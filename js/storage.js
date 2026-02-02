@@ -212,11 +212,13 @@ const Storage = (function() {
         const user = Mesa.user.get();
         const playerName = user ? user.username : 'Player';
 
+        // Format with spaces every 3 digits (e.g., 1 234 567)
+        const displayValue = score.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+
         try {
             await Mesa.leaderboard.submit({
-                key: 'total_score',
                 playerName: playerName,
-                displayValue: `${score.toLocaleString()} pts`,
+                displayValue: displayValue,
                 sortValue: score
             });
         } catch (e) {
