@@ -189,6 +189,19 @@ const Storage = (function() {
     }
 
     /**
+     * Get count of completed levels for a specific mode (size + state)
+     * @param {number} gridSize
+     * @param {number} stateCount
+     * @returns {number}
+     */
+    function getCompletedCountForMode(gridSize, stateCount) {
+        if (!cachedProgress || !cachedProgress.levelStars) return 0;
+        const prefix = `${gridSize}x${gridSize}_${stateCount}state`;
+        return Object.keys(cachedProgress.levelStars)
+            .filter(id => id.startsWith(prefix) && cachedProgress.levelStars[id] > 0).length;
+    }
+
+    /**
      * Submit score to leaderboard
      * @returns {Promise<void>}
      */
@@ -224,6 +237,7 @@ const Storage = (function() {
         is7x7Unlocked,
         is3StateUnlocked,
         getCompletedCount,
+        getCompletedCountForMode,
         submitToLeaderboard
     };
 })();

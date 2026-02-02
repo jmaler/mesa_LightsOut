@@ -131,17 +131,6 @@ html, body {
     box-shadow: 0 0 15px var(--primary-glow);
 }
 
-.btn-back {
-    background: transparent;
-    color: var(--text-muted);
-    padding: 0 12px;
-    height: 36px;
-    font-size: 14px;
-}
-
-.btn-back:hover {
-    color: var(--text);
-}
 
 /* ===== Main Menu ===== */
 .menu-container {
@@ -208,6 +197,51 @@ html, body {
     width: 100%;
 }
 
+/* ===== Shared Header Bar ===== */
+.header-bar {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--bg-elevated);
+    margin: -16px -16px 20px -16px;
+    position: relative;
+}
+
+.header-bar .btn-back {
+    position: absolute;
+    left: 8px;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text-muted);
+    padding: 8px 12px;
+    height: 36px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all var(--transition-fast) ease;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.header-bar .btn-back:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+    box-shadow: 0 0 12px var(--primary-glow);
+    background: rgba(0, 255, 136, 0.1);
+}
+
+.header-bar .header-title {
+    flex: 1;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    text-align: center;
+    letter-spacing: 1px;
+}
+
 /* ===== Level Select ===== */
 .levels-container {
     display: flex;
@@ -218,102 +252,164 @@ html, body {
     max-width: 700px;
 }
 
-.levels-header {
+/* ===== Mode Selector ===== */
+.mode-selector {
     display: flex;
     align-items: center;
     gap: 16px;
-    margin-bottom: 20px;
-}
-
-.levels-title {
-    flex: 1;
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--text);
-    text-align: center;
-    padding-right: 60px;
-}
-
-.grid-tabs {
-    display: flex;
-    gap: 8px;
     margin-bottom: 12px;
 }
 
-.tab {
+.mode-cards {
+    display: flex;
+    gap: 10px;
     flex: 1;
-    height: 40px;
+}
+
+.mode-card {
+    flex: 1;
+    padding: 12px 8px;
     background: var(--bg-surface);
-    border: 1px solid var(--bg-elevated);
-    border-radius: var(--border-radius);
-    color: var(--text-muted);
-    font-size: 14px;
-    font-weight: 600;
+    border: 2px solid var(--bg-elevated);
+    border-radius: var(--border-radius-lg);
     cursor: pointer;
     transition: all var(--transition-fast) ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
 }
 
-.tab.active {
-    background: var(--primary);
-    color: var(--bg-deep);
+.mode-card:hover:not(.locked) {
     border-color: var(--primary);
-    box-shadow: 0 0 15px var(--primary-glow);
 }
 
-.tab.locked {
-    color: var(--text-dim);
+.mode-card.active {
+    border-color: var(--primary);
+    box-shadow: 0 0 20px var(--primary-glow);
+    background: rgba(0, 255, 136, 0.05);
+}
+
+.mode-card.locked {
+    opacity: 0.5;
     cursor: not-allowed;
 }
 
-.tab:not(.locked):not(.active):hover {
-    border-color: var(--primary);
+.mode-card .mode-size {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+}
+
+.mode-card.locked .mode-size {
+    color: var(--text-muted);
+}
+
+.mode-card .mode-lock-icon {
+    font-size: 14px;
+}
+
+.mode-card .mode-progress {
+    width: 100%;
+    height: 4px;
+    background: var(--bg-elevated);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.mode-card .mode-progress-bar {
+    height: 100%;
+    background: var(--primary);
+    border-radius: 2px;
+    transition: width var(--transition-normal) ease;
+}
+
+.mode-card .mode-count {
+    font-size: 11px;
+    color: var(--text-dim);
+}
+
+.mode-card.active .mode-count {
+    color: var(--text-muted);
+}
+
+/* State Toggle Switch */
+.state-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: var(--bg-surface);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--bg-elevated);
+}
+
+.toggle-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-muted);
+    min-width: 14px;
+    text-align: center;
+}
+
+.toggle-label:first-child {
     color: var(--primary);
 }
 
-.state-toggle {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 12px;
-}
-
-.state-btn {
-    flex: 1;
-    height: 36px;
-    background: var(--bg-surface);
-    border: 1px solid var(--bg-elevated);
-    border-radius: var(--border-radius);
+.state-toggle.three-state .toggle-label:first-child {
     color: var(--text-muted);
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all var(--transition-fast) ease;
 }
 
-.state-btn.active {
-    background: var(--secondary);
-    color: var(--text);
-    border-color: var(--secondary);
-    box-shadow: 0 0 15px var(--secondary-glow);
-}
-
-.state-btn.locked {
-    color: var(--text-dim);
-    cursor: not-allowed;
-}
-
-.state-btn:not(.locked):not(.active):hover {
-    border-color: var(--secondary);
+.state-toggle.three-state .toggle-label:last-child {
     color: var(--secondary);
 }
 
+.toggle-switch {
+    width: 44px;
+    height: 26px;
+    background: var(--primary);
+    border: none;
+    border-radius: 13px;
+    cursor: pointer;
+    position: relative;
+    transition: background var(--transition-fast) ease;
+}
+
+.state-toggle.three-state .toggle-switch {
+    background: var(--secondary);
+}
+
+.state-toggle.locked .toggle-switch {
+    background: var(--text-dim);
+    cursor: not-allowed;
+}
+
+.toggle-knob {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    background: var(--text);
+    border-radius: 50%;
+    transition: transform var(--transition-fast) ease;
+}
+
+.state-toggle.three-state .toggle-knob {
+    transform: translateX(18px);
+}
+
+/* Unlock Message */
 .unlock-message {
     text-align: center;
-    font-size: 12px;
+    font-size: 13px;
     color: var(--warning);
     margin-bottom: 16px;
-    padding: 8px;
+    padding: 10px 16px;
     background: rgba(255, 170, 0, 0.1);
     border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 170, 0, 0.2);
     display: none;
 }
 
@@ -324,12 +420,14 @@ html, body {
 .levels-grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 8px;
+    column-gap: 8px;
+    row-gap: min(16px, 2vw);
     flex: 1;
     overflow-x: hidden;
     overflow-y: auto;
     padding: 4px;
     min-height: 0;
+    align-content: start;
 }
 
 .level-btn {
@@ -399,26 +497,11 @@ html, body {
     max-width: 500px;
 }
 
-.game-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 16px;
-}
-
-#game-level-text {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--text);
-    text-align: center;
-    letter-spacing: 1px;
-}
-
 .game-stats {
     display: flex;
     justify-content: center;
-    gap: 40px;
-    margin-bottom: 20px;
+    gap: 24px;
+    margin-bottom: 16px;
 }
 
 .stat {
@@ -454,16 +537,62 @@ html, body {
     border-radius: var(--border-radius-lg);
 }
 
+/* Game Rating Display */
+.game-rating {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.current-stars {
+    display: flex;
+    gap: 8px;
+}
+
+.game-star {
+    font-size: 28px;
+    color: var(--text-dim);
+    transition: all var(--transition-fast) ease;
+}
+
+.game-star.filled {
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
 .game-controls {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     gap: 16px;
     margin-top: 20px;
 }
 
 .game-controls .btn {
-    flex: 1;
-    max-width: 140px;
+    min-width: 120px;
+}
+
+#btn-hint {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+#btn-hint:hover:not(.disabled) {
+    background: rgba(0, 255, 255, 0.1);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+#btn-hint.disabled {
+    border-color: var(--text-dim);
+    color: var(--text-dim);
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* Points display styling */
+.stat-value .points-best {
+    font-size: 14px;
+    color: var(--text-dim);
+    font-weight: 400;
 }
 
 /* ===== Tutorial ===== */
@@ -671,7 +800,8 @@ html, body {
 @media (max-width: 400px) {
     .levels-grid {
         grid-template-columns: repeat(5, 1fr);
-        gap: 6px;
+        column-gap: 6px;
+        row-gap: 12px;
     }
 
     .level-btn .level-stars {
@@ -684,6 +814,65 @@ html, body {
 
     .victory-stat .stat-value {
         font-size: 20px;
+    }
+
+    .header-bar {
+        padding: 10px 12px;
+    }
+
+    .header-bar .header-title {
+        font-size: 16px;
+    }
+
+    .mode-selector {
+        gap: 12px;
+    }
+
+    .mode-cards {
+        gap: 8px;
+    }
+
+    .mode-card {
+        padding: 10px 6px;
+    }
+
+    .mode-card .mode-size {
+        font-size: 16px;
+    }
+
+    .state-toggle {
+        padding: 6px 10px;
+        gap: 6px;
+    }
+
+    .toggle-switch {
+        width: 38px;
+        height: 22px;
+    }
+
+    .toggle-knob {
+        width: 16px;
+        height: 16px;
+    }
+
+    .state-toggle.three-state .toggle-knob {
+        transform: translateX(16px);
+    }
+
+    .toggle-label {
+        font-size: 12px;
+    }
+
+    .game-stats {
+        gap: 16px;
+    }
+
+    .stat-value {
+        font-size: 24px;
+    }
+
+    .game-star {
+        font-size: 24px;
     }
 }
 

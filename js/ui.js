@@ -48,30 +48,10 @@ const UI = (function() {
             showScreen('menu');
         });
 
-        // Grid size tabs
-        document.querySelectorAll('.grid-tabs .tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                const size = parseInt(tab.dataset.size);
-                if (tab.classList.contains('locked')) {
-                    GameAudio.playError();
-                    return;
-                }
-                GameAudio.playUIClick();
-                selectGridSize(size);
-            });
-        });
-
-        // State toggle
-        document.querySelectorAll('.state-toggle .state-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const states = parseInt(btn.dataset.states);
-                if (btn.classList.contains('locked')) {
-                    GameAudio.playError();
-                    return;
-                }
-                GameAudio.playUIClick();
-                selectStateCount(states);
-            });
+        // Hint button
+        document.getElementById('btn-hint').addEventListener('click', () => {
+            GameAudio.playUIClick();
+            Game.showHint();
         });
 
         // Game controls
@@ -140,71 +120,167 @@ const UI = (function() {
      * Update level select screen
      */
     function updateLevelSelectScreen() {
-        // Update tabs
-        const tab6x6 = document.getElementById('tab-6x6');
-        const tab7x7 = document.getElementById('tab-7x7');
-        const btn3state = document.getElementById('btn-3state');
-
-        if (Storage.is6x6Unlocked()) {
-            tab6x6.classList.remove('locked');
-        }
-        if (Storage.is7x7Unlocked()) {
-            tab7x7.classList.remove('locked');
-        }
-        if (Storage.is3StateUnlocked()) {
-            btn3state.classList.remove('locked');
-        }
-
-        // Show unlock message if needed
-        const unlockMessage = document.getElementById('unlock-message');
-        const completed5x5 = Storage.getCompletedCount(5);
-        if (completed5x5 < 10 && !Storage.is6x6Unlocked()) {
-            unlockMessage.textContent = `Complete ${10 - completed5x5} more levels in 5x5 to unlock more options`;
-            unlockMessage.classList.add('visible');
-        } else {
-            unlockMessage.classList.remove('visible');
-        }
-
         // Update 3-state section visibility in tutorial
         const tutorial3state = document.getElementById('tutorial-3state');
         if (Storage.is3StateUnlocked()) {
             tutorial3state.classList.add('visible');
         }
 
+        generateModeCards();
+        setupStateToggle();
+        updateUnlockMessage();
         updateLevelGrid();
     }
 
     /**
-     * Select grid size tab
+     * Generate mode cards for grid sizes (5×5, 6×6, 7×7)
+     */
+    function generateModeCards() {
+        const container = document.getElementById('mode-cards');
+        container.innerHTML = '';
+
+        const sizes = [5, 6, 7];
+
+        sizes.forEach(size => {
+            const isLocked = isGridSizeLocked(size);
+            const completed = Storage.getCompletedCountForMode(size, selectedStateCount);
+            const total = 30;
+            const isActive = size === selectedGridSize;
+
+            const card = document.createElement('div');
+            card.className = 'mode-card';
+            if (isActive) card.classList.add('active');
+            if (isLocked) card.classList.add('locked');
+
+            if (isLocked) {
+                card.innerHTML = `
+                    <span class="mode-size">${size}×${size}</span>
+                    <span class="mode-lock-icon">🔒</span>
+                `;
+            } else {
+                const progressPercent = (completed / total) * 100;
+                card.innerHTML = `
+                    <span class="mode-size">${size}×${size}</span>
+                    <div class="mode-progress">
+                        <div class="mode-progress-bar" style="width: ${progressPercent}%"></div>
+                    </div>
+                    <span class="mode-count">${completed}/${total}</span>
+                `;
+            }
+
+            card.addEventListener('click', () => {
+                if (isLocked) {
+                    GameAudio.playError();
+                    return;
+                }
+                GameAudio.playUIClick();
+                selectGridSize(size);
+            });
+
+            container.appendChild(card);
+        });
+    }
+
+    /**
+     * Setup state toggle switch
+     */
+    function setupStateToggle() {
+        const toggle = document.getElementById('state-toggle');
+        const switchBtn = document.getElementById('toggle-switch');
+        const isLocked = !isUnlocked();
+
+        // Update toggle state
+        if (selectedStateCount === 3) {
+            toggle.classList.add('three-state');
+        } else {
+            toggle.classList.remove('three-state');
+        }
+
+        if (isLocked) {
+            toggle.classList.add('locked');
+        } else {
+            toggle.classList.remove('locked');
+        }
+
+        // Remove old listener and add new one
+        const newSwitch = switchBtn.cloneNode(true);
+        switchBtn.parentNode.replaceChild(newSwitch, switchBtn);
+
+        newSwitch.addEventListener('click', () => {
+            if (isLocked) {
+                GameAudio.playError();
+                return;
+            }
+            GameAudio.playUIClick();
+            toggleStateCount();
+        });
+    }
+
+    /**
+     * Toggle between 2-state and 3-state
+     */
+    function toggleStateCount() {
+        selectedStateCount = selectedStateCount === 2 ? 3 : 2;
+        const toggle = document.getElementById('state-toggle');
+
+        if (selectedStateCount === 3) {
+            toggle.classList.add('three-state');
+        } else {
+            toggle.classList.remove('three-state');
+        }
+
+        // Regenerate cards to update progress for new state count
+        generateModeCards();
+        updateLevelGrid();
+    }
+
+    /**
+     * Check if grid size is locked
+     */
+    function isGridSizeLocked(size) {
+        if (size === 5) return false;
+        return !isUnlocked();
+    }
+
+    /**
+     * Check if advanced modes are unlocked (10 levels in 5×5)
+     */
+    function isUnlocked() {
+        return Storage.getCompletedCount(5) >= 10;
+    }
+
+    /**
+     * Update unlock message
+     */
+    function updateUnlockMessage() {
+        const message = document.getElementById('unlock-message');
+        const completed = Storage.getCompletedCount(5);
+        const remaining = 10 - completed;
+
+        if (remaining > 0) {
+            message.textContent = `Complete ${remaining} more level${remaining > 1 ? 's' : ''} in 5×5 to unlock all modes`;
+            message.classList.add('visible');
+        } else {
+            message.classList.remove('visible');
+        }
+    }
+
+    /**
+     * Select grid size
      */
     function selectGridSize(size) {
         selectedGridSize = size;
 
-        // Update tab styles
-        document.querySelectorAll('.grid-tabs .tab').forEach(tab => {
-            tab.classList.remove('active');
-            if (parseInt(tab.dataset.size) === size) {
-                tab.classList.add('active');
+        // Update card styles
+        document.querySelectorAll('.mode-card').forEach((card, index) => {
+            card.classList.remove('active');
+            if ([5, 6, 7][index] === size) {
+                card.classList.add('active');
             }
         });
 
-        updateLevelGrid();
-    }
-
-    /**
-     * Select state count
-     */
-    function selectStateCount(count) {
-        selectedStateCount = count;
-
-        // Update button styles
-        document.querySelectorAll('.state-toggle .state-btn').forEach(btn => {
-            btn.classList.remove('active');
-            if (parseInt(btn.dataset.states) === count) {
-                btn.classList.add('active');
-            }
-        });
-
+        // Regenerate to update progress counts
+        generateModeCards();
         updateLevelGrid();
     }
 
@@ -383,16 +459,10 @@ const UI = (function() {
     /**
      * Show victory popup
      */
-    function showVictory(moves, optimal, points, newUnlocks) {
+    function showVictory(moves, optimal, points, newUnlocks, stars, hintsUsed) {
         document.getElementById('victory-moves').textContent = moves;
         document.getElementById('victory-optimal').textContent = optimal;
         document.getElementById('victory-points').textContent = `+${points}`;
-
-        // Calculate stars (3 stars for optimal, 2 for <150%, 1 for completion)
-        const ratio = moves / optimal;
-        let stars = 1;
-        if (ratio <= 1) stars = 3;
-        else if (ratio <= 1.5) stars = 2;
 
         const ratingContainer = document.getElementById('victory-rating');
         ratingContainer.innerHTML = '';

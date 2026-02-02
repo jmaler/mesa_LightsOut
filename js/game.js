@@ -10,9 +10,12 @@ const Game = (function() {
     let grid = [];
     let moveCount = 0;
     let optimalMoves = 0;
+    let hintsUsed = 0;
+    let maxHints = 3;
     let levelId = '';
     let levelNumber = 1;
     let isPlaying = false;
+    let previousBestStars = 0;
 
     // Animation state
     let animatingCells = [];
@@ -76,6 +79,10 @@ const Game = (function() {
         levelId = levelData.id;
         optimalMoves = levelData.optimalMoves;
         moveCount = 0;
+        hintsUsed = 0;
+
+        // Get previous best stars for this level
+        previousBestStars = Storage.getLevelStars(levelId);
 
         // Deep copy initial state
         grid = levelData.initialState.map(row => [...row]);
@@ -98,6 +105,7 @@ const Game = (function() {
         if (levelData) {
             grid = levelData.initialState.map(row => [...row]);
             moveCount = 0;
+            hintsUsed = 0;
             animatingCells = [];
             updateUI();
             render();
@@ -215,17 +223,15 @@ const Game = (function() {
         Mesa.game.gameplayStop();
         GameAudio.playVictory();
 
-        // Calculate base points for this level
-        const basePoints = calculatePoints(levelNumber, gridSize, stateCount);
+        // Calculate stars using new algorithm
+        const stars = calculateStars(moveCount, optimalMoves, hintsUsed);
 
-        // Calculate stars based on performance
-        const ratio = moveCount / optimalMoves;
-        let stars = 1;
-        if (ratio <= 1) stars = 3;
-        else if (ratio <= 1.5) stars = 2;
+        // Calculate points
+        const maxPoints = calculateMaxPoints(levelNumber, gridSize, stateCount);
+        const earnedPoints = maxPoints * stars;
 
         // Save progress with star rating
-        const result = await Storage.completeLevel(levelId, basePoints, stars);
+        const result = await Storage.completeLevel(levelId, maxPoints, stars);
 
         if (result.newUnlocks.length > 0) {
             GameAudio.playUnlock();
@@ -234,15 +240,49 @@ const Game = (function() {
         // Submit to leaderboard
         await Storage.submitToLeaderboard();
 
-        // Show victory screen (points earned = basePoints * stars)
-        UI.showVictory(moveCount, optimalMoves, result.pointsEarned, result.newUnlocks);
+        // Show victory screen
+        UI.showVictory(moveCount, optimalMoves, earnedPoints, result.newUnlocks, stars, hintsUsed);
     }
 
     /**
-     * Calculate points for completing a level
-     * score = (level_number + 4) * (grid_size - 4) * (state_count == 3 ? 3 : 1)
+     * Calculate stars based on performance
+     * @param {number} moves - Actual moves made
+     * @param {number} optimal - Optimal moves
+     * @param {number} hints - Hints used
+     * @returns {number} Stars (1-3)
      */
-    function calculatePoints(level, size, states) {
+    function calculateStars(moves, optimal, hints) {
+        // Base efficiency: optimal/moves * 100
+        let efficiency = (optimal / moves) * 100;
+
+        // If any hint used, cap at 89% (no 3 stars possible)
+        if (hints > 0) {
+            efficiency = Math.min(efficiency, 89);
+        }
+
+        // Subtract hint penalty (10% per hint)
+        const hintPenalty = hints * 10;
+        const finalScore = efficiency - hintPenalty;
+
+        // Determine stars
+        if (finalScore > 90) return 3;
+        if (finalScore > 70) return 2;
+        return 1; // Minimum 1 star for completion
+    }
+
+    /**
+     * Get current star rating (live calculation)
+     */
+    function getCurrentStars() {
+        if (moveCount === 0) return 3; // Haven't moved yet, show max potential
+        return calculateStars(moveCount, optimalMoves, hintsUsed);
+    }
+
+    /**
+     * Calculate max points for a level
+     * maxPoints = (level_number + 4) * (grid_size - 4) * (state_count == 3 ? 3 : 1)
+     */
+    function calculateMaxPoints(level, size, states) {
         return (level + 4) * (size - 4) * (states === 3 ? 3 : 1);
     }
 
@@ -253,7 +293,41 @@ const Game = (function() {
         document.getElementById('move-counter').textContent = moveCount;
         document.getElementById('optimal-moves').textContent = optimalMoves;
         document.getElementById('game-level-text').textContent =
-            `${gridSize}x${gridSize} ${stateCount}-State - Level ${levelNumber}`;
+            `${gridSize}×${gridSize} ${stateCount}-State · Level ${levelNumber}`;
+
+        // Update points display
+        const maxPoints = calculateMaxPoints(levelNumber, gridSize, stateCount);
+        const currentStars = getCurrentStars();
+        const currentPoints = maxPoints * currentStars;
+        const pointsDisplay = document.getElementById('points-display');
+
+        if (previousBestStars > 0) {
+            const bestPoints = maxPoints * previousBestStars;
+            pointsDisplay.innerHTML = `${currentPoints}<span class="points-best">/${maxPoints * 3}</span>`;
+        } else {
+            pointsDisplay.innerHTML = `${currentPoints}<span class="points-best">/${maxPoints * 3}</span>`;
+        }
+
+        // Update current stars display
+        const starsContainer = document.getElementById('current-stars');
+        const starElements = starsContainer.querySelectorAll('.game-star');
+        starElements.forEach((star, index) => {
+            star.classList.remove('filled');
+            if (index < currentStars) {
+                star.classList.add('filled');
+            }
+        });
+
+        // Update hint button text
+        const hintBtn = document.getElementById('btn-hint');
+        const hintsRemaining = maxHints - hintsUsed;
+        hintBtn.textContent = `HINT ${hintsRemaining}/${maxHints}`;
+        hintBtn.disabled = hintsRemaining <= 0;
+        if (hintsRemaining <= 0) {
+            hintBtn.classList.add('disabled');
+        } else {
+            hintBtn.classList.remove('disabled');
+        }
     }
 
     /**
@@ -378,11 +452,65 @@ const Game = (function() {
         Mesa.game.gameplayStop();
     }
 
+    /**
+     * Show hint - highlights the next optimal move
+     */
+    function showHint() {
+        if (!isPlaying) return;
+        if (hintsUsed >= maxHints) {
+            GameAudio.playError();
+            return;
+        }
+
+        const solution = Solver.solve(grid, stateCount);
+        if (!solution) return;
+
+        // Find first cell with non-zero clicks needed
+        for (let row = 0; row < gridSize; row++) {
+            for (let col = 0; col < gridSize; col++) {
+                if (solution[row][col] > 0) {
+                    hintsUsed++;
+                    updateUI();
+                    highlightHint(row, col);
+                    return;
+                }
+            }
+        }
+    }
+
+    /**
+     * Highlight a cell as a hint
+     */
+    function highlightHint(row, col) {
+        const cellSize = canvas.width / gridSize;
+        const x = col * cellSize;
+        const y = row * cellSize;
+        const padding = 4;
+
+        // Draw hint overlay
+        ctx.save();
+        ctx.strokeStyle = '#00ffff';
+        ctx.lineWidth = 3;
+        ctx.shadowColor = 'rgba(0, 255, 255, 0.8)';
+        ctx.shadowBlur = 15;
+
+        ctx.beginPath();
+        roundRect(ctx, x + padding, y + padding, cellSize - padding * 2, cellSize - padding * 2, 6);
+        ctx.stroke();
+        ctx.restore();
+
+        // Clear hint after delay
+        setTimeout(() => {
+            render();
+        }, 1500);
+    }
+
     return {
         init,
         startLevel,
         reset,
         stop,
+        showHint,
         getCurrentLevel,
         resizeCanvas
     };
