@@ -1,7 +1,7 @@
 # Lights Out puzzle game specifications
 
 ## Game Mechanics
-- Grid sizes: 5×5, 6×6, 7×7 (player selectable)
+- Grid sizes: 4×4, 5×5, 6×6 (player selectable)
 - Light states: 2-state (off/on) or 3-state (off/dim/bright) (player selectable)
 - Toggle pattern: Standard orthogonal neighbors (up/down/left/right) plus the clicked cell
 - 3-state behavior: Cycles through off → dim → bright → off
@@ -9,26 +9,25 @@
 ## Level System
 - Pre-generate 30 levels for each combination (5×5 2-state, 5×5 3-state, 6×6 2-state, etc.) = 180 total levels
 - Progressive difficulty within each set of 30 levels:
-  - Levels 1-10: Easy (1-10 optimal clicks in 5x5, 5-15 in other variants)
-  - Levels 11-20: Medium (11-20 optimal clicks in 5x5, 15-25 in other variants)
-  - Levels 21-30: Hard (21-35 optimal clicks in 5x5, 25-40 in other variants)
-- For 6×6 grids, ensure all generated levels are mathematically solvable
-- Store levels in a JSON structure with: grid_size, state_count, level_number, initial_configuration
+  - Levels 1-10: Easy (1-6 clicks in 4x4, 3-8 in 5x5 and 3-10 in 6x6)
+  - Levels 11-20: Medium (6-12 optimal clicks in 4x4, 8-14 in 5x5 and 10-16 in 6x6)
+  - Levels 21-30: Hard (12-20 optimal clicks in 4x4, 14-25 in 5x5 and 16-30 in 6x6)
+- For 4x4 and 6×6 grids, ensure all generated levels are mathematically solvable
 
 ## Progression & Unlocking
-- Game starts with only 5×5 available
-- Player must complete at least 10 levels in 5x5 grid to unlock 6×6 and 7×7 and possibility to select 3-state game
+- Game starts with only 4×4 available
+- Player must complete at least 10 levels in 4x4 grid to unlock other grids and possibility to select 3-state game
 - Players can skip levels freely (e.g., play level 1, then jump to level 15)
-- Track completion status per level (completed/not completed)
+- Track completion status per level (not completed/1/2/3 stars)
 
 ## Scoring System
 Points for completing a level:
-`score = (level_number + 4) × (grid_size - 4) × (state_count == 3 ? 3 : 1)`
+`score = (level_number + 4) × (grid_size - 3) × (state_count == 3 ? 3 : 1) * stars`
 
 Examples:
-- 5×5 2-state level 1: (1+4) × (5-4) × 1 = 5 points
-- 5×5 3-state level 10: (10+4) × (5-4) × 3 = 42 points
-- 7×7 2-state level 30: (30+4) × (7-4) × 1 = 102 points
+- 4×4 2-state level 1, 1 star: (1+4) × (4-3) × 1 × 1 = 5 points
+- 4×4 3-state level 10, 2 stars: (10+4) × (4-3) × 3 × 2 = 84 points
+- 6×6 2-state level 30, 3 stars: (30+4) × (6-3) × 1 × 3 = 306 points
 
 Total score = sum of all completed level scores
 
@@ -40,10 +39,9 @@ Total score = sum of all completed level scores
   - "Play" → goes to Level Select
   - "How to Play" → shows Tutorial overlay
 - Display current total score prominently
-- Show unlock status (e.g., "5×5 ✓ | 6×6 🔒 | 7×7 🔒")
 
 ### 2. Level Select Screen
-- Tabs for grid size: 5×5, 6×6 (locked), 7×7 (locked)
+- Tabs for grid size: 4×4, 5×5 (locked), 6×6 (locked)
 - Toggle for state count: 2-state / 3-state
 - Grid of 30 level buttons (5 rows × 6 columns)
   - Each button shows:

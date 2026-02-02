@@ -383,7 +383,9 @@ const UI = (function() {
         const canvas = document.getElementById('tutorial-canvas');
         const ctx = canvas.getContext('2d');
         const size = 3;
-        const cellSize = 50;
+        const cellSize = 40;
+        canvas.width = 120;
+        canvas.height = 120;
 
         let demoGrid = [
             [0, 0, 0],
