@@ -199,6 +199,14 @@ function generateWithRange(size, stateCount, minOptimal, maxOptimal, maxAttempts
 
 // Pre-defined easy levels for levels 1-5 (verified patterns)
 function getEasyLevel(size, stateCount, levelNum) {
+    if (size === 4 && stateCount === 2) {
+        // Level 1: Single center click (optimal 1)
+        if (levelNum === 1) return generateByClicks(4, 2, [[1, 1]]);
+        // Level 2: Two clicks (optimal 2)
+        if (levelNum === 2) return generateByClicks(4, 2, [[0, 0], [3, 3]]);
+        // Level 3: Three clicks (optimal 3)
+        if (levelNum === 3) return generateByClicks(4, 2, [[1, 1], [1, 2], [2, 1]]);
+    }
     if (size === 5 && stateCount === 2) {
         // Level 1: Single center click (optimal 1)
         if (levelNum === 1) return generateByClicks(5, 2, [[2, 2]]);
@@ -206,42 +214,28 @@ function getEasyLevel(size, stateCount, levelNum) {
         if (levelNum === 2) return generateByClicks(5, 2, [[0, 0], [4, 4]]);
         // Level 3: Three clicks in a row (optimal 3)
         if (levelNum === 3) return generateByClicks(5, 2, [[2, 1], [2, 2], [2, 3]]);
-        // Level 4: Four corners pattern (optimal 4)
-        if (levelNum === 4) return generateByClicks(5, 2, [[1, 1], [1, 3], [3, 1], [3, 3]]);
-        // Level 5: Five in a cross (optimal 5)
-        if (levelNum === 5) return generateByClicks(5, 2, [[0, 2], [2, 0], [2, 2], [2, 4], [4, 2]]);
     }
     if (size === 6 && stateCount === 2) {
         if (levelNum === 1) return generateByClicks(6, 2, [[2, 2]]);
         if (levelNum === 2) return generateByClicks(6, 2, [[1, 1], [4, 4]]);
         if (levelNum === 3) return generateByClicks(6, 2, [[2, 2], [2, 3], [3, 2]]);
-        if (levelNum === 4) return generateByClicks(6, 2, [[1, 1], [1, 4], [4, 1], [4, 4]]);
-        if (levelNum === 5) return generateByClicks(6, 2, [[0, 2], [2, 0], [2, 5], [5, 2], [3, 3]]);
-    }
-    if (size === 7 && stateCount === 2) {
-        if (levelNum === 1) return generateByClicks(7, 2, [[3, 3]]);
-        if (levelNum === 2) return generateByClicks(7, 2, [[1, 1], [5, 5]]);
-        if (levelNum === 3) return generateByClicks(7, 2, [[3, 2], [3, 3], [3, 4]]);
-        if (levelNum === 4) return generateByClicks(7, 2, [[1, 1], [1, 5], [5, 1], [5, 5]]);
-        if (levelNum === 5) return generateByClicks(7, 2, [[0, 3], [3, 0], [3, 3], [3, 6], [6, 3]]);
     }
     // 3-state versions
     if (stateCount === 3) {
         if (levelNum === 1) return generateByClicks(size, 3, [[Math.floor(size/2), Math.floor(size/2)]]);
         if (levelNum === 2) return generateByClicks(size, 3, [[1, 1], [size-2, size-2]]);
-        if (levelNum === 3) return generateByClicks(size, 3, [[Math.floor(size/2), 1], [Math.floor(size/2), Math.floor(size/2)], [Math.floor(size/2), size-2]]);
-        if (levelNum === 4) return generateByClicks(size, 3, [[1, 1], [1, size-2], [size-2, 1], [size-2, size-2]]);
-        if (levelNum === 5) return generateByClicks(size, 3, [[0, Math.floor(size/2)], [Math.floor(size/2), 0], [Math.floor(size/2), Math.floor(size/2)], [Math.floor(size/2), size-1], [size-1, Math.floor(size/2)]]);
+        if (levelNum === 3) return generateByClicks(size, 3, [[Math.floor(size/2), 1], [Math.floor(size/2), Math.floor(size/2)]]);
     }
     return null;
 }
 
 // Difficulty ranges by grid size
 // Format: { easy: [min, max], medium: [min, max], hard: [min, max] }
+// Note: 4×4 2-state has limited max complexity (~12 moves)
 const difficultyRanges = {
+    4: { easy: [1, 4], medium: [4, 8], hard: [8, 14] },
     5: { easy: [3, 8], medium: [8, 14], hard: [14, 25] },
-    6: { easy: [3, 10], medium: [10, 16], hard: [16, 30] },
-    7: { easy: [3, 12], medium: [12, 20], hard: [20, 35] }
+    6: { easy: [3, 10], medium: [10, 16], hard: [16, 30] }
 };
 
 /**
@@ -278,12 +272,12 @@ function getOptimalRange(size, levelNum) {
 function generateAllLevels() {
     const allLevels = [];
     const variants = [
+        { size: 4, states: 2 },
+        { size: 4, states: 3 },
         { size: 5, states: 2 },
         { size: 5, states: 3 },
         { size: 6, states: 2 },
-        { size: 6, states: 3 },
-        { size: 7, states: 2 },
-        { size: 7, states: 3 }
+        { size: 6, states: 3 }
     ];
 
     for (const { size, states } of variants) {

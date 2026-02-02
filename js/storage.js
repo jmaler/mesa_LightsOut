@@ -11,8 +11,8 @@ const Storage = (function() {
     const defaultProgress = {
         levelStars: {},      // { 'levelId': stars (1-3) }
         totalScore: 0,
+        unlocked5x5: false,
         unlocked6x6: false,
-        unlocked7x7: false,
         unlocked3State: false
     };
 
@@ -111,18 +111,18 @@ const Storage = (function() {
             cachedProgress.levelStars[levelId] = stars;
             cachedProgress.totalScore += pointsEarned;
 
-            // Check for unlocks (10 levels completed in 5x5)
-            const completed5x5 = Object.keys(cachedProgress.levelStars)
-                .filter(id => id.startsWith('5x5') && cachedProgress.levelStars[id] > 0).length;
+            // Check for unlocks (10 levels completed in 4x4)
+            const completed4x4 = Object.keys(cachedProgress.levelStars)
+                .filter(id => id.startsWith('4x4') && cachedProgress.levelStars[id] > 0).length;
 
-            if (completed5x5 >= 10) {
+            if (completed4x4 >= 10) {
+                if (!cachedProgress.unlocked5x5) {
+                    cachedProgress.unlocked5x5 = true;
+                    newUnlocks.push('5x5');
+                }
                 if (!cachedProgress.unlocked6x6) {
                     cachedProgress.unlocked6x6 = true;
                     newUnlocks.push('6x6');
-                }
-                if (!cachedProgress.unlocked7x7) {
-                    cachedProgress.unlocked7x7 = true;
-                    newUnlocks.push('7x7');
                 }
                 if (!cachedProgress.unlocked3State) {
                     cachedProgress.unlocked3State = true;
@@ -162,11 +162,11 @@ const Storage = (function() {
     }
 
     /**
-     * Check if 7x7 is unlocked
+     * Check if 5x5 is unlocked
      * @returns {boolean}
      */
-    function is7x7Unlocked() {
-        return cachedProgress ? cachedProgress.unlocked7x7 : false;
+    function is5x5Unlocked() {
+        return cachedProgress ? cachedProgress.unlocked5x5 : false;
     }
 
     /**
@@ -233,8 +233,8 @@ const Storage = (function() {
         completeLevel,
         isLevelCompleted,
         getTotalScore,
+        is5x5Unlocked,
         is6x6Unlocked,
-        is7x7Unlocked,
         is3StateUnlocked,
         getCompletedCount,
         getCompletedCountForMode,

@@ -8,7 +8,7 @@ const UI = (function() {
     let currentScreen = 'menu';
 
     // Level select state
-    let selectedGridSize = 5;
+    let selectedGridSize = 4;
     let selectedStateCount = 2;
 
     /**
@@ -133,13 +133,13 @@ const UI = (function() {
     }
 
     /**
-     * Generate mode cards for grid sizes (5×5, 6×6, 7×7)
+     * Generate mode cards for grid sizes (4×4, 5×5, 6×6)
      */
     function generateModeCards() {
         const container = document.getElementById('mode-cards');
         container.innerHTML = '';
 
-        const sizes = [5, 6, 7];
+        const sizes = [4, 5, 6];
 
         sizes.forEach(size => {
             const isLocked = isGridSizeLocked(size);
@@ -238,15 +238,15 @@ const UI = (function() {
      * Check if grid size is locked
      */
     function isGridSizeLocked(size) {
-        if (size === 5) return false;
+        if (size === 4) return false;
         return !isUnlocked();
     }
 
     /**
-     * Check if advanced modes are unlocked (10 levels in 5×5)
+     * Check if advanced modes are unlocked (10 levels in 4×4)
      */
     function isUnlocked() {
-        return Storage.getCompletedCount(5) >= 10;
+        return Storage.getCompletedCount(4) >= 10;
     }
 
     /**
@@ -254,11 +254,11 @@ const UI = (function() {
      */
     function updateUnlockMessage() {
         const message = document.getElementById('unlock-message');
-        const completed = Storage.getCompletedCount(5);
+        const completed = Storage.getCompletedCount(4);
         const remaining = 10 - completed;
 
         if (remaining > 0) {
-            message.textContent = `Complete ${remaining} more level${remaining > 1 ? 's' : ''} in 5×5 to unlock all modes`;
+            message.textContent = `Complete ${remaining} more level${remaining > 1 ? 's' : ''} in 4×4 to unlock all modes`;
             message.classList.add('visible');
         } else {
             message.classList.remove('visible');
@@ -274,7 +274,7 @@ const UI = (function() {
         // Update card styles
         document.querySelectorAll('.mode-card').forEach((card, index) => {
             card.classList.remove('active');
-            if ([5, 6, 7][index] === size) {
+            if ([4, 5, 6][index] === size) {
                 card.classList.add('active');
             }
         });
