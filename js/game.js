@@ -280,10 +280,10 @@ const Game = (function() {
 
     /**
      * Calculate max points for a level
-     * maxPoints = (level_number + 4) * (grid_size - 4) * (state_count == 3 ? 3 : 1)
+     * maxPoints = (level_number + 4) * (grid_size - 3) * (state_count == 3 ? 3 : 1)
      */
     function calculateMaxPoints(level, size, states) {
-        return (level + 4) * (size - 4) * (states === 3 ? 3 : 1);
+        return (level + 4) * (size - 3) * (states === 3 ? 3 : 1);
     }
 
     /**

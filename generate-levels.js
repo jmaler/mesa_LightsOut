@@ -248,8 +248,20 @@ function getOptimalRange(size, levelNum) {
         // Easy: Levels 1-10, gradually increase within easy range
         const [min, max] = ranges.easy;
         const progress = (levelNum - 1) / 9; // 0 to 1
-        const targetMin = Math.round(min + progress * (max - min) * 0.5);
-        const targetMax = Math.round(min + progress * (max - min) + 1);
+        let targetMin = Math.round(min + progress * (max - min) * 0.5);
+        let targetMax = Math.round(min + progress * (max - min) + 1);
+
+        // For 4x4: ensure levels 4-7 have min 3, levels 8-10 have min 4
+        if (size === 4) {
+            if (levelNum >= 4 && levelNum <= 7) {
+                targetMin = Math.max(3, targetMin);
+                targetMax = Math.max(4, targetMax);
+            } else if (levelNum >= 8 && levelNum <= 10) {
+                targetMin = Math.max(4, targetMin);
+                targetMax = Math.max(5, targetMax);
+            }
+        }
+
         return { min: Math.max(min, targetMin), max: Math.min(max, targetMax), difficulty: 'easy' };
     } else if (levelNum <= 20) {
         // Medium: Levels 11-20
