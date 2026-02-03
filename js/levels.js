@@ -46,10 +46,16 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 2,
     "difficulty": "easy",
-    "optimalMoves": 1,
+    "optimalMoves": 2,
     "initialState": [
       [
+        1,
+        1,
         0,
+        0
+      ],
+      [
+        1,
         0,
         0,
         0
@@ -64,12 +70,6 @@ const Levels = (function() {
         0,
         0,
         1,
-        1
-      ],
-      [
-        0,
-        0,
-        0,
         1
       ]
     ]
@@ -86,25 +86,25 @@ const Levels = (function() {
         0,
         0,
         1,
+        0
+      ],
+      [
+        0,
+        1,
+        1,
         1
       ],
       [
-        1,
-        1,
+        0,
+        0,
         0,
         0
       ],
       [
         0,
         1,
-        0,
-        0
-      ],
-      [
-        0,
-        0,
-        0,
-        0
+        1,
+        1
       ]
     ]
   },
@@ -117,8 +117,14 @@ const Levels = (function() {
     "optimalMoves": 3,
     "initialState": [
       [
-        0,
         1,
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
         0,
         0
       ],
@@ -126,17 +132,11 @@ const Levels = (function() {
         0,
         0,
         1,
-        0
+        1
       ],
       [
         0,
-        1,
-        1,
-        0
-      ],
-      [
-        1,
-        1,
+        0,
         0,
         0
       ]
@@ -152,25 +152,25 @@ const Levels = (function() {
     "initialState": [
       [
         0,
+        0,
+        0,
+        1
+      ],
+      [
         1,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
         0,
         0
       ],
       [
         0,
         0,
-        0,
-        0
-      ],
-      [
-        0,
-        1,
-        1,
-        0
-      ],
-      [
-        0,
-        1,
         0,
         0
       ]
@@ -185,6 +185,12 @@ const Levels = (function() {
     "optimalMoves": 3,
     "initialState": [
       [
+        0,
+        1,
+        1,
+        0
+      ],
+      [
         1,
         0,
         0,
@@ -192,21 +198,15 @@ const Levels = (function() {
       ],
       [
         0,
+        1,
         0,
-        0,
-        0
+        1
       ],
       [
-        1,
         0,
-        1,
-        0
-      ],
-      [
-        1,
-        1,
         0,
-        0
+        0,
+        1
       ]
     ]
   },
@@ -216,30 +216,30 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 7,
     "difficulty": "easy",
-    "optimalMoves": 4,
+    "optimalMoves": 3,
     "initialState": [
       [
         1,
         0,
-        0,
-        0
-      ],
-      [
-        0,
-        0,
         1,
-        0
-      ],
-      [
-        1,
-        1,
-        0,
         1
       ],
       [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
         1,
         1,
-        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
         0
       ]
     ]
@@ -250,19 +250,19 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 8,
     "difficulty": "easy",
-    "optimalMoves": 4,
+    "optimalMoves": 3,
     "initialState": [
       [
         1,
         0,
         0,
-        1
+        0
       ],
       [
-        0,
         1,
         1,
-        1
+        1,
+        0
       ],
       [
         1,
@@ -274,7 +274,7 @@ const Levels = (function() {
         0,
         0,
         0,
-        0
+        1
       ]
     ]
   },
@@ -288,21 +288,21 @@ const Levels = (function() {
     "initialState": [
       [
         1,
-        1,
+        0,
         0,
         0
       ],
       [
+        1,
+        1,
         0,
-        1,
-        1,
         1
       ],
       [
-        0,
+        1,
         1,
         0,
-        0
+        1
       ],
       [
         1,
@@ -322,24 +322,24 @@ const Levels = (function() {
     "initialState": [
       [
         1,
-        1,
-        1,
-        0
-      ],
-      [
-        1,
-        1,
+        0,
         1,
         0
       ],
       [
         1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
         1,
         0,
         1
       ],
       [
-        0,
+        1,
         0,
         1,
         1
@@ -352,28 +352,28 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 11,
     "difficulty": "medium",
-    "optimalMoves": 4,
+    "optimalMoves": 3,
     "initialState": [
       [
+        0,
         1,
-        1,
-        1,
+        0,
         1
       ],
       [
         0,
-        0,
+        1,
         0,
         1
       ],
       [
+        0,
         1,
-        0,
-        0,
+        1,
         0
       ],
       [
-        0,
+        1,
         1,
         1,
         0
@@ -386,29 +386,29 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 12,
     "difficulty": "medium",
-    "optimalMoves": 6,
+    "optimalMoves": 5,
     "initialState": [
       [
         0,
         1,
-        0,
-        1
+        1,
+        0
       ],
       [
         0,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
         0,
         0,
         0
       ],
       [
         0,
-        1,
         0,
-        1
-      ],
-      [
-        1,
-        1,
         1,
         0
       ]
@@ -420,11 +420,23 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 13,
     "difficulty": "medium",
-    "optimalMoves": 5,
+    "optimalMoves": 3,
     "initialState": [
       [
         0,
         1,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
         1,
         1
       ],
@@ -432,18 +444,6 @@ const Levels = (function() {
         0,
         0,
         1,
-        0
-      ],
-      [
-        0,
-        1,
-        1,
-        0
-      ],
-      [
-        1,
-        0,
-        0,
         1
       ]
     ]
@@ -454,31 +454,31 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 14,
     "difficulty": "medium",
-    "optimalMoves": 5,
+    "optimalMoves": 3,
     "initialState": [
       [
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
+        0
+      ],
+      [
         1,
         0,
         1,
         1
       ],
       [
-        0,
-        1,
-        1,
-        1
-      ],
-      [
-        0,
-        0,
-        0,
-        1
-      ],
-      [
         1,
         1,
         0,
-        1
+        0
       ]
     ]
   },
@@ -488,31 +488,31 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 15,
     "difficulty": "medium",
-    "optimalMoves": 6,
+    "optimalMoves": 5,
     "initialState": [
       [
-        0,
-        0,
-        0,
-        0
-      ],
-      [
-        0,
         1,
-        0,
+        1,
+        1,
         1
       ],
       [
         0,
         1,
-        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
         1
       ],
       [
         1,
         1,
-        1,
-        0
+        0,
+        1
       ]
     ]
   },
@@ -522,13 +522,13 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 16,
     "difficulty": "medium",
-    "optimalMoves": 6,
+    "optimalMoves": 5,
     "initialState": [
       [
         0,
         0,
-        1,
-        0
+        0,
+        1
       ],
       [
         1,
@@ -537,14 +537,14 @@ const Levels = (function() {
         1
       ],
       [
+        0,
+        0,
         1,
-        1,
-        1,
-        0
+        1
       ],
       [
         0,
-        0,
+        1,
         0,
         1
       ]
@@ -556,28 +556,28 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 17,
     "difficulty": "medium",
-    "optimalMoves": 8,
+    "optimalMoves": 3,
     "initialState": [
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
+        0
+      ],
       [
         0,
         0,
-        1,
+        0,
         1
       ],
       [
         0,
-        1,
-        1,
-        0
-      ],
-      [
-        1,
-        1,
-        0,
-        0
-      ],
-      [
-        1,
         1,
         1,
         0
@@ -590,8 +590,20 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 18,
     "difficulty": "medium",
-    "optimalMoves": 8,
+    "optimalMoves": 4,
     "initialState": [
+      [
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        1,
+        1,
+        0
+      ],
       [
         1,
         0,
@@ -601,19 +613,7 @@ const Levels = (function() {
       [
         1,
         0,
-        1,
-        1
-      ],
-      [
         0,
-        0,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
         1
       ]
     ]
@@ -624,31 +624,31 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 19,
     "difficulty": "medium",
-    "optimalMoves": 7,
+    "optimalMoves": 5,
     "initialState": [
       [
+        0,
         1,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        1,
+        1
+      ],
+      [
+        0,
         1,
         1,
         0
-      ],
-      [
-        0,
-        1,
-        0,
-        1
-      ],
-      [
-        1,
-        0,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        0,
-        1
       ]
     ]
   },
@@ -658,7 +658,7 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 20,
     "difficulty": "medium",
-    "optimalMoves": 8,
+    "optimalMoves": 5,
     "initialState": [
       [
         1,
@@ -669,14 +669,14 @@ const Levels = (function() {
       [
         1,
         0,
-        0,
+        1,
         1
       ],
       [
+        0,
         1,
-        1,
-        1,
-        0
+        0,
+        1
       ],
       [
         1,
@@ -692,7 +692,7 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 21,
     "difficulty": "hard",
-    "optimalMoves": 8,
+    "optimalMoves": 5,
     "initialState": [
       [
         1,
@@ -702,6 +702,12 @@ const Levels = (function() {
       ],
       [
         0,
+        1,
+        1,
+        1
+      ],
+      [
+        0,
         0,
         0,
         0
@@ -709,14 +715,8 @@ const Levels = (function() {
       [
         0,
         1,
-        0,
-        1
-      ],
-      [
-        0,
         1,
-        1,
-        1
+        0
       ]
     ]
   },
@@ -726,30 +726,30 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 22,
     "difficulty": "hard",
-    "optimalMoves": 9,
+    "optimalMoves": 5,
     "initialState": [
       [
         0,
+        1,
+        1,
+        1
+      ],
+      [
+        1,
         0,
         1,
         1
       ],
       [
-        0,
+        1,
         1,
         0,
         0
       ],
       [
-        0,
-        0,
-        0,
-        1
-      ],
-      [
-        0,
         1,
         1,
+        0,
         1
       ]
     ]
@@ -760,9 +760,15 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 23,
     "difficulty": "hard",
-    "optimalMoves": 9,
+    "optimalMoves": 6,
     "initialState": [
       [
+        0,
+        0,
+        1,
+        0
+      ],
+      [
         1,
         0,
         1,
@@ -771,20 +777,14 @@ const Levels = (function() {
       [
         0,
         0,
-        1,
-        0
-      ],
-      [
-        0,
-        1,
         0,
         0
       ],
       [
         1,
         0,
-        1,
-        0
+        0,
+        1
       ]
     ]
   },
@@ -794,30 +794,30 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 24,
     "difficulty": "hard",
-    "optimalMoves": 9,
+    "optimalMoves": 7,
     "initialState": [
       [
         0,
         1,
         1,
-        0
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        1
       ],
       [
         1,
         0,
-        0,
+        1,
         1
       ],
       [
         0,
         1,
         0,
-        0
-      ],
-      [
-        0,
-        1,
-        1,
         1
       ]
     ]
@@ -828,31 +828,31 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 25,
     "difficulty": "hard",
-    "optimalMoves": 10,
+    "optimalMoves": 7,
     "initialState": [
       [
-        0,
         1,
-        0,
-        1
-      ],
-      [
-        0,
         1,
         1,
         0
       ],
       [
+        1,
         0,
+        0,
+        0
+      ],
+      [
+        1,
         1,
         0,
         1
       ],
       [
+        1,
         0,
         1,
-        1,
-        1
+        0
       ]
     ]
   },
@@ -862,17 +862,23 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 26,
     "difficulty": "hard",
-    "optimalMoves": 10,
+    "optimalMoves": 6,
     "initialState": [
       [
+        1,
         0,
-        0,
+        1,
+        0
+      ],
+      [
+        1,
+        1,
         0,
         0
       ],
       [
         0,
-        0,
+        1,
         0,
         0
       ],
@@ -880,12 +886,6 @@ const Levels = (function() {
         1,
         0,
         0,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
         1
       ]
     ]
@@ -896,22 +896,10 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 27,
     "difficulty": "hard",
-    "optimalMoves": 10,
+    "optimalMoves": 6,
     "initialState": [
       [
-        0,
         1,
-        1,
-        1
-      ],
-      [
-        0,
-        1,
-        1,
-        0
-      ],
-      [
-        0,
         1,
         1,
         1
@@ -919,6 +907,18 @@ const Levels = (function() {
       [
         1,
         0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
         1,
         1
       ]
@@ -930,7 +930,7 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 28,
     "difficulty": "hard",
-    "optimalMoves": 10,
+    "optimalMoves": 7,
     "initialState": [
       [
         1,
@@ -939,21 +939,21 @@ const Levels = (function() {
         1
       ],
       [
+        0,
         1,
-        0,
-        0,
-        1
+        1,
+        0
       ],
       [
+        1,
+        1,
         0,
-        1,
-        1,
-        1
+        0
       ],
       [
+        1,
         0,
-        1,
-        1,
+        0,
         1
       ]
     ]
@@ -964,13 +964,13 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 29,
     "difficulty": "hard",
-    "optimalMoves": 11,
+    "optimalMoves": 7,
     "initialState": [
       [
         0,
         1,
-        0,
-        1
+        1,
+        0
       ],
       [
         1,
@@ -980,13 +980,13 @@ const Levels = (function() {
       ],
       [
         1,
-        0,
-        0,
+        1,
+        1,
         1
       ],
       [
-        1,
-        1,
+        0,
+        0,
         1,
         1
       ]
@@ -998,8 +998,14 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 30,
     "difficulty": "hard",
-    "optimalMoves": 11,
+    "optimalMoves": 7,
     "initialState": [
+      [
+        0,
+        1,
+        0,
+        0
+      ],
       [
         1,
         0,
@@ -1010,18 +1016,12 @@ const Levels = (function() {
         0,
         1,
         0,
-        0
+        1
       ],
       [
         1,
         1,
         1,
-        0
-      ],
-      [
-        1,
-        1,
-        0,
         1
       ]
     ]
@@ -1032,31 +1032,31 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 1,
     "difficulty": "easy",
-    "optimalMoves": 4,
+    "optimalMoves": 3,
     "initialState": [
       [
-        1,
+        0,
         1,
         0,
         0
       ],
       [
         1,
-        0,
+        1,
         1,
         0
       ],
       [
         0,
         1,
-        1,
-        1
+        2,
+        0
       ],
       [
         0,
-        0,
-        1,
-        0
+        2,
+        2,
+        2
       ]
     ]
   },
@@ -1066,23 +1066,17 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 2,
     "difficulty": "easy",
-    "optimalMoves": 4,
+    "optimalMoves": 3,
     "initialState": [
       [
-        0,
+        2,
+        2,
         1,
-        0,
         0
       ],
       [
-        1,
-        1,
         2,
-        0
-      ],
-      [
-        0,
-        2,
+        1,
         1,
         1
       ],
@@ -1090,6 +1084,12 @@ const Levels = (function() {
         0,
         0,
         1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
         0
       ]
     ]
@@ -1100,31 +1100,31 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 3,
     "difficulty": "easy",
-    "optimalMoves": 4,
+    "optimalMoves": 5,
     "initialState": [
       [
         0,
-        0,
+        1,
         0,
         0
       ],
       [
         0,
+        0,
         1,
-        1,
-        0
+        2
       ],
       [
-        1,
-        2,
-        2,
+        0,
+        0,
+        0,
         1
       ],
       [
         0,
+        0,
         1,
-        1,
-        0
+        1
       ]
     ]
   },
@@ -1137,27 +1137,27 @@ const Levels = (function() {
     "optimalMoves": 5,
     "initialState": [
       [
-        0,
+        1,
         0,
         1,
         0
       ],
       [
+        2,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
         0,
         1,
-        2,
         1
       ],
       [
         0,
         0,
-        2,
-        1
-      ],
-      [
-        2,
-        2,
-        0,
+        1,
         0
       ]
     ]
@@ -1172,27 +1172,27 @@ const Levels = (function() {
     "initialState": [
       [
         0,
-        2,
         0,
-        1
-      ],
-      [
-        2,
-        1,
-        0,
-        1
-      ],
-      [
-        2,
-        1,
-        2,
-        1
-      ],
-      [
-        0,
-        2,
         0,
         0
+      ],
+      [
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        2,
+        1
+      ],
+      [
+        0,
+        1,
+        2,
+        1
       ]
     ]
   },
@@ -1202,31 +1202,31 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 6,
     "difficulty": "easy",
-    "optimalMoves": 7,
+    "optimalMoves": 6,
     "initialState": [
       [
-        2,
         1,
-        0,
-        1
-      ],
-      [
-        0,
         1,
-        2,
-        1
-      ],
-      [
-        0,
-        2,
         1,
-        1
-      ],
-      [
-        0,
-        1,
-        0,
         0
+      ],
+      [
+        0,
+        2,
+        0,
+        1
+      ],
+      [
+        1,
+        1,
+        2,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
+        1
       ]
     ]
   },
@@ -1236,30 +1236,30 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 7,
     "difficulty": "easy",
-    "optimalMoves": 7,
+    "optimalMoves": 5,
     "initialState": [
       [
-        1,
-        1,
         0,
-        0
-      ],
-      [
-        2,
         0,
-        1,
-        0
+        0,
+        1
       ],
       [
         1,
+        0,
         1,
+        1
+      ],
+      [
         1,
+        0,
+        0,
         1
       ],
       [
         0,
         2,
-        0,
+        2,
         0
       ]
     ]
@@ -1273,28 +1273,28 @@ const Levels = (function() {
     "optimalMoves": 7,
     "initialState": [
       [
+        2,
+        2,
+        2,
+        1
+      ],
+      [
         0,
         2,
         0,
+        1
+      ],
+      [
+        1,
+        2,
+        1,
         0
       ],
       [
-        2,
-        2,
-        0,
-        1
-      ],
-      [
+        1,
         0,
         1,
-        2,
         2
-      ],
-      [
-        1,
-        1,
-        2,
-        1
       ]
     ]
   },
@@ -1304,31 +1304,31 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 9,
     "difficulty": "easy",
-    "optimalMoves": 8,
+    "optimalMoves": 7,
     "initialState": [
       [
         0,
-        2,
+        1,
+        1,
+        1
+      ],
+      [
+        1,
         0,
+        2,
         0
       ],
       [
-        2,
         0,
         2,
+        1,
         1
       ],
       [
         0,
-        1,
         2,
-        1
-      ],
-      [
-        0,
         1,
-        1,
-        1
+        0
       ]
     ]
   },
@@ -1342,27 +1342,27 @@ const Levels = (function() {
     "initialState": [
       [
         0,
-        0,
-        0,
-        0
-      ],
-      [
-        0,
         1,
         2,
         0
       ],
       [
         0,
-        0,
-        0,
-        0
+        1,
+        1,
+        2
       ],
       [
-        1,
         0,
         0,
-        0
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        2
       ]
     ]
   },
@@ -1375,28 +1375,28 @@ const Levels = (function() {
     "optimalMoves": 7,
     "initialState": [
       [
-        2,
+        1,
+        1,
         0,
+        2
+      ],
+      [
+        0,
+        1,
         1,
         2
       ],
       [
+        0,
         1,
         2,
-        1,
         1
       ],
       [
+        0,
         1,
         2,
-        2,
-        0
-      ],
-      [
-        0,
-        0,
-        0,
-        0
+        1
       ]
     ]
   },
@@ -1406,31 +1406,31 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 12,
     "difficulty": "medium",
-    "optimalMoves": 8,
+    "optimalMoves": 7,
     "initialState": [
       [
-        1,
-        2,
-        2,
-        0
-      ],
-      [
-        1,
-        2,
-        2,
-        0
-      ],
-      [
         0,
+        1,
+        2,
+        1
+      ],
+      [
+        2,
         0,
         2,
         1
       ],
       [
+        1,
+        1,
         0,
-        0,
+        2
+      ],
+      [
         2,
-        0
+        2,
+        2,
+        2
       ]
     ]
   },
@@ -1440,31 +1440,31 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 13,
     "difficulty": "medium",
-    "optimalMoves": 7,
+    "optimalMoves": 8,
     "initialState": [
       [
+        1,
+        2,
+        1,
+        0
+      ],
+      [
+        2,
+        2,
+        1,
+        1
+      ],
+      [
+        0,
         0,
         2,
-        0,
         2
       ],
       [
-        1,
+        0,
         2,
-        0,
-        1
-      ],
-      [
         1,
-        1,
-        0,
-        1
-      ],
-      [
-        0,
-        0,
-        1,
-        0
+        2
       ]
     ]
   },
@@ -1474,31 +1474,31 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 14,
     "difficulty": "medium",
-    "optimalMoves": 9,
+    "optimalMoves": 8,
     "initialState": [
       [
         0,
-        2,
+        1,
+        1,
+        2
+      ],
+      [
+        0,
+        0,
         1,
         1
       ],
       [
-        1,
-        1,
+        2,
+        0,
         2,
         0
       ],
       [
-        2,
         0,
-        1,
-        1
-      ],
-      [
-        1,
         0,
-        2,
-        2
+        0,
+        0
       ]
     ]
   },
@@ -1512,27 +1512,27 @@ const Levels = (function() {
     "initialState": [
       [
         2,
-        0,
-        1,
-        0
-      ],
-      [
-        0,
-        0,
         2,
-        1
-      ],
-      [
-        2,
-        0,
         1,
         2
       ],
       [
+        0,
         2,
-        0,
-        0,
+        2,
+        0
+      ],
+      [
+        2,
+        1,
+        1,
         1
+      ],
+      [
+        1,
+        1,
+        2,
+        0
       ]
     ]
   },
@@ -1542,31 +1542,31 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 16,
     "difficulty": "medium",
-    "optimalMoves": 11,
+    "optimalMoves": 9,
     "initialState": [
       [
-        2,
-        0,
-        0,
+        1,
+        1,
+        1,
         0
       ],
       [
         2,
+        2,
         1,
-        1,
+        1
+      ],
+      [
+        2,
+        2,
+        2,
         2
       ],
       [
         1,
+        1,
         2,
-        0,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        0
+        2
       ]
     ]
   },
@@ -1576,31 +1576,31 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 17,
     "difficulty": "medium",
-    "optimalMoves": 10,
+    "optimalMoves": 9,
     "initialState": [
       [
         1,
-        2,
         1,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        2
+      ],
+      [
+        1,
+        0,
+        0,
         1
       ],
       [
-        1,
         2,
-        2,
-        2
-      ],
-      [
-        1,
         0,
         2,
-        2
-      ],
-      [
-        0,
-        1,
-        0,
-        2
+        1
       ]
     ]
   },
@@ -1610,30 +1610,30 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 18,
     "difficulty": "medium",
-    "optimalMoves": 10,
+    "optimalMoves": 9,
     "initialState": [
       [
-        0,
-        0,
+        1,
         2,
+        0,
         1
       ],
       [
         1,
-        0,
         1,
+        0,
         2
       ],
       [
         0,
-        1,
+        0,
         2,
-        1
+        2
       ],
       [
         0,
-        1,
         0,
+        2,
         1
       ]
     ]
@@ -1644,30 +1644,30 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 19,
     "difficulty": "medium",
-    "optimalMoves": 9,
+    "optimalMoves": 10,
     "initialState": [
       [
-        2,
-        2,
-        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
         2
       ],
       [
-        2,
         0,
-        2,
-        2
+        1,
+        0,
+        1
       ],
       [
         2,
-        0,
-        1,
-        0
-      ],
-      [
-        1,
-        1,
-        0,
+        2,
+        2,
         1
       ]
     ]
@@ -1678,31 +1678,31 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 20,
     "difficulty": "medium",
-    "optimalMoves": 11,
+    "optimalMoves": 8,
     "initialState": [
       [
+        0,
         1,
-        2,
         0,
         1
       ],
       [
         0,
         2,
-        0,
+        2,
         0
       ],
       [
-        2,
-        2,
         0,
-        1
-      ],
-      [
         1,
         0,
-        0,
         0
+      ],
+      [
+        2,
+        1,
+        0,
+        2
       ]
     ]
   },
@@ -1712,30 +1712,30 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 21,
     "difficulty": "hard",
-    "optimalMoves": 13,
+    "optimalMoves": 11,
     "initialState": [
       [
         1,
+        2,
         1,
-        0,
-        2
+        0
       ],
       [
         0,
         0,
         2,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
         2
       ],
       [
-        1,
         0,
+        1,
         2,
-        2
-      ],
-      [
-        1,
-        0,
-        1,
         1
       ]
     ]
@@ -1746,31 +1746,31 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 22,
     "difficulty": "hard",
-    "optimalMoves": 13,
+    "optimalMoves": 10,
     "initialState": [
       [
+        0,
+        0,
         2,
-        0,
-        1,
-        1
-      ],
-      [
-        1,
-        2,
-        1,
-        1
-      ],
-      [
-        0,
-        1,
-        0,
         2
       ],
       [
+        1,
+        0,
         2,
-        1,
-        1,
         0
+      ],
+      [
+        1,
+        1,
+        2,
+        1
+      ],
+      [
+        0,
+        1,
+        1,
+        2
       ]
     ]
   },
@@ -1780,17 +1780,11 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 23,
     "difficulty": "hard",
-    "optimalMoves": 17,
+    "optimalMoves": 11,
     "initialState": [
       [
-        1,
         2,
-        2,
-        1
-      ],
-      [
         0,
-        2,
         0,
         2
       ],
@@ -1798,12 +1792,18 @@ const Levels = (function() {
         2,
         0,
         0,
-        0
+        1
       ],
       [
         0,
-        2,
+        0,
         1,
+        0
+      ],
+      [
+        2,
+        2,
+        0,
         1
       ]
     ]
@@ -1814,30 +1814,30 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 24,
     "difficulty": "hard",
-    "optimalMoves": 17,
+    "optimalMoves": 10,
     "initialState": [
       [
-        0,
-        1,
-        1,
-        2
-      ],
-      [
-        1,
         2,
         0,
-        1
+        1,
+        0
       ],
       [
         1,
         0,
-        0,
-        2
+        1,
+        0
       ],
       [
         2,
         0,
+        2,
+        2
+      ],
+      [
         1,
+        1,
+        0,
         1
       ]
     ]
@@ -1848,31 +1848,31 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 25,
     "difficulty": "hard",
-    "optimalMoves": 16,
+    "optimalMoves": 13,
     "initialState": [
       [
-        0,
-        2,
-        1,
-        2
-      ],
-      [
-        2,
         1,
         2,
-        2
+        1,
+        0
       ],
       [
         0,
+        1,
+        2,
+        1
+      ],
+      [
         0,
         1,
+        2,
         1
       ],
       [
         1,
-        1,
-        1,
-        1
+        0,
+        2,
+        0
       ]
     ]
   },
@@ -1882,30 +1882,30 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 26,
     "difficulty": "hard",
-    "optimalMoves": 16,
+    "optimalMoves": 10,
     "initialState": [
       [
-        2,
-        2,
-        2,
+        1,
+        0,
+        0,
         1
       ],
       [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
         1,
-        2,
-        2,
         2
       ],
       [
         0,
-        1,
-        1,
-        2
-      ],
-      [
-        1,
         0,
-        1,
+        2,
         1
       ]
     ]
@@ -1916,12 +1916,12 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 27,
     "difficulty": "hard",
-    "optimalMoves": 19,
+    "optimalMoves": 11,
     "initialState": [
       [
+        1,
         0,
-        2,
-        2,
+        1,
         0
       ],
       [
@@ -1931,14 +1931,14 @@ const Levels = (function() {
         1
       ],
       [
-        0,
+        1,
         0,
         1,
-        0
+        1
       ],
       [
-        0,
-        0,
+        1,
+        2,
         2,
         1
       ]
@@ -1950,31 +1950,31 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 28,
     "difficulty": "hard",
-    "optimalMoves": 16,
+    "optimalMoves": 14,
     "initialState": [
       [
-        2,
+        0,
         2,
         1,
-        2
+        0
       ],
       [
         1,
         1,
+        2,
+        2
+      ],
+      [
+        0,
         1,
+        0,
+        0
+      ],
+      [
+        1,
+        2,
+        0,
         1
-      ],
-      [
-        2,
-        0,
-        0,
-        2
-      ],
-      [
-        2,
-        1,
-        0,
-        2
       ]
     ]
   },
@@ -1984,31 +1984,31 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 29,
     "difficulty": "hard",
-    "optimalMoves": 16,
+    "optimalMoves": 12,
     "initialState": [
       [
-        0,
-        0,
+        2,
+        1,
         1,
         0
       ],
       [
-        0,
-        0,
+        1,
+        2,
         1,
         2
       ],
       [
-        2,
-        0,
         1,
-        2
-      ],
-      [
-        0,
         2,
-        1,
+        2,
         1
+      ],
+      [
+        1,
+        0,
+        2,
+        2
       ]
     ]
   },
@@ -2018,31 +2018,31 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 30,
     "difficulty": "hard",
-    "optimalMoves": 18,
+    "optimalMoves": 13,
     "initialState": [
       [
-        1,
-        1,
-        1,
-        2
-      ],
-      [
-        2,
         0,
         1,
+        0,
         1
       ],
       [
         1,
-        1,
+        0,
         0,
         2
       ],
       [
-        1,
-        1,
         0,
-        2
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        1,
+        2,
+        1
       ]
     ]
   },
@@ -2052,42 +2052,42 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 1,
     "difficulty": "easy",
-    "optimalMoves": 4,
+    "optimalMoves": 3,
     "initialState": [
       [
-        0,
-        0,
         1,
-        0,
-        0
-      ],
-      [
         1,
-        0,
         0,
         0,
         0
       ],
       [
         1,
-        1,
-        1,
-        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
         0
       ],
       [
         0,
         1,
+        0,
         1,
+        0
+      ],
+      [
+        1,
+        1,
+        0,
         1,
         1
-      ],
-      [
-        0,
-        0,
-        0,
-        1,
-        0
       ]
     ]
   },
@@ -2101,13 +2101,20 @@ const Levels = (function() {
     "initialState": [
       [
         0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
         0,
         0,
         0,
         0
       ],
       [
-        1,
+        0,
         1,
         1,
         0,
@@ -2117,13 +2124,6 @@ const Levels = (function() {
         0,
         1,
         0,
-        1,
-        0
-      ],
-      [
-        1,
-        1,
-        1,
         0,
         0
       ],
@@ -2142,11 +2142,18 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 3,
     "difficulty": "easy",
-    "optimalMoves": 2,
+    "optimalMoves": 5,
     "initialState": [
       [
-        1,
         0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
         0,
         1,
         0
@@ -2156,27 +2163,20 @@ const Levels = (function() {
         1,
         1,
         1,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
         1
       ],
       [
+        0,
+        0,
+        0,
         1,
-        0,
-        0,
-        1,
-        0
-      ],
-      [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      [
-        0,
-        0,
-        0,
-        0,
         0
       ]
     ]
@@ -2187,14 +2187,28 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 4,
     "difficulty": "easy",
-    "optimalMoves": 5,
+    "optimalMoves": 3,
     "initialState": [
       [
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
         0,
         1,
-        1,
-        1,
-        1
+        0,
+        0
       ],
       [
         1,
@@ -2207,20 +2221,6 @@ const Levels = (function() {
         1,
         0,
         1,
-        0,
-        0
-      ],
-      [
-        1,
-        0,
-        1,
-        0,
-        0
-      ],
-      [
-        0,
-        0,
-        0,
         0,
         0
       ]
@@ -2232,10 +2232,17 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 5,
     "difficulty": "easy",
-    "optimalMoves": 3,
+    "optimalMoves": 4,
     "initialState": [
       [
+        1,
         0,
+        1,
+        0,
+        0
+      ],
+      [
+        1,
         0,
         1,
         0,
@@ -2244,13 +2251,6 @@ const Levels = (function() {
       [
         0,
         1,
-        1,
-        1,
-        0
-      ],
-      [
-        0,
-        0,
         0,
         0,
         0
@@ -2259,15 +2259,15 @@ const Levels = (function() {
         0,
         0,
         1,
-        1,
-        0
+        0,
+        1
       ],
       [
+        0,
         1,
         1,
         0,
-        0,
-        0
+        1
       ]
     ]
   },
@@ -2277,41 +2277,41 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 6,
     "difficulty": "easy",
-    "optimalMoves": 3,
+    "optimalMoves": 4,
     "initialState": [
       [
+        1,
         0,
         0,
-        0,
+        1,
+        0
+      ],
+      [
+        1,
+        1,
+        1,
         1,
         1
       ],
       [
         0,
         0,
-        0,
-        0,
-        1
-      ],
-      [
-        0,
-        0,
         1,
-        0,
-        0
-      ],
-      [
-        0,
-        1,
-        0,
         1,
         0
       ],
       [
-        0,
         1,
         0,
         1,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
+        0,
         0
       ]
     ]
@@ -2325,6 +2325,20 @@ const Levels = (function() {
     "optimalMoves": 5,
     "initialState": [
       [
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      [
         0,
         0,
         1,
@@ -2333,30 +2347,16 @@ const Levels = (function() {
       ],
       [
         1,
-        1,
-        1,
-        1,
-        0
-      ],
-      [
-        1,
-        1,
+        0,
         0,
         1,
-        0
-      ],
-      [
-        1,
-        1,
-        1,
-        0,
         1
       ],
       [
         0,
         1,
         0,
-        0,
+        1,
         0
       ]
     ]
@@ -2367,30 +2367,9 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 8,
     "difficulty": "easy",
-    "optimalMoves": 5,
+    "optimalMoves": 4,
     "initialState": [
       [
-        1,
-        0,
-        0,
-        1,
-        1
-      ],
-      [
-        1,
-        0,
-        1,
-        0,
-        0
-      ],
-      [
-        0,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
         0,
         1,
         0,
@@ -2398,9 +2377,30 @@ const Levels = (function() {
         0
       ],
       [
+        0,
+        0,
         1,
         1,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
         1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        0,
         0,
         0
       ]
@@ -2412,7 +2412,7 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 9,
     "difficulty": "easy",
-    "optimalMoves": 5,
+    "optimalMoves": 6,
     "initialState": [
       [
         1,
@@ -2422,29 +2422,29 @@ const Levels = (function() {
         0
       ],
       [
+        1,
         0,
         0,
-        1,
-        1,
-        0
-      ],
-      [
         0,
-        0,
-        1,
-        1,
         0
       ],
       [
         1,
         0,
-        0,
         1,
+        0,
         1
       ],
       [
+        0,
         1,
         0,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
         1,
         0,
         0
@@ -2457,13 +2457,20 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 10,
     "difficulty": "easy",
-    "optimalMoves": 5,
+    "optimalMoves": 6,
     "initialState": [
       [
-        1,
+        0,
         0,
         1,
         1,
+        0
+      ],
+      [
+        1,
+        1,
+        0,
+        0,
         1
       ],
       [
@@ -2474,22 +2481,15 @@ const Levels = (function() {
         1
       ],
       [
-        0,
-        0,
+        1,
+        1,
         1,
         0,
         0
       ],
       [
         1,
-        0,
-        0,
-        0,
-        0
-      ],
-      [
         1,
-        0,
         0,
         0,
         0
@@ -2502,42 +2502,42 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 11,
     "difficulty": "medium",
-    "optimalMoves": 9,
+    "optimalMoves": 6,
     "initialState": [
       [
+        1,
+        0,
         0,
         1,
+        1
+      ],
+      [
         1,
+        1,
+        0,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
         1,
         0
       ],
       [
-        1,
         0,
         1,
+        0,
         1,
         0
-      ],
-      [
-        1,
-        0,
-        0,
-        0,
-        1
-      ],
-      [
-        0,
-        0,
-        1,
-        0,
-        1
-      ],
-      [
-        1,
-        0,
-        1,
-        0,
-        1
       ]
     ]
   },
@@ -2547,42 +2547,42 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 12,
     "difficulty": "medium",
-    "optimalMoves": 10,
+    "optimalMoves": 5,
     "initialState": [
       [
-        1,
         0,
         0,
         1,
-        1
-      ],
-      [
-        0,
-        1,
-        1,
-        0,
-        0
-      ],
-      [
-        0,
-        0,
-        0,
         1,
         1
       ],
       [
-        0,
         1,
-        0,
-        0,
+        1,
+        1,
+        1,
         0
       ],
       [
         1,
         1,
         1,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        0,
         0,
         1
+      ],
+      [
+        1,
+        1,
+        1,
+        0,
+        0
       ]
     ]
   },
@@ -2599,25 +2599,11 @@ const Levels = (function() {
         1,
         0,
         0,
-        1
+        0
       ],
       [
         0,
-        0,
         1,
-        0,
-        1
-      ],
-      [
-        0,
-        0,
-        1,
-        0,
-        1
-      ],
-      [
-        1,
-        0,
         1,
         0,
         0
@@ -2626,8 +2612,22 @@ const Levels = (function() {
         1,
         0,
         1,
+        0,
+        1
+      ],
+      [
         1,
-        0
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        1
       ]
     ]
   },
@@ -2637,10 +2637,24 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 14,
     "difficulty": "medium",
-    "optimalMoves": 11,
+    "optimalMoves": 6,
     "initialState": [
       [
         0,
+        0,
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      [
+        1,
         1,
         1,
         1,
@@ -2648,29 +2662,15 @@ const Levels = (function() {
       ],
       [
         1,
-        1,
-        0,
-        1,
-        0
-      ],
-      [
-        1,
         0,
         0,
-        1,
+        0,
         1
       ],
       [
         0,
-        1,
-        1,
         0,
-        0
-      ],
-      [
         0,
-        1,
-        1,
         0,
         1
       ]
@@ -2682,12 +2682,33 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 15,
     "difficulty": "medium",
-    "optimalMoves": 10,
+    "optimalMoves": 6,
     "initialState": [
       [
         1,
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        1,
         0,
         0,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
         0,
         0
       ],
@@ -2696,28 +2717,7 @@ const Levels = (function() {
         0,
         0,
         0,
-        1
-      ],
-      [
-        0,
-        1,
-        0,
-        0,
-        1
-      ],
-      [
-        0,
-        1,
-        1,
-        0,
         0
-      ],
-      [
-        0,
-        0,
-        1,
-        0,
-        1
       ]
     ]
   },
@@ -2727,41 +2727,41 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 16,
     "difficulty": "medium",
-    "optimalMoves": 11,
+    "optimalMoves": 8,
     "initialState": [
       [
         1,
         1,
+        1,
         0,
+        1
+      ],
+      [
+        0,
+        1,
+        1,
         1,
         1
       ],
       [
         1,
-        1,
         0,
         1,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
         0
       ],
       [
-        1,
-        1,
-        0,
-        0,
-        1
-      ],
-      [
-        0,
         0,
         1,
-        0,
-        1
-      ],
-      [
         1,
-        0,
-        0,
-        0,
+        1,
         0
       ]
     ]
@@ -2772,41 +2772,41 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 17,
     "difficulty": "medium",
-    "optimalMoves": 10,
+    "optimalMoves": 8,
     "initialState": [
       [
-        0,
+        1,
         1,
         0,
-        1,
+        0,
         0
       ],
       [
         0,
-        1,
-        1,
-        1,
-        0
-      ],
-      [
-        0,
-        0,
-        1,
-        1,
-        0
-      ],
-      [
-        1,
         0,
         1,
         1,
         1
       ],
       [
+        1,
         0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        0,
+        0,
+        1
+      ],
+      [
         1,
         1,
         1,
+        0,
         1
       ]
     ]
@@ -2817,13 +2817,34 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 18,
     "difficulty": "medium",
-    "optimalMoves": 12,
+    "optimalMoves": 6,
     "initialState": [
       [
         0,
         0,
         1,
+        1,
+        1
+      ],
+      [
         0,
+        0,
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
+        1,
         0
       ],
       [
@@ -2832,27 +2853,6 @@ const Levels = (function() {
         0,
         1,
         1
-      ],
-      [
-        1,
-        1,
-        0,
-        1,
-        0
-      ],
-      [
-        0,
-        0,
-        1,
-        1,
-        1
-      ],
-      [
-        0,
-        0,
-        1,
-        1,
-        0
       ]
     ]
   },
@@ -2862,42 +2862,42 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 19,
     "difficulty": "medium",
-    "optimalMoves": 13,
+    "optimalMoves": 8,
     "initialState": [
       [
-        1,
-        1,
-        1,
+        0,
+        0,
+        0,
         1,
         1
       ],
       [
         1,
+        1,
+        1,
+        0,
+        0
+      ],
+      [
         0,
         0,
+        1,
         1,
         0
       ],
       [
         0,
-        1,
         0,
         1,
-        0
-      ],
-      [
-        1,
-        1,
-        0,
-        1,
-        0
-      ],
-      [
-        0,
-        1,
-        0,
         0,
         1
+      ],
+      [
+        0,
+        0,
+        1,
+        1,
+        0
       ]
     ]
   },
@@ -2907,26 +2907,12 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 20,
     "difficulty": "medium",
-    "optimalMoves": 13,
+    "optimalMoves": 8,
     "initialState": [
       [
         0,
         1,
         1,
-        1,
-        0
-      ],
-      [
-        0,
-        0,
-        0,
-        0,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
         0,
         1
       ],
@@ -2939,10 +2925,24 @@ const Levels = (function() {
       ],
       [
         1,
-        1,
         0,
         1,
-        0
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        1
       ]
     ]
   },
@@ -2952,42 +2952,42 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 21,
     "difficulty": "hard",
-    "optimalMoves": 14,
+    "optimalMoves": 8,
     "initialState": [
       [
-        0,
-        0,
-        1,
-        0,
-        0
-      ],
-      [
-        0,
-        1,
-        0,
-        1,
-        1
-      ],
-      [
-        1,
         1,
         0,
         0,
+        1,
         0
       ],
       [
         1,
         0,
         0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        1,
         1,
         1
       ],
       [
-        1,
+        0,
         1,
         0,
         1,
-        1
+        0
       ]
     ]
   },
@@ -2997,42 +2997,42 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 22,
     "difficulty": "hard",
-    "optimalMoves": 15,
+    "optimalMoves": 8,
     "initialState": [
       [
-        1,
+        0,
         1,
         0,
         0,
         1
       ],
       [
-        0,
+        1,
+        1,
         1,
         0,
-        1,
         0
       ],
       [
         0,
         0,
-        1,
+        0,
         0,
         1
       ],
       [
         1,
         0,
-        0,
         1,
-        1
-      ],
-      [
-        0,
-        0,
-        0,
         0,
         0
+      ],
+      [
+        1,
+        1,
+        1,
+        0,
+        1
       ]
     ]
   },
@@ -3042,12 +3042,19 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 23,
     "difficulty": "hard",
-    "optimalMoves": 15,
+    "optimalMoves": 8,
     "initialState": [
       [
         0,
         1,
         1,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        1,
         1,
         0
       ],
@@ -3056,27 +3063,20 @@ const Levels = (function() {
         0,
         1,
         0,
-        1
-      ],
-      [
-        0,
-        1,
-        0,
-        0,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        0,
         0
       ],
       [
-        1,
+        0,
+        0,
         0,
         1,
+        1
+      ],
+      [
         1,
+        1,
+        1,
+        0,
         0
       ]
     ]
@@ -3087,13 +3087,13 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 24,
     "difficulty": "hard",
-    "optimalMoves": 19,
+    "optimalMoves": 8,
     "initialState": [
       [
         1,
+        0,
         1,
-        0,
-        0,
+        1,
         1
       ],
       [
@@ -3105,24 +3105,24 @@ const Levels = (function() {
       ],
       [
         1,
+        0,
+        0,
         1,
+        1
+      ],
+      [
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      [
         1,
         0,
+        0,
+        1,
         0
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        0,
-        0,
-        0,
-        0,
-        1
       ]
     ]
   },
@@ -3132,24 +3132,24 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 25,
     "difficulty": "hard",
-    "optimalMoves": 18,
+    "optimalMoves": 9,
     "initialState": [
       [
-        0,
+        1,
         0,
         1,
         0,
-        1
+        0
       ],
       [
+        0,
         1,
-        0,
-        0,
+        1,
         1,
         0
       ],
       [
-        1,
+        0,
         1,
         0,
         0,
@@ -3166,7 +3166,7 @@ const Levels = (function() {
         1,
         0,
         1,
-        1,
+        0,
         0
       ]
     ]
@@ -3177,30 +3177,9 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 26,
     "difficulty": "hard",
-    "optimalMoves": 17,
+    "optimalMoves": 10,
     "initialState": [
       [
-        1,
-        0,
-        1,
-        0,
-        0
-      ],
-      [
-        1,
-        0,
-        1,
-        1,
-        1
-      ],
-      [
-        0,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
         0,
         0,
         1,
@@ -3208,7 +3187,28 @@ const Levels = (function() {
         0
       ],
       [
+        1,
         0,
+        0,
+        0,
+        1
+      ],
+      [
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      [
+        1,
         0,
         1,
         1,
@@ -3222,38 +3222,38 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 27,
     "difficulty": "hard",
-    "optimalMoves": 18,
+    "optimalMoves": 12,
     "initialState": [
       [
-        0,
-        0,
-        0,
-        0,
-        1
-      ],
-      [
         1,
         0,
-        1,
-        1,
+        0,
+        0,
         0
       ],
       [
+        0,
+        1,
         1,
         0,
+        0
+      ],
+      [
         0,
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        1,
         0,
         1
       ],
       [
-        1,
-        1,
         0,
-        1,
-        1
-      ],
-      [
-        1,
         1,
         0,
         1,
@@ -3267,33 +3267,26 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 28,
     "difficulty": "hard",
-    "optimalMoves": 18,
+    "optimalMoves": 12,
     "initialState": [
       [
         1,
+        0,
         1,
         1,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
         0,
         0
       ],
       [
         1,
         1,
-        0,
-        0,
-        0
-      ],
-      [
         1,
-        1,
-        1,
-        1,
-        0
-      ],
-      [
-        0,
-        1,
-        0,
         1,
         0
       ],
@@ -3301,6 +3294,13 @@ const Levels = (function() {
         1,
         0,
         1,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        0,
         1,
         1
       ]
@@ -3312,38 +3312,38 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 29,
     "difficulty": "hard",
-    "optimalMoves": 19,
+    "optimalMoves": 12,
     "initialState": [
       [
+        0,
         1,
-        0,
-        0,
-        0,
-        1
-      ],
-      [
-        0,
-        0,
         0,
         1,
         1
       ],
       [
-        1,
-        1,
-        1,
-        0,
-        1
-      ],
-      [
-        0,
         0,
         1,
+        0,
         1,
         1
       ],
       [
         1,
+        1,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
         0,
         1,
         1,
@@ -3357,13 +3357,27 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 30,
     "difficulty": "hard",
-    "optimalMoves": 19,
+    "optimalMoves": 12,
     "initialState": [
       [
         1,
+        1,
         0,
         1,
+        0
+      ],
+      [
         1,
+        1,
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        0,
         0
       ],
       [
@@ -3371,20 +3385,6 @@ const Levels = (function() {
         0,
         0,
         0,
-        1
-      ],
-      [
-        0,
-        1,
-        0,
-        1,
-        1
-      ],
-      [
-        0,
-        1,
-        0,
-        1,
         0
       ],
       [
@@ -3402,41 +3402,41 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 1,
     "difficulty": "easy",
-    "optimalMoves": 4,
+    "optimalMoves": 5,
     "initialState": [
       [
         1,
         1,
-        0,
-        0,
-        0
+        1,
+        1,
+        1
       ],
       [
-        0,
         0,
         1,
-        2,
-        0
-      ],
-      [
-        0,
-        2,
-        1,
-        2,
-        0
-      ],
-      [
         0,
         0,
-        2,
-        0,
-        0
+        1
       ],
       [
         0,
         0,
         0,
         0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        2,
+        2,
         0
       ]
     ]
@@ -3451,7 +3451,14 @@ const Levels = (function() {
     "initialState": [
       [
         0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
         1,
+        0,
         0,
         0,
         0
@@ -3459,22 +3466,15 @@ const Levels = (function() {
       [
         1,
         1,
-        1,
+        0,
         0,
         0
       ],
       [
-        0,
         1,
         0,
-        1,
-        0
-      ],
-      [
         0,
         0,
-        1,
-        1,
         1
       ],
       [
@@ -3482,7 +3482,7 @@ const Levels = (function() {
         0,
         0,
         1,
-        0
+        1
       ]
     ]
   },
@@ -3492,40 +3492,40 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 3,
     "difficulty": "easy",
-    "optimalMoves": 7,
+    "optimalMoves": 4,
     "initialState": [
       [
+        2,
+        1,
         0,
         0,
-        1,
-        2,
-        2
+        0
       ],
       [
-        1,
-        1,
-        1,
-        1,
-        2
-      ],
-      [
-        1,
-        1,
         2,
+        1,
+        0,
         0,
         0
       ],
       [
         1,
-        1,
-        1,
-        1,
+        0,
+        0,
+        0,
         0
       ],
       [
         0,
         0,
-        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
         0,
         0
       ]
@@ -3537,40 +3537,40 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 4,
     "difficulty": "easy",
-    "optimalMoves": 7,
+    "optimalMoves": 4,
     "initialState": [
       [
         0,
-        0,
-        2,
+        1,
+        1,
         1,
         0
       ],
       [
+        2,
         0,
+        1,
+        0,
+        0
+      ],
+      [
+        2,
+        2,
+        0,
+        0,
+        0
+      ],
+      [
+        2,
         2,
         0,
         0,
-        2
+        0
       ],
       [
-        1,
-        0,
         2,
         2,
-        1
-      ],
-      [
-        1,
-        1,
-        0,
-        0,
-        1
-      ],
-      [
-        1,
-        0,
-        0,
+        2,
         0,
         0
       ]
@@ -3582,39 +3582,39 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 5,
     "difficulty": "easy",
-    "optimalMoves": 8,
+    "optimalMoves": 7,
     "initialState": [
       [
-        1,
-        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
         1,
         1,
         1
       ],
       [
+        2,
         1,
-        0,
-        0,
+        2,
         0,
         2
       ],
       [
-        0,
-        1,
         2,
+        2,
+        1,
         1,
         1
       ],
       [
-        1,
-        1,
-        1,
         2,
-        2
-      ],
-      [
         0,
-        1,
         0,
         0,
         0
@@ -3631,27 +3631,13 @@ const Levels = (function() {
     "initialState": [
       [
         0,
-        2,
-        2,
-        2,
-        2
-      ],
-      [
+        1,
         0,
         0,
-        0,
+        0
+      ],
+      [
         2,
-        2
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        2
-      ],
-      [
-        1,
         1,
         1,
         0,
@@ -3659,9 +3645,23 @@ const Levels = (function() {
       ],
       [
         1,
+        1,
         0,
         0,
+        0
+      ],
+      [
         0,
+        2,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        2,
+        2,
         0
       ]
     ]
@@ -3672,40 +3672,40 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 7,
     "difficulty": "easy",
-    "optimalMoves": 10,
+    "optimalMoves": 6,
     "initialState": [
       [
         0,
         0,
-        0,
         1,
-        0
-      ],
-      [
-        0,
-        1,
-        0,
         1,
         0
       ],
       [
         2,
+        2,
         0,
+        0,
+        0
+      ],
+      [
         1,
         2,
-        2
+        0,
+        0,
+        0
       ],
       [
         1,
         0,
         0,
-        1,
-        2
+        0,
+        0
       ],
       [
-        1,
         0,
-        1,
+        2,
+        2,
         0,
         0
       ]
@@ -3717,40 +3717,40 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 8,
     "difficulty": "easy",
-    "optimalMoves": 9,
+    "optimalMoves": 7,
     "initialState": [
       [
-        1,
         0,
-        0,
-        0,
-        1
-      ],
-      [
-        1,
-        0,
-        0,
-        1,
-        1
-      ],
-      [
-        1,
         2,
-        2,
-        0,
-        1
-      ],
-      [
-        2,
-        0,
         0,
         0,
         0
       ],
       [
         2,
+        0,
+        2,
+        0,
+        0
+      ],
+      [
         1,
         0,
+        2,
+        0,
+        0
+      ],
+      [
+        1,
+        2,
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        1,
+        1,
         0,
         0
       ]
@@ -3762,42 +3762,42 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 9,
     "difficulty": "easy",
-    "optimalMoves": 9,
+    "optimalMoves": 8,
     "initialState": [
       [
-        1,
         2,
-        1,
+        0,
+        0,
         0,
         0
       ],
       [
+        2,
+        2,
+        0,
         1,
+        0
+      ],
+      [
+        2,
         0,
-        0,
-        0,
+        1,
+        1,
         2
       ],
       [
         2,
+        1,
         0,
-        0,
-        0,
+        2,
         1
       ],
       [
-        2,
+        0,
+        0,
         1,
-        2,
         0,
-        0
-      ],
-      [
-        2,
-        0,
-        2,
-        0,
-        0
+        1
       ]
     ]
   },
@@ -3807,42 +3807,42 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 10,
     "difficulty": "easy",
-    "optimalMoves": 9,
+    "optimalMoves": 8,
     "initialState": [
       [
-        1,
         2,
-        2,
-        2,
-        0
-      ],
-      [
-        1,
-        1,
-        2,
-        1,
+        0,
+        0,
+        0,
         0
       ],
       [
         2,
         0,
+        0,
+        0,
+        0
+      ],
+      [
         1,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        2,
         2,
         1
       ],
       [
         1,
-        1,
-        1,
+        0,
         2,
+        1,
         1
-      ],
-      [
-        1,
-        0,
-        0,
-        1,
-        0
       ]
     ]
   },
@@ -3852,41 +3852,41 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 11,
     "difficulty": "medium",
-    "optimalMoves": 13,
+    "optimalMoves": 9,
     "initialState": [
       [
-        1,
-        1,
         0,
-        1,
-        0
-      ],
-      [
-        2,
-        2,
-        1,
         0,
-        1
-      ],
-      [
-        2,
-        2,
         0,
         0,
         0
       ],
       [
-        0,
+        1,
         0,
         2,
-        2,
-        0
+        0,
+        2
       ],
       [
         1,
-        1,
-        1,
         2,
+        0,
+        1,
+        2
+      ],
+      [
+        1,
+        0,
+        2,
+        1,
+        2
+      ],
+      [
+        1,
+        0,
+        1,
+        0,
         0
       ]
     ]
@@ -3897,42 +3897,42 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 12,
     "difficulty": "medium",
-    "optimalMoves": 14,
+    "optimalMoves": 8,
     "initialState": [
       [
-        2,
-        2,
-        1,
-        2,
-        1
-      ],
-      [
-        1,
-        1,
         0,
         0,
-        2
-      ],
-      [
-        0,
-        0,
-        2,
-        2,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        2
-      ],
-      [
-        1,
-        1,
         0,
         0,
         0
+      ],
+      [
+        0,
+        2,
+        0,
+        0,
+        2
+      ],
+      [
+        2,
+        2,
+        2,
+        0,
+        2
+      ],
+      [
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        2,
+        1
       ]
     ]
   },
@@ -3942,42 +3942,42 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 13,
     "difficulty": "medium",
-    "optimalMoves": 16,
+    "optimalMoves": 10,
     "initialState": [
       [
         0,
-        2,
         1,
         1,
-        1
-      ],
-      [
-        2,
-        0,
-        1,
-        2,
-        1
-      ],
-      [
-        2,
-        1,
-        0,
         0,
         1
       ],
       [
+        0,
         1,
         2,
         0,
-        0,
-        1
+        2
       ],
       [
-        1,
+        0,
+        0,
         2,
         1,
-        0,
         0
+      ],
+      [
+        0,
+        0,
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        1,
+        1
       ]
     ]
   },
@@ -3987,42 +3987,42 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 14,
     "difficulty": "medium",
-    "optimalMoves": 16,
+    "optimalMoves": 8,
     "initialState": [
       [
+        0,
+        0,
         1,
-        1,
-        2,
-        2,
+        0,
         1
       ],
       [
+        1,
+        1,
+        1,
         0,
-        1,
-        0,
-        1,
-        0
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
         1
       ],
       [
-        2,
-        0,
         1,
         1,
-        0
-      ],
-      [
         2,
-        2,
-        0,
         1,
         2
+      ],
+      [
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
       ]
     ]
   },
@@ -4032,42 +4032,42 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 15,
     "difficulty": "medium",
-    "optimalMoves": 17,
+    "optimalMoves": 10,
     "initialState": [
       [
-        2,
+        0,
         0,
         1,
-        2,
-        1
-      ],
-      [
         1,
-        1,
-        0,
-        2,
-        1
-      ],
-      [
-        2,
-        1,
-        0,
-        2,
         0
       ],
       [
-        0,
-        0,
+        1,
         1,
         0,
-        2
+        2,
+        1
       ],
       [
         1,
         2,
-        1,
         2,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        2,
+        1,
         1
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0
       ]
     ]
   },
@@ -4077,38 +4077,38 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 16,
     "difficulty": "medium",
-    "optimalMoves": 17,
+    "optimalMoves": 10,
     "initialState": [
       [
-        2,
         1,
+        0,
+        0,
+        2,
+        0
+      ],
+      [
+        1,
+        0,
         0,
         0,
         0
       ],
       [
-        2,
         1,
-        0,
-        2,
-        1
-      ],
-      [
         1,
-        2,
-        2,
-        2,
-        2
-      ],
-      [
         2,
         0,
-        0,
-        1,
-        1
+        0
       ],
       [
+        0,
+        2,
+        2,
         1,
+        0
+      ],
+      [
+        0,
         0,
         1,
         2,
@@ -4122,34 +4122,13 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 17,
     "difficulty": "medium",
-    "optimalMoves": 18,
+    "optimalMoves": 9,
     "initialState": [
       [
         2,
-        2,
-        0,
-        2,
-        2
-      ],
-      [
         1,
         2,
         2,
-        1,
-        1
-      ],
-      [
-        0,
-        2,
-        0,
-        0,
-        2
-      ],
-      [
-        2,
-        1,
-        0,
-        1,
         2
       ],
       [
@@ -4158,6 +4137,27 @@ const Levels = (function() {
         1,
         2,
         0
+      ],
+      [
+        2,
+        1,
+        0,
+        1,
+        2
+      ],
+      [
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        0,
+        1,
+        2
       ]
     ]
   },
@@ -4167,41 +4167,41 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 18,
     "difficulty": "medium",
-    "optimalMoves": 17,
+    "optimalMoves": 9,
     "initialState": [
       [
-        2,
         0,
-        0,
-        1,
-        1
-      ],
-      [
-        2,
-        0,
-        2,
-        1,
-        1
-      ],
-      [
-        1,
         0,
         0,
         0,
         2
       ],
       [
+        1,
+        0,
         0,
         2,
-        2,
-        1,
         2
       ],
       [
+        1,
+        1,
+        1,
         0,
+        2
+      ],
+      [
+        1,
         2,
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
         2,
-        0,
+        1,
         1
       ]
     ]
@@ -4212,42 +4212,42 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 19,
     "difficulty": "medium",
-    "optimalMoves": 19,
+    "optimalMoves": 12,
     "initialState": [
       [
-        1,
-        1,
-        1,
-        0,
-        0
-      ],
-      [
-        0,
-        1,
-        2,
-        1,
-        2
-      ],
-      [
-        2,
-        2,
-        1,
-        1,
-        2
-      ],
-      [
-        2,
         0,
         2,
-        0,
+        1,
+        1,
         1
       ],
       [
-        1,
-        1,
+        0,
+        0,
+        2,
+        2,
+        0
+      ],
+      [
+        2,
+        0,
         2,
         1,
         2
+      ],
+      [
+        0,
+        0,
+        2,
+        2,
+        1
+      ],
+      [
+        0,
+        2,
+        0,
+        0,
+        1
       ]
     ]
   },
@@ -4257,42 +4257,42 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 20,
     "difficulty": "medium",
-    "optimalMoves": 18,
+    "optimalMoves": 10,
     "initialState": [
       [
-        0,
         2,
-        1,
+        0,
+        0,
         2,
         2
       ],
       [
         2,
         0,
-        1,
         0,
-        1
+        0,
+        2
       ],
       [
-        1,
-        1,
+        0,
+        2,
+        0,
+        0,
+        2
+      ],
+      [
         2,
         1,
-        0
+        0,
+        1,
+        2
       ],
       [
         1,
-        1,
-        1,
+        2,
+        2,
         0,
-        0
-      ],
-      [
-        1,
-        0,
-        0,
-        0,
-        1
+        2
       ]
     ]
   },
@@ -4302,42 +4302,42 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 21,
     "difficulty": "hard",
-    "optimalMoves": 24,
+    "optimalMoves": 13,
     "initialState": [
       [
-        1,
-        2,
         0,
         2,
-        1
-      ],
-      [
-        0,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
         2,
-        1,
-        1,
-        0,
+        2,
         2
       ],
       [
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
         2,
+        0,
         2,
         1,
+        1
+      ],
+      [
+        2,
+        0,
+        2,
         0,
         1
       ],
       [
+        2,
         1,
         0,
-        2,
-        0,
-        2
+        1,
+        1
       ]
     ]
   },
@@ -4347,40 +4347,40 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 22,
     "difficulty": "hard",
-    "optimalMoves": 27,
+    "optimalMoves": 12,
     "initialState": [
       [
+        0,
+        0,
+        0,
         1,
-        2,
-        2,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        1,
         2,
         2
       ],
       [
         1,
-        0,
-        2,
-        2,
+        1,
+        1,
+        1,
         2
       ],
       [
         1,
         0,
         1,
-        0,
-        1
-      ],
-      [
-        2,
-        2,
-        1,
-        0,
-        1
-      ],
-      [
-        2,
-        1,
-        2,
         2,
         2
       ]
@@ -4392,40 +4392,40 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 23,
     "difficulty": "hard",
-    "optimalMoves": 27,
+    "optimalMoves": 13,
     "initialState": [
       [
         2,
         1,
-        1,
-        0,
-        0
-      ],
-      [
-        2,
-        2,
-        1,
-        2,
-        1
-      ],
-      [
-        2,
-        2,
         2,
         0,
         2
       ],
       [
+        1,
+        2,
+        1,
+        2,
+        1
+      ],
+      [
         2,
         2,
-        0,
+        1,
         0,
         1
       ],
       [
-        0,
-        0,
         2,
+        2,
+        2,
+        1,
+        1
+      ],
+      [
+        2,
+        2,
+        1,
         1,
         1
       ]
@@ -4437,38 +4437,38 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 24,
     "difficulty": "hard",
-    "optimalMoves": 27,
+    "optimalMoves": 16,
     "initialState": [
       [
         0,
+        2,
+        2,
         1,
-        0,
+        2
+      ],
+      [
+        1,
+        1,
+        1,
         2,
         1
       ],
       [
+        0,
         2,
         0,
         1,
+        0
+      ],
+      [
+        1,
+        1,
+        0,
         1,
         0
       ],
       [
         2,
-        2,
-        2,
-        1,
-        1
-      ],
-      [
-        2,
-        1,
-        0,
-        0,
-        2
-      ],
-      [
-        0,
         2,
         0,
         0,
@@ -4482,42 +4482,42 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 25,
     "difficulty": "hard",
-    "optimalMoves": 26,
+    "optimalMoves": 17,
     "initialState": [
       [
-        0,
+        1,
+        1,
         1,
         0,
+        2
+      ],
+      [
+        1,
+        2,
         0,
-        1
+        1,
+        0
       ],
       [
         0,
+        0,
         1,
         1,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
         1,
         2
       ],
       [
-        2,
-        0,
-        2,
-        0,
-        1
-      ],
-      [
-        2,
-        1,
         0,
         1,
-        1
-      ],
-      [
         1,
-        1,
-        2,
-        1,
-        1
+        0,
+        2
       ]
     ]
   },
@@ -4527,41 +4527,41 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 26,
     "difficulty": "hard",
-    "optimalMoves": 27,
+    "optimalMoves": 18,
     "initialState": [
       [
         0,
-        2,
-        0,
+        1,
+        1,
         0,
         0
       ],
       [
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      [
+        2,
         2,
         0,
+        0,
+        2
+      ],
+      [
+        1,
+        1,
         2,
         2,
         1
       ],
       [
         1,
-        0,
-        1,
-        1,
-        0
-      ],
-      [
-        1,
-        0,
-        0,
-        1,
-        2
-      ],
-      [
         1,
         0,
         1,
-        2,
         2
       ]
     ]
@@ -4572,42 +4572,42 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 27,
     "difficulty": "hard",
-    "optimalMoves": 28,
+    "optimalMoves": 19,
     "initialState": [
       [
-        2,
-        0,
         1,
-        1,
-        1
-      ],
-      [
-        1,
-        0,
-        0,
         2,
-        2
-      ],
-      [
-        0,
-        2,
-        0,
-        2,
-        2
-      ],
-      [
-        0,
         2,
         1,
-        0,
         0
       ],
       [
-        1,
+        2,
         0,
+        2,
+        2,
+        2
+      ],
+      [
         1,
         2,
+        1,
+        1,
         1
+      ],
+      [
+        2,
+        1,
+        0,
+        2,
+        2
+      ],
+      [
+        0,
+        0,
+        2,
+        2,
+        0
       ]
     ]
   },
@@ -4617,40 +4617,40 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 28,
     "difficulty": "hard",
-    "optimalMoves": 28,
+    "optimalMoves": 20,
     "initialState": [
       [
-        1,
-        1,
-        0,
-        0,
-        1
-      ],
-      [
-        1,
         2,
-        2,
-        1,
-        2
-      ],
-      [
-        1,
         0,
         0,
-        0,
-        1
-      ],
-      [
         2,
-        1,
-        2,
-        1,
         0
       ],
       [
-        2,
-        1,
         0,
+        0,
+        2,
+        2,
+        2
+      ],
+      [
+        2,
+        0,
+        0,
+        2,
+        1
+      ],
+      [
+        0,
+        0,
+        2,
+        0,
+        2
+      ],
+      [
+        2,
+        0,
+        2,
         2,
         2
       ]
@@ -4662,24 +4662,10 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 29,
     "difficulty": "hard",
-    "optimalMoves": 29,
+    "optimalMoves": 20,
     "initialState": [
       [
         2,
-        2,
-        2,
-        2,
-        2
-      ],
-      [
-        0,
-        2,
-        1,
-        0,
-        2
-      ],
-      [
-        1,
         1,
         0,
         0,
@@ -4687,17 +4673,31 @@ const Levels = (function() {
       ],
       [
         0,
+        2,
+        2,
         0,
+        1
+      ],
+      [
+        0,
+        2,
         1,
         1,
         1
       ],
       [
         2,
-        2,
+        1,
         2,
         1,
         1
+      ],
+      [
+        2,
+        0,
+        0,
+        0,
+        2
       ]
     ]
   },
@@ -4707,42 +4707,42 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 30,
     "difficulty": "hard",
-    "optimalMoves": 31,
+    "optimalMoves": 20,
     "initialState": [
       [
+        0,
         1,
         0,
-        2,
-        2,
+        0,
         2
       ],
       [
         2,
-        0,
-        0,
-        0,
-        1
-      ],
-      [
-        2,
-        2,
         1,
-        1,
-        1
-      ],
-      [
-        2,
         0,
         2,
-        0,
         0
       ],
       [
         1,
+        0,
+        1,
         2,
-        2,
-        2,
+        1
+      ],
+      [
+        0,
+        0,
+        1,
+        1,
         2
+      ],
+      [
+        2,
+        2,
+        2,
+        0,
+        1
       ]
     ]
   },
@@ -4755,6 +4755,38 @@ const Levels = (function() {
     "optimalMoves": 3,
     "initialState": [
       [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
         1,
         0,
         0,
@@ -4767,38 +4799,6 @@ const Levels = (function() {
         1,
         0,
         0,
-        1,
-        0
-      ],
-      [
-        1,
-        0,
-        0,
-        1,
-        1,
-        1
-      ],
-      [
-        0,
-        0,
-        0,
-        0,
-        1,
-        0
-      ],
-      [
-        0,
-        0,
-        1,
-        0,
-        0,
-        0
-      ],
-      [
-        0,
-        1,
-        1,
-        1,
         0,
         0
       ]
@@ -4810,19 +4810,11 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 2,
     "difficulty": "easy",
-    "optimalMoves": 5,
+    "optimalMoves": 3,
     "initialState": [
       [
-        1,
         0,
         1,
-        1,
-        0,
-        0
-      ],
-      [
-        1,
-        0,
         0,
         0,
         1,
@@ -4830,9 +4822,33 @@ const Levels = (function() {
       ],
       [
         1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      [
         0,
         1,
+        0,
+        0,
         1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
         0,
         0
       ],
@@ -4840,23 +4856,7 @@ const Levels = (function() {
         0,
         1,
         1,
-        0,
-        0,
-        0
-      ],
-      [
         1,
-        0,
-        0,
-        1,
-        0,
-        0
-      ],
-      [
-        0,
-        1,
-        1,
-        0,
         0,
         0
       ]
@@ -4868,21 +4868,29 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 3,
     "difficulty": "easy",
-    "optimalMoves": 2,
+    "optimalMoves": 3,
     "initialState": [
       [
+        1,
+        1,
         0,
         0,
+        0,
+        0
+      ],
+      [
         1,
-        1,
-        1,
+        0,
+        0,
+        0,
+        0,
         0
       ],
       [
         0,
         0,
         0,
-        1,
+        0,
         0,
         0
       ],
@@ -4891,32 +4899,24 @@ const Levels = (function() {
         0,
         0,
         0,
-        1,
+        0,
         0
       ],
       [
-        0,
-        0,
-        0,
         1,
-        1,
+        0,
+        0,
+        0,
+        0,
         1
       ],
       [
-        0,
-        0,
+        1,
+        1,
         0,
         0,
         1,
-        0
-      ],
-      [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
+        1
       ]
     ]
   },
@@ -4926,10 +4926,26 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 4,
     "difficulty": "easy",
-    "optimalMoves": 5,
+    "optimalMoves": 4,
     "initialState": [
       [
         0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      [
+        0,
         1,
         0,
         0,
@@ -4937,24 +4953,8 @@ const Levels = (function() {
         1
       ],
       [
-        0,
         1,
         1,
-        0,
-        1,
-        1
-      ],
-      [
-        1,
-        0,
-        0,
-        0,
-        0,
-        1
-      ],
-      [
-        1,
-        0,
         1,
         0,
         0,
@@ -4963,15 +4963,15 @@ const Levels = (function() {
       [
         0,
         1,
-        0,
         1,
+        0,
         0,
         0
       ],
       [
         0,
         1,
-        0,
+        1,
         1,
         0,
         0
@@ -4984,45 +4984,21 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 5,
     "difficulty": "easy",
-    "optimalMoves": 3,
+    "optimalMoves": 5,
     "initialState": [
       [
-        0,
-        0,
         1,
         1,
         0,
-        0
+        0,
+        0,
+        1
       ],
       [
         1,
-        1,
         0,
         0,
         0,
-        0
-      ],
-      [
-        0,
-        1,
-        0,
-        0,
-        0,
-        0
-      ],
-      [
-        0,
-        0,
-        0,
-        0,
-        1,
-        0
-      ],
-      [
-        0,
-        0,
-        0,
-        1,
         1,
         1
       ],
@@ -5031,7 +5007,31 @@ const Levels = (function() {
         0,
         0,
         0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
         1,
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        1,
+        1,
+        1,
+        0,
         0
       ]
     ]
@@ -5042,20 +5042,12 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 6,
     "difficulty": "easy",
-    "optimalMoves": 3,
+    "optimalMoves": 5,
     "initialState": [
       [
         0,
         0,
-        0,
-        0,
         1,
-        0
-      ],
-      [
-        0,
-        0,
-        0,
         1,
         1,
         0
@@ -5063,15 +5055,7 @@ const Levels = (function() {
       [
         0,
         0,
-        0,
-        0,
-        0,
-        1
-      ],
-      [
-        0,
-        0,
-        0,
+        1,
         1,
         0,
         1
@@ -5082,12 +5066,28 @@ const Levels = (function() {
         1,
         1,
         1,
+        1
+      ],
+      [
+        1,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        1,
+        0,
+        0,
         0
       ],
       [
         0,
-        0,
-        0,
+        1,
+        1,
         1,
         0,
         0
@@ -5100,39 +5100,15 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 7,
     "difficulty": "easy",
-    "optimalMoves": 6,
+    "optimalMoves": 5,
     "initialState": [
       [
-        1,
-        1,
-        1,
-        1,
-        1,
-        0
-      ],
-      [
-        1,
         0,
+        1,
         0,
         1,
         0,
         0
-      ],
-      [
-        0,
-        0,
-        0,
-        1,
-        0,
-        0
-      ],
-      [
-        1,
-        0,
-        1,
-        1,
-        1,
-        1
       ],
       [
         1,
@@ -5143,12 +5119,36 @@ const Levels = (function() {
         1
       ],
       [
+        1,
         0,
         1,
         1,
-        0,
         0,
         1
+      ],
+      [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
       ]
     ]
   },
@@ -5161,20 +5161,12 @@ const Levels = (function() {
     "optimalMoves": 6,
     "initialState": [
       [
-        0,
-        1,
-        0,
-        0,
-        0,
-        1
-      ],
-      [
-        0,
-        1,
         1,
         0,
         1,
-        1
+        0,
+        0,
+        0
       ],
       [
         0,
@@ -5187,24 +5179,32 @@ const Levels = (function() {
       [
         0,
         0,
+        1,
         0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
         1,
         1,
         0
       ],
       [
+        1,
+        1,
         0,
+        1,
         0,
-        1,
-        1,
-        1,
         0
       ],
       [
-        0,
-        0,
-        0,
         1,
+        0,
+        0,
+        0,
         0,
         0
       ]
@@ -5219,15 +5219,31 @@ const Levels = (function() {
     "optimalMoves": 8,
     "initialState": [
       [
-        1,
         0,
         1,
         0,
         0,
+        1,
         0
       ],
       [
         1,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
         0,
         1,
         1,
@@ -5235,36 +5251,20 @@ const Levels = (function() {
         1
       ],
       [
-        0,
         1,
         0,
         0,
         1,
-        0
-      ],
-      [
-        0,
-        1,
-        1,
-        0,
         1,
         1
       ],
       [
         1,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      [
         1,
         0,
-        1,
-        1,
         0,
-        0
+        0,
+        1
       ]
     ]
   },
@@ -5274,12 +5274,12 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 10,
     "difficulty": "easy",
-    "optimalMoves": 5,
+    "optimalMoves": 8,
     "initialState": [
       [
-        0,
-        0,
         1,
+        0,
+        0,
         1,
         1,
         0
@@ -5287,41 +5287,41 @@ const Levels = (function() {
       [
         0,
         0,
-        0,
         1,
+        0,
         0,
         0
       ],
       [
         0,
         1,
-        1,
         0,
         1,
-        0
-      ],
-      [
-        1,
         0,
-        0,
-        0,
-        1,
         1
       ],
       [
         1,
         1,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
         1,
         0,
+        1,
         1,
         0
       ],
       [
+        0,
+        0,
+        0,
+        0,
         1,
-        1,
-        0,
-        0,
-        0,
         0
       ]
     ]
@@ -5332,38 +5332,14 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 11,
     "difficulty": "medium",
-    "optimalMoves": 10,
+    "optimalMoves": 7,
     "initialState": [
       [
         0,
         0,
-        1,
         0,
         0,
-        0
-      ],
-      [
-        1,
-        1,
-        1,
         0,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        0,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        0,
-        1,
         0
       ],
       [
@@ -5371,6 +5347,22 @@ const Levels = (function() {
         0,
         0,
         0,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        0,
         1,
         1
       ],
@@ -5378,6 +5370,14 @@ const Levels = (function() {
         0,
         1,
         1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
         1,
         0,
         0
@@ -5390,43 +5390,11 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 12,
     "difficulty": "medium",
-    "optimalMoves": 10,
+    "optimalMoves": 7,
     "initialState": [
       [
         0,
         1,
-        0,
-        1,
-        0,
-        0
-      ],
-      [
-        1,
-        1,
-        0,
-        0,
-        0,
-        0
-      ],
-      [
-        1,
-        0,
-        1,
-        0,
-        1,
-        0
-      ],
-      [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      [
-        0,
-        1,
         1,
         1,
         0,
@@ -5434,10 +5402,42 @@ const Levels = (function() {
       ],
       [
         1,
-        1,
+        0,
         1,
         0,
         0,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        1,
         0
       ]
     ]
@@ -5448,7 +5448,7 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 13,
     "difficulty": "medium",
-    "optimalMoves": 5,
+    "optimalMoves": 7,
     "initialState": [
       [
         0,
@@ -5456,47 +5456,47 @@ const Levels = (function() {
         0,
         1,
         1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        1,
+        1,
         1
-      ],
-      [
-        0,
-        0,
-        0,
-        0,
-        1,
-        0
-      ],
-      [
-        0,
-        0,
-        0,
-        0,
-        1,
-        0
-      ],
-      [
-        1,
-        0,
-        0,
-        0,
-        1,
-        1
-      ],
-      [
-        1,
-        0,
-        1,
-        1,
-        0,
-        0
-      ],
-      [
-        0,
-        1,
-        1,
-        1,
-        0,
-        0
       ]
     ]
   },
@@ -5506,47 +5506,47 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 14,
     "difficulty": "medium",
-    "optimalMoves": 12,
+    "optimalMoves": 8,
     "initialState": [
       [
-        1,
-        0,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
         0,
         0,
-        1,
-        0
-      ],
-      [
-        1,
-        0,
-        0,
-        0,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
         1,
         1,
         1,
         0
       ],
       [
-        1,
         0,
+        1,
         0,
         0,
         1,
         1
+      ],
+      [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        1,
+        1,
+        0
       ],
       [
         0,
@@ -5554,7 +5554,7 @@ const Levels = (function() {
         0,
         0,
         1,
-        1
+        0
       ]
     ]
   },
@@ -5564,11 +5564,35 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 15,
     "difficulty": "medium",
-    "optimalMoves": 12,
+    "optimalMoves": 10,
     "initialState": [
       [
         0,
+        1,
         0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        1,
+        1,
+        0,
+        1
+      ],
+      [
+        1,
+        1,
         0,
         1,
         0,
@@ -5576,43 +5600,19 @@ const Levels = (function() {
       ],
       [
         1,
-        1,
         0,
         1,
         1,
+        0,
         1
       ],
       [
         0,
         1,
         0,
-        0,
-        1,
-        0
-      ],
-      [
         1,
         0,
-        1,
-        1,
-        1,
         1
-      ],
-      [
-        1,
-        0,
-        0,
-        0,
-        1,
-        0
-      ],
-      [
-        0,
-        1,
-        1,
-        1,
-        0,
-        0
       ]
     ]
   },
@@ -5622,54 +5622,54 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 16,
     "difficulty": "medium",
-    "optimalMoves": 12,
+    "optimalMoves": 9,
     "initialState": [
       [
-        1,
+        0,
+        0,
         1,
         1,
         0,
-        1,
         0
       ],
       [
         0,
         0,
+        0,
         1,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
         0,
         1,
         1
       ],
       [
         0,
-        0,
         1,
+        0,
         1,
         0,
         1
       ],
       [
-        1,
+        0,
+        0,
         0,
         0,
         1,
-        1,
-        0
-      ],
-      [
-        1,
-        0,
-        1,
-        0,
-        1,
-        1
-      ],
-      [
-        0,
-        0,
-        1,
-        0,
-        0,
         1
       ]
     ]
@@ -5680,53 +5680,53 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 17,
     "difficulty": "medium",
-    "optimalMoves": 13,
+    "optimalMoves": 12,
     "initialState": [
       [
-        1,
-        1,
-        1,
-        0,
-        1,
-        0
-      ],
-      [
-        1,
-        1,
         0,
         0,
         1,
-        0
-      ],
-      [
         1,
         1,
-        0,
-        0,
-        0,
-        0
-      ],
-      [
-        0,
-        1,
-        0,
-        0,
-        1,
-        0
+        1
       ],
       [
         0,
         1,
         1,
         0,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
         0,
         0
       ],
       [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      [
         0,
         1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
         1,
-        1,
+        0,
+        0,
+        0,
         1,
         1
       ]
@@ -5738,10 +5738,18 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 18,
     "difficulty": "medium",
-    "optimalMoves": 13,
+    "optimalMoves": 12,
     "initialState": [
       [
+        1,
         0,
+        1,
+        1,
+        0,
+        0
+      ],
+      [
+        1,
         1,
         1,
         0,
@@ -5750,39 +5758,31 @@ const Levels = (function() {
       ],
       [
         1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      [
+        1,
         0,
         0,
         0,
-        0,
+        1,
         1
       ],
       [
         0,
-        1,
         0,
-        0,
-        1,
-        0
-      ],
-      [
-        1,
-        0,
-        1,
-        1,
-        0,
-        0
-      ],
-      [
-        1,
-        0,
-        1,
-        1,
-        0,
-        1
-      ],
-      [
-        0,
-        1,
         1,
         1,
         1,
@@ -5796,55 +5796,55 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 19,
     "difficulty": "medium",
-    "optimalMoves": 13,
+    "optimalMoves": 12,
     "initialState": [
       [
         1,
+        0,
         1,
         0,
         0,
+        1
+      ],
+      [
+        1,
+        1,
         0,
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        1,
+        1,
         1
       ],
       [
         0,
         0,
         0,
-        0,
-        0,
+        1,
+        1,
         0
       ],
       [
-        0,
-        0,
-        0,
         1,
         1,
-        1
-      ],
-      [
-        0,
-        0,
-        0,
+        1,
         1,
         0,
         1
       ],
       [
         0,
-        1,
         0,
         1,
         0,
-        0
-      ],
-      [
         1,
-        1,
-        0,
-        1,
-        1,
-        0
+        1
       ]
     ]
   },
@@ -5854,55 +5854,55 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 20,
     "difficulty": "medium",
-    "optimalMoves": 15,
+    "optimalMoves": 10,
     "initialState": [
       [
         0,
         1,
-        0,
-        0,
         1,
-        0
-      ],
-      [
-        0,
-        0,
-        0,
-        1,
-        0,
-        0
-      ],
-      [
-        0,
-        0,
-        1,
-        1,
-        0,
-        0
-      ],
-      [
-        1,
-        0,
-        0,
-        0,
-        1,
-        0
-      ],
-      [
-        0,
-        1,
-        0,
         0,
         0,
         1
       ],
       [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        1,
         1,
         0,
         0,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
         1,
         0,
-        1
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
       ]
     ]
   },
@@ -5912,42 +5912,18 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 21,
     "difficulty": "hard",
-    "optimalMoves": 16,
+    "optimalMoves": 14,
     "initialState": [
       [
-        1,
-        0,
-        0,
         0,
         1,
-        1
-      ],
-      [
         1,
         1,
-        1,
-        1,
-        1,
-        0
-      ],
-      [
-        1,
-        0,
-        0,
-        0,
         1,
         1
       ],
       [
         0,
-        0,
-        0,
-        1,
-        1,
-        0
-      ],
-      [
-        1,
         1,
         1,
         1,
@@ -5955,11 +5931,35 @@ const Levels = (function() {
         0
       ],
       [
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      [
+        1,
         0,
         1,
         1,
         1,
-        0,
         0
       ]
     ]
@@ -5970,26 +5970,10 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 22,
     "difficulty": "hard",
-    "optimalMoves": 17,
+    "optimalMoves": 15,
     "initialState": [
       [
-        1,
         0,
-        1,
-        0,
-        1,
-        0
-      ],
-      [
-        0,
-        1,
-        0,
-        0,
-        0,
-        0
-      ],
-      [
-        1,
         0,
         1,
         1,
@@ -5999,7 +5983,15 @@ const Levels = (function() {
       [
         0,
         0,
+        1,
+        1,
         0,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
         1,
         0,
         1
@@ -6009,12 +6001,20 @@ const Levels = (function() {
         0,
         0,
         0,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        1,
         0,
         0
       ],
       [
         1,
-        1,
+        0,
         0,
         1,
         1,
@@ -6028,28 +6028,36 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 23,
     "difficulty": "hard",
-    "optimalMoves": 19,
+    "optimalMoves": 14,
     "initialState": [
       [
-        0,
-        0,
-        0,
-        0,
         1,
-        0
-      ],
-      [
-        0,
         1,
         0,
         0,
-        1,
+        0,
         1
       ],
       [
         0,
         1,
         0,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
         1,
         1,
         0
@@ -6057,25 +6065,17 @@ const Levels = (function() {
       [
         1,
         0,
-        0,
         1,
+        0,
         0,
         0
       ],
       [
-        1,
-        0,
         0,
         0,
         1,
-        0
-      ],
-      [
-        0,
         1,
-        0,
-        0,
-        0,
+        1,
         1
       ]
     ]
@@ -6086,7 +6086,7 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 24,
     "difficulty": "hard",
-    "optimalMoves": 18,
+    "optimalMoves": 12,
     "initialState": [
       [
         1,
@@ -6094,7 +6094,7 @@ const Levels = (function() {
         0,
         1,
         0,
-        1
+        0
       ],
       [
         0,
@@ -6107,22 +6107,14 @@ const Levels = (function() {
       [
         1,
         1,
-        0,
         1,
-        0,
-        1
-      ],
-      [
-        0,
-        0,
         1,
-        0,
         1,
         1
       ],
       [
-        0,
         1,
+        0,
         0,
         0,
         0,
@@ -6130,10 +6122,18 @@ const Levels = (function() {
       ],
       [
         1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
         1,
         0,
-        0,
-        0,
+        1,
+        1,
         0
       ]
     ]
@@ -6144,22 +6144,30 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 25,
     "difficulty": "hard",
-    "optimalMoves": 19,
+    "optimalMoves": 15,
     "initialState": [
       [
-        0,
         1,
+        0,
         1,
         1,
         0,
         1
       ],
       [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
         0,
         1,
         1,
-        1,
-        1,
+        0,
+        0,
         0
       ],
       [
@@ -6171,28 +6179,20 @@ const Levels = (function() {
         0
       ],
       [
+        1,
+        1,
         0,
-        0,
+        1,
+        1,
+        1
+      ],
+      [
         0,
         1,
         0,
+        1,
+        1,
         0
-      ],
-      [
-        0,
-        0,
-        1,
-        1,
-        0,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        0,
-        1,
-        1
       ]
     ]
   },
@@ -6202,36 +6202,28 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 26,
     "difficulty": "hard",
-    "optimalMoves": 20,
+    "optimalMoves": 12,
     "initialState": [
       [
-        0,
-        1,
-        0,
-        0,
-        1,
-        1
-      ],
-      [
-        1,
         1,
         0,
         1,
-        0,
+        1,
+        1,
         0
       ],
       [
         1,
-        1,
+        0,
         1,
         1,
         0,
         1
       ],
       [
-        1,
         0,
         1,
+        0,
         1,
         1,
         0
@@ -6239,15 +6231,23 @@ const Levels = (function() {
       [
         0,
         1,
-        1,
-        1,
         0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        1,
+        1,
         0
       ],
       [
         1,
         1,
-        1,
+        0,
         0,
         0,
         1
@@ -6260,13 +6260,29 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 27,
     "difficulty": "hard",
-    "optimalMoves": 23,
+    "optimalMoves": 14,
     "initialState": [
       [
         1,
         0,
+        1,
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        1,
         0,
         0,
+        1
+      ],
+      [
+        0,
+        0,
+        1,
+        1,
         1,
         0
       ],
@@ -6279,36 +6295,20 @@ const Levels = (function() {
         1
       ],
       [
-        1,
-        1,
         0,
-        1,
-        1,
+        0,
+        0,
+        0,
+        0,
         1
       ],
       [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
         0,
+        0,
+        0,
+        1,
+        1,
         0
-      ],
-      [
-        1,
-        1,
-        0,
-        0,
-        1,
-        1
       ]
     ]
   },
@@ -6318,11 +6318,11 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 28,
     "difficulty": "hard",
-    "optimalMoves": 21,
+    "optimalMoves": 18,
     "initialState": [
       [
-        0,
         1,
+        0,
         0,
         0,
         0,
@@ -6334,36 +6334,36 @@ const Levels = (function() {
         1,
         1,
         1,
-        0
-      ],
-      [
-        0,
-        1,
-        1,
-        1,
-        0,
-        0
+        1
       ],
       [
         1,
-        0,
-        0,
-        0,
-        1,
-        0
-      ],
-      [
-        0,
-        0,
         1,
         0,
         1,
+        0,
         1
       ],
       [
         0,
         0,
+        1,
+        1,
+        1,
+        1
+      ],
+      [
         0,
+        1,
+        1,
+        1,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        1,
         0,
         1,
         1
@@ -6376,53 +6376,53 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 29,
     "difficulty": "hard",
-    "optimalMoves": 23,
+    "optimalMoves": 14,
     "initialState": [
       [
+        1,
+        1,
+        1,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        1,
         0,
         0,
         1,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
         1,
-        1,
+        0,
+        0,
         0
       ],
       [
         0,
-        1,
-        1,
-        0,
-        1,
-        0
-      ],
-      [
-        0,
-        1,
-        1,
         0,
         0,
-        1
-      ],
-      [
         0,
-        1,
-        0,
-        1,
-        0,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        0,
-        1
-      ],
-      [
-        1,
-        0,
-        0,
-        1,
         0,
         1
       ]
@@ -6434,7 +6434,7 @@ const Levels = (function() {
     "stateCount": 2,
     "levelNumber": 30,
     "difficulty": "hard",
-    "optimalMoves": 21,
+    "optimalMoves": 18,
     "initialState": [
       [
         0,
@@ -6445,9 +6445,17 @@ const Levels = (function() {
         0
       ],
       [
+        0,
         1,
         0,
         0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
         0,
         1,
         0
@@ -6456,22 +6464,6 @@ const Levels = (function() {
         0,
         1,
         1,
-        0,
-        1,
-        1
-      ],
-      [
-        0,
-        0,
-        0,
-        0,
-        0,
-        1
-      ],
-      [
-        1,
-        0,
-        1,
         1,
         0,
         1
@@ -6479,8 +6471,16 @@ const Levels = (function() {
       [
         0,
         0,
+        0,
         1,
         1,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
+        0,
         1,
         1
       ]
@@ -6499,44 +6499,44 @@ const Levels = (function() {
         0,
         0,
         2,
+        2,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        0,
         0,
         0
       ],
       [
         0,
-        0,
-        2,
-        2,
-        2,
-        1
-      ],
-      [
-        0,
-        0,
         1,
-        2,
-        1,
-        1
-      ],
-      [
-        0,
-        1,
-        1,
-        1,
-        0,
-        1
-      ],
-      [
-        0,
-        0,
-        1,
-        0,
-        0,
-        0
-      ],
-      [
-        0,
-        0,
         0,
         0,
         0,
@@ -6554,24 +6554,8 @@ const Levels = (function() {
     "initialState": [
       [
         0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      [
-        0,
-        0,
-        0,
-        0,
         1,
-        2
-      ],
-      [
-        0,
-        0,
-        0,
+        1,
         1,
         0,
         0
@@ -6579,25 +6563,41 @@ const Levels = (function() {
       [
         0,
         0,
-        0,
-        0,
         1,
-        2
-      ],
-      [
         0,
-        0,
-        0,
-        0,
-        1,
-        1
-      ],
-      [
-        0,
-        0,
-        0,
-        1,
         2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        2,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        2,
+        0,
         2
       ]
     ]
@@ -6608,55 +6608,55 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 3,
     "difficulty": "easy",
-    "optimalMoves": 7,
+    "optimalMoves": 6,
     "initialState": [
       [
         0,
         1,
-        2,
-        2,
-        2,
-        0
-      ],
-      [
         1,
         1,
-        1,
-        2,
         0,
         0
       ],
       [
         0,
+        0,
         1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
         2,
+        0,
+        0,
         0,
         1,
         0
       ],
       [
-        0,
         2,
         2,
-        0,
+        2,
+        1,
         1,
         1
       ],
       [
-        0,
-        0,
         2,
-        0,
-        0,
+        2,
+        2,
+        2,
+        1,
         0
-      ],
-      [
-        0,
-        0,
-        0,
-        2,
-        2,
-        2
       ]
     ]
   },
@@ -6666,55 +6666,55 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 4,
     "difficulty": "easy",
-    "optimalMoves": 9,
+    "optimalMoves": 6,
     "initialState": [
       [
-        0,
-        0,
+        2,
+        2,
         1,
         0,
         0,
-        2
+        0
       ],
       [
         0,
-        1,
-        1,
         1,
         2,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        1,
+        0,
+        0,
         0
       ],
       [
         1,
-        0,
+        1,
         1,
         0,
-        1,
+        0,
         0
-      ],
-      [
-        1,
-        1,
-        0,
-        0,
-        0,
-        2
-      ],
-      [
-        1,
-        0,
-        0,
-        0,
-        1,
-        1
-      ],
-      [
-        0,
-        0,
-        0,
-        0,
-        0,
-        1
       ]
     ]
   },
@@ -6724,12 +6724,20 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 5,
     "difficulty": "easy",
-    "optimalMoves": 8,
+    "optimalMoves": 7,
     "initialState": [
       [
         0,
+        2,
+        2,
+        2,
+        0,
+        2
+      ],
+      [
         0,
         0,
+        2,
         0,
         2,
         2
@@ -6740,39 +6748,31 @@ const Levels = (function() {
         0,
         0,
         0,
-        2
-      ],
-      [
-        1,
-        0,
-        0,
-        0,
-        0,
         0
       ],
       [
-        1,
-        1,
         0,
-        1,
         0,
-        0
+        0,
+        0,
+        0,
+        1
       ],
       [
-        1,
-        1,
-        1,
-        1,
-        1,
-        2
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
+        0,
+        0,
+        0,
         2,
-        2
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        1
       ]
     ]
   },
@@ -6782,35 +6782,27 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 6,
     "difficulty": "easy",
-    "optimalMoves": 11,
+    "optimalMoves": 8,
     "initialState": [
       [
-        0,
-        0,
-        0,
+        2,
         0,
         1,
+        2,
+        2,
         1
       ],
       [
-        0,
-        0,
         2,
         2,
-        0,
-        1
-      ],
-      [
-        1,
         2,
         1,
         1,
-        2,
         0
       ],
       [
-        1,
-        0,
+        2,
+        2,
         2,
         2,
         0,
@@ -6822,15 +6814,23 @@ const Levels = (function() {
         2,
         0,
         0,
-        1
+        0
       ],
       [
-        1,
+        0,
+        0,
         0,
         1,
         0,
+        0
+      ],
+      [
+        0,
+        0,
         1,
-        1
+        1,
+        1,
+        0
       ]
     ]
   },
@@ -6840,54 +6840,54 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 7,
     "difficulty": "easy",
-    "optimalMoves": 12,
+    "optimalMoves": 8,
     "initialState": [
       [
-        2,
+        0,
+        0,
+        0,
+        0,
         1,
+        0
+      ],
+      [
         0,
+        2,
         0,
-        0,
+        1,
+        1,
         1
       ],
       [
         2,
-        1,
-        0,
-        0,
-        0,
-        2
-      ],
-      [
-        1,
-        0,
-        0,
-        0,
-        0,
-        1
-      ],
-      [
-        0,
-        0,
+        2,
+        2,
         1,
         1,
-        0,
-        1
+        0
       ],
       [
         2,
-        0,
-        0,
+        2,
         1,
-        0,
+        1,
+        1,
         0
       ],
       [
         2,
         2,
         0,
+        2,
         0,
+        0
+      ],
+      [
+        2,
         0,
+        1,
+        1,
+        1,
         0
       ]
     ]
@@ -6898,46 +6898,30 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 8,
     "difficulty": "easy",
-    "optimalMoves": 13,
+    "optimalMoves": 9,
     "initialState": [
       [
-        0,
-        0,
-        0,
-        0,
-        1,
-        1
-      ],
-      [
-        0,
         1,
         0,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
         0,
-        2,
-        2,
-        1
-      ],
-      [
         0,
-        2,
-        1,
-        2,
         0,
         0
       ],
       [
         1,
-        0,
         1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
         2,
-        2,
+        0,
+        0,
+        0,
+        0,
         2
       ],
       [
@@ -6946,6 +6930,22 @@ const Levels = (function() {
         0,
         0,
         2,
+        2
+      ],
+      [
+        1,
+        1,
+        1,
+        0,
+        0,
+        2
+      ],
+      [
+        1,
+        2,
+        2,
+        1,
+        0,
         0
       ]
     ]
@@ -6956,55 +6956,55 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 9,
     "difficulty": "easy",
-    "optimalMoves": 14,
+    "optimalMoves": 10,
     "initialState": [
       [
         0,
-        0,
-        1,
-        1,
         2,
+        2,
+        0,
+        0,
         0
       ],
       [
-        1,
-        1,
         0,
+        0,
+        0,
+        2,
+        1,
+        2
+      ],
+      [
+        0,
+        0,
+        1,
         2,
         0,
         2
       ],
       [
-        2,
-        2,
         0,
-        2,
         0,
-        0
-      ],
-      [
-        2,
+        0,
         1,
         0,
-        0,
-        2,
         0
       ],
       [
+        0,
+        0,
+        0,
+        0,
         1,
-        0,
-        0,
-        2,
-        0,
-        0
+        2
       ],
       [
         0,
         0,
         0,
         0,
-        0,
-        0
+        1,
+        2
       ]
     ]
   },
@@ -7014,55 +7014,55 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 10,
     "difficulty": "easy",
-    "optimalMoves": 13,
+    "optimalMoves": 10,
     "initialState": [
       [
-        0,
-        0,
-        0,
         1,
         1,
-        1
-      ],
-      [
         0,
         0,
-        0,
-        1,
-        1,
-        0
-      ],
-      [
-        1,
-        0,
-        1,
-        1,
         2,
         0
       ],
       [
-        1,
-        1,
+        2,
+        2,
         0,
-        1,
-        1,
+        2,
+        2,
         2
       ],
       [
-        1,
         0,
         0,
         2,
-        1,
-        1
+        0,
+        2,
+        0
       ],
       [
+        2,
+        2,
         0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
         1,
         1,
         0,
-        0,
-        1
+        0
       ]
     ]
   },
@@ -7072,51 +7072,51 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 11,
     "difficulty": "medium",
-    "optimalMoves": 15,
+    "optimalMoves": 11,
     "initialState": [
       [
+        2,
+        2,
+        1,
+        1,
         0,
-        0,
-        0,
-        0,
-        0,
-        1
+        0
       ],
       [
-        1,
-        0,
-        1,
         2,
-        0,
-        1
-      ],
-      [
-        0,
-        1,
-        0,
-        1,
         2,
+        2,
+        1,
+        1,
         0
       ],
       [
         0,
         0,
+        2,
+        1,
         0,
-        0,
-        0,
-        2
+        0
       ],
       [
         0,
-        1,
-        1,
+        2,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
         0,
         1,
         1
       ],
       [
         0,
-        1,
+        0,
         0,
         0,
         0,
@@ -7130,36 +7130,44 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 12,
     "difficulty": "medium",
-    "optimalMoves": 17,
+    "optimalMoves": 10,
     "initialState": [
       [
         0,
-        1,
-        2,
-        1,
         0,
+        0,
+        1,
+        1,
         0
       ],
       [
         0,
-        1,
         2,
         1,
+        2,
+        0,
+        1
+      ],
+      [
+        2,
+        2,
+        2,
+        1,
+        2,
+        1
+      ],
+      [
+        1,
+        2,
+        2,
+        2,
         0,
         0
       ],
       [
-        0,
         1,
-        2,
         1,
         0,
-        0
-      ],
-      [
-        1,
-        2,
-        1,
         2,
         0,
         0
@@ -7167,17 +7175,9 @@ const Levels = (function() {
       [
         1,
         0,
-        2,
-        1,
-        2,
-        2
-      ],
-      [
-        2,
-        2,
-        2,
         0,
-        2,
+        0,
+        0,
         0
       ]
     ]
@@ -7188,53 +7188,53 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 13,
     "difficulty": "medium",
-    "optimalMoves": 17,
+    "optimalMoves": 14,
     "initialState": [
       [
-        1,
-        1,
+        0,
+        0,
         0,
         1,
         0,
-        0
-      ],
-      [
-        2,
-        2,
-        1,
-        0,
-        1,
         2
       ],
       [
+        0,
         1,
-        0,
-        0,
+        2,
         2,
         1,
         0
       ],
       [
-        2,
-        2,
-        2,
+        1,
         0,
         0,
+        2,
+        2,
         1
       ],
       [
-        2,
-        2,
-        1,
         0,
         1,
-        1
+        2,
+        0,
+        0,
+        0
       ],
       [
         1,
+        0,
         1,
         0,
-        0,
+        1,
+        0
+      ],
+      [
+        1,
+        2,
+        1,
+        2,
         1,
         1
       ]
@@ -7246,55 +7246,55 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 14,
     "difficulty": "medium",
-    "optimalMoves": 20,
+    "optimalMoves": 13,
     "initialState": [
       [
+        1,
         2,
+        1,
+        1,
         2,
-        0,
-        0,
-        0,
-        1
+        0
       ],
       [
-        2,
-        0,
-        1,
-        2,
-        1,
-        1
-      ],
-      [
-        2,
-        2,
-        2,
-        2,
-        1,
-        1
-      ],
-      [
-        2,
-        0,
-        1,
-        2,
-        0,
-        2
-      ],
-      [
-        0,
-        1,
         1,
         0,
+        1,
+        2,
         2,
         2
       ],
       [
         1,
+        0,
         2,
-        2,
-        2,
+        0,
         1,
-        1
+        0
+      ],
+      [
+        1,
+        0,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        2,
+        2,
+        2,
+        0,
+        2,
+        0
       ]
     ]
   },
@@ -7304,53 +7304,53 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 15,
     "difficulty": "medium",
-    "optimalMoves": 21,
+    "optimalMoves": 13,
     "initialState": [
       [
-        1,
-        1,
+        2,
         0,
         1,
-        1,
-        0
-      ],
-      [
-        0,
         1,
         2,
-        1,
-        1,
-        0
-      ],
-      [
-        2,
-        1,
-        0,
-        1,
-        0,
         1
       ],
       [
+        2,
         0,
+        2,
+        1,
+        1,
+        0
+      ],
+      [
+        1,
         0,
+        2,
+        2,
+        2,
+        1
+      ],
+      [
+        2,
         0,
+        2,
         2,
         1,
         0
       ],
       [
+        2,
         0,
         1,
-        2,
         1,
         0,
         0
       ],
       [
         0,
-        2,
-        2,
-        1,
+        0,
+        0,
+        0,
         0,
         0
       ]
@@ -7362,34 +7362,10 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 16,
     "difficulty": "medium",
-    "optimalMoves": 21,
+    "optimalMoves": 14,
     "initialState": [
       [
-        1,
         0,
-        1,
-        1,
-        2,
-        0
-      ],
-      [
-        1,
-        2,
-        0,
-        2,
-        0,
-        0
-      ],
-      [
-        1,
-        2,
-        1,
-        0,
-        0,
-        0
-      ],
-      [
-        1,
         1,
         1,
         1,
@@ -7397,20 +7373,44 @@ const Levels = (function() {
         1
       ],
       [
+        0,
+        0,
         1,
+        0,
+        2,
+        1
+      ],
+      [
+        2,
         0,
         0,
         2,
-        0,
+        2,
         2
       ],
       [
         2,
         2,
         1,
-        1,
+        2,
         1,
         1
+      ],
+      [
+        1,
+        0,
+        0,
+        2,
+        2,
+        1
+      ],
+      [
+        2,
+        2,
+        0,
+        0,
+        1,
+        0
       ]
     ]
   },
@@ -7420,54 +7420,54 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 17,
     "difficulty": "medium",
-    "optimalMoves": 23,
+    "optimalMoves": 17,
     "initialState": [
       [
-        2,
-        2,
         0,
         2,
+        0,
+        1,
         1,
         2
       ],
       [
-        0,
         2,
         1,
         2,
+        1,
+        2,
+        2
+      ],
+      [
+        2,
+        1,
+        1,
+        0,
+        0,
+        2
+      ],
+      [
+        1,
+        1,
+        0,
+        0,
         1,
         1
       ],
       [
         1,
         2,
+        1,
+        1,
         0,
-        2,
-        2,
         1
       ],
       [
-        1,
-        0,
-        2,
-        1,
-        1,
-        0
-      ],
-      [
         0,
         1,
         1,
         1,
-        0,
-        0
-      ],
-      [
-        0,
         1,
-        1,
-        1,
-        0,
         0
       ]
     ]
@@ -7478,53 +7478,53 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 18,
     "difficulty": "medium",
-    "optimalMoves": 19,
+    "optimalMoves": 13,
     "initialState": [
       [
         2,
         2,
         2,
+        0,
         1,
+        1
+      ],
+      [
         1,
+        2,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
         0
       ],
       [
-        2,
-        2,
-        1,
-        2,
-        0,
-        1
-      ],
-      [
-        0,
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
         0,
         2,
         0,
         0,
-        1,
-        1
-      ],
-      [
         0,
-        1,
-        2,
-        2,
-        1,
         0
       ],
       [
+        0,
+        0,
+        0,
+        2,
+        0,
+        1
+      ],
+      [
+        0,
+        2,
         1,
         0,
-        1,
-        2,
         2,
         1
       ]
@@ -7536,53 +7536,53 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 19,
     "difficulty": "medium",
-    "optimalMoves": 23,
+    "optimalMoves": 17,
     "initialState": [
       [
         0,
-        1,
-        0,
         2,
         0,
-        2
+        1,
+        0,
+        0
       ],
       [
         2,
         1,
         2,
         2,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
         2,
+        1,
+        1,
+        0
+      ],
+      [
+        2,
+        0,
+        0,
+        1,
+        0,
         0
       ],
       [
         0,
         0,
-        0,
-        2,
         1,
-        0
-      ],
-      [
+        0,
         1,
-        2,
-        0,
-        0,
-        0,
-        2
+        1
       ],
       [
         2,
-        2,
-        1,
-        0,
-        0,
-        0
-      ],
-      [
         0,
         2,
         1,
-        0,
         2,
         2
       ]
@@ -7594,54 +7594,54 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 20,
     "difficulty": "medium",
-    "optimalMoves": 24,
+    "optimalMoves": 18,
     "initialState": [
       [
         1,
         0,
         1,
         1,
-        1,
-        2
-      ],
-      [
-        1,
-        2,
-        2,
-        2,
-        1,
-        2
-      ],
-      [
-        2,
-        0,
-        1,
-        0,
-        2,
-        2
-      ],
-      [
-        2,
-        1,
-        1,
-        2,
-        2,
-        2
-      ],
-      [
-        2,
-        2,
-        2,
-        1,
         0,
         1
       ],
       [
+        2,
+        0,
+        2,
+        2,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        1,
+        1,
+        2,
+        0
+      ],
+      [
+        1,
         1,
         2,
         0,
+        0,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
         1,
-        2,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
         1
       ]
     ]
@@ -7652,55 +7652,55 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 21,
     "difficulty": "hard",
-    "optimalMoves": 29,
+    "optimalMoves": 18,
     "initialState": [
       [
-        0,
-        1,
-        0,
         1,
         2,
-        0
-      ],
-      [
-        2,
-        1,
         2,
         0,
-        0,
-        1
-      ],
-      [
-        2,
-        2,
-        2,
-        1,
         1,
         1
       ],
       [
         0,
-        0,
         2,
-        1,
-        2,
-        0
-      ],
-      [
-        2,
-        1,
         2,
         0,
-        2,
+        0,
         2
       ],
       [
         0,
-        1,
-        1,
         2,
+        2,
+        2,
+        1,
+        1
+      ],
+      [
+        2,
+        0,
+        2,
+        1,
         2,
         1
+      ],
+      [
+        0,
+        0,
+        2,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
       ]
     ]
   },
@@ -7710,53 +7710,53 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 22,
     "difficulty": "hard",
-    "optimalMoves": 30,
+    "optimalMoves": 21,
     "initialState": [
       [
+        2,
         1,
         0,
-        0,
-        2,
-        0,
-        1
-      ],
-      [
-        0,
-        2,
-        2,
-        0,
+        1,
         0,
         2
       ],
       [
-        0,
         1,
-        2,
-        2,
-        2,
-        1
-      ],
-      [
         0,
         2,
-        0,
         1,
         0,
         1
       ],
       [
         0,
-        1,
-        1,
+        2,
+        0,
         0,
         0,
         1
       ],
       [
+        1,
         2,
+        0,
         2,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
         2,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
         2,
+        0,
+        0,
         1,
         0
       ]
@@ -7768,55 +7768,55 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 23,
     "difficulty": "hard",
-    "optimalMoves": 29,
+    "optimalMoves": 19,
     "initialState": [
       [
-        1,
-        2,
         0,
-        1,
-        0,
-        2
-      ],
-      [
-        0,
-        0,
-        1,
-        0,
-        1,
-        2
-      ],
-      [
         0,
         2,
-        1,
-        2,
-        1,
-        2
-      ],
-      [
-        2,
-        1,
-        1,
-        1,
-        2,
-        0
-      ],
-      [
-        0,
-        2,
-        1,
         0,
         2,
         0
       ],
       [
-        2,
         1,
+        2,
+        2,
         0,
+        1,
+        1
+      ],
+      [
+        2,
+        2,
+        2,
         1,
         1,
         1
+      ],
+      [
+        0,
+        1,
+        0,
+        2,
+        2,
+        1
+      ],
+      [
+        2,
+        1,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        0,
+        2,
+        2,
+        0,
+        2,
+        0
       ]
     ]
   },
@@ -7826,55 +7826,55 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 24,
     "difficulty": "hard",
-    "optimalMoves": 35,
+    "optimalMoves": 24,
     "initialState": [
       [
+        2,
         0,
-        1,
         0,
         2,
         2,
-        0
+        2
       ],
       [
         0,
-        1,
+        2,
         2,
         1,
+        0,
+        2
+      ],
+      [
+        1,
+        1,
+        0,
+        0,
         2,
-        0
+        1
       ],
       [
         2,
         0,
         2,
-        1,
+        0,
         0,
         1
       ],
       [
-        1,
-        0,
-        0,
-        1,
-        0,
-        0
-      ],
-      [
         2,
-        1,
-        1,
         0,
-        1,
-        0
+        2,
+        0,
+        2,
+        2
       ],
       [
         0,
+        1,
+        1,
         0,
         2,
-        1,
-        1,
-        0
+        2
       ]
     ]
   },
@@ -7884,55 +7884,55 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 25,
     "difficulty": "hard",
-    "optimalMoves": 39,
+    "optimalMoves": 22,
     "initialState": [
       [
-        1,
+        0,
         1,
         2,
         1,
-        0,
+        1,
         1
       ],
       [
-        2,
+        0,
         1,
         1,
         0,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        2,
+        2,
+        1,
+        2,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        2,
+        0,
+        2,
+        1
+      ],
+      [
+        1,
+        2,
+        1,
+        2,
         2,
         2
-      ],
-      [
-        2,
-        2,
-        1,
-        2,
-        1,
-        0
-      ],
-      [
-        2,
-        1,
-        0,
-        1,
-        2,
-        2
-      ],
-      [
-        2,
-        1,
-        2,
-        0,
-        0,
-        0
-      ],
-      [
-        2,
-        2,
-        1,
-        2,
-        0,
-        0
       ]
     ]
   },
@@ -7942,55 +7942,55 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 26,
     "difficulty": "hard",
-    "optimalMoves": 36,
+    "optimalMoves": 26,
     "initialState": [
       [
+        1,
+        1,
         0,
-        2,
-        1,
-        1,
-        1,
+        0,
+        0,
         1
       ],
       [
-        0,
-        0,
         1,
-        1,
-        2,
-        1
-      ],
-      [
-        2,
         0,
         0,
         2,
-        1,
+        2,
         2
       ],
       [
-        2,
         0,
-        0,
-        2,
         1,
+        1,
+        2,
+        0,
         2
       ],
       [
         1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      [
         2,
         2,
         0,
+        1,
         1,
         0
       ],
       [
         0,
         0,
-        0,
-        0,
-        0,
-        2
+        1,
+        1,
+        1,
+        1
       ]
     ]
   },
@@ -8000,55 +8000,55 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 27,
     "difficulty": "hard",
-    "optimalMoves": 37,
+    "optimalMoves": 24,
     "initialState": [
       [
         1,
         0,
-        1,
         2,
-        1,
-        2
+        0,
+        2,
+        1
       ],
       [
-        0,
-        1,
-        0,
-        1,
-        1,
-        0
-      ],
-      [
-        0,
-        0,
-        0,
-        1,
-        0,
-        2
-      ],
-      [
-        0,
+        2,
+        2,
         2,
         1,
         2,
-        1,
         2
       ],
       [
         1,
-        2,
         1,
         2,
         2,
-        0
+        2,
+        1
+      ],
+      [
+        1,
+        1,
+        0,
+        0,
+        0,
+        2
+      ],
+      [
+        2,
+        2,
+        0,
+        1,
+        0,
+        2
       ],
       [
         0,
-        1,
         0,
+        2,
         0,
         1,
-        2
+        1
       ]
     ]
   },
@@ -8058,55 +8058,55 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 28,
     "difficulty": "hard",
-    "optimalMoves": 43,
+    "optimalMoves": 28,
     "initialState": [
       [
         2,
+        2,
+        2,
         1,
-        0,
-        1,
-        0,
+        2,
         1
       ],
       [
-        0,
+        1,
         1,
         2,
+        1,
+        2,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        2,
+        0,
+        2
+      ],
+      [
+        2,
+        1,
+        1,
         0,
         0,
         0
       ],
       [
-        0,
-        1,
-        0,
-        0,
-        1,
-        2
-      ],
-      [
-        1,
-        0,
         1,
         2,
-        0,
-        2
-      ],
-      [
-        2,
-        0,
-        2,
         1,
         0,
+        1,
         1
       ],
       [
-        1,
+        2,
+        2,
         1,
         2,
         2,
-        0,
-        1
+        2
       ]
     ]
   },
@@ -8116,55 +8116,55 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 29,
     "difficulty": "hard",
-    "optimalMoves": 38,
+    "optimalMoves": 28,
     "initialState": [
       [
+        0,
+        0,
+        0,
+        2,
         1,
-        2,
-        2,
-        0,
-        0,
         1
       ],
       [
         2,
+        0,
         2,
+        0,
+        0,
+        0
+      ],
+      [
         1,
+        0,
+        0,
+        0,
+        2,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        2,
+        0
+      ],
+      [
+        1,
+        1,
+        2,
         2,
         2,
         2
       ],
       [
+        2,
         1,
         1,
         1,
         2,
-        0,
-        0
-      ],
-      [
-        1,
-        1,
-        2,
-        1,
-        1,
-        0
-      ],
-      [
-        1,
-        2,
-        2,
-        2,
-        0,
         1
-      ],
-      [
-        2,
-        2,
-        1,
-        1,
-        0,
-        0
       ]
     ]
   },
@@ -8174,70 +8174,64 @@ const Levels = (function() {
     "stateCount": 3,
     "levelNumber": 30,
     "difficulty": "hard",
-    "optimalMoves": 38,
+    "optimalMoves": 30,
     "initialState": [
       [
-        2,
+        1,
+        1,
+        0,
         1,
         2,
+        1
+      ],
+      [
+        1,
         0,
+        0,
+        1,
         0,
         0
       ],
       [
-        2,
-        2,
+        0,
         1,
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        1,
+        2,
         1,
         2,
         1
       ],
       [
-        2,
-        2,
         1,
         2,
         0,
-        1
-      ],
-      [
-        0,
-        2,
-        2,
-        2,
-        0,
-        2
-      ],
-      [
-        2,
-        0,
-        2,
-        2,
+        1,
         0,
         1
       ],
       [
         0,
-        0,
+        1,
         2,
-        2,
         0,
-        2
+        1,
+        1
       ]
     ]
   }
 ];
 
-    /**
-     * Get a level by ID
-     */
     function getLevel(id) {
         return levelData.find(l => l.id === id);
     }
 
-    /**
-     * Get all levels for a variant
-     */
     function getLevelsForVariant(gridSize, stateCount) {
         return levelData.filter(l => l.gridSize === gridSize && l.stateCount === stateCount);
     }

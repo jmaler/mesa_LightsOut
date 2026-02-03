@@ -7,12 +7,25 @@
 - 3-state behavior: Cycles through off → dim → bright → off
 
 ## Level System
-- Pre-generate 30 levels for each combination (5×5 2-state, 5×5 3-state, 6×6 2-state, etc.) = 180 total levels
+- Pre-generate 30 levels for each combination (4×4, 5×5, 6×6 × 2-state, 3-state) = 180 total levels
 - Progressive difficulty within each set of 30 levels:
-  - Levels 1-10: Easy (1-6 clicks in 4x4, 3-8 in 5x5 and 3-10 in 6x6)
-  - Levels 11-20: Medium (6-12 optimal clicks in 4x4, 8-14 in 5x5 and 10-16 in 6x6)
-  - Levels 21-30: Hard (12-20 optimal clicks in 4x4, 14-25 in 5x5 and 16-30 in 6x6)
-- For 4x4 and 6×6 grids, ensure all generated levels are mathematically solvable
+
+### 2-state optimal click ranges:
+| Grid | Easy (1-10) | Medium (11-20) | Hard (21-30) |
+|------|-------------|----------------|--------------|
+| 4×4  | 1-3         | 3-5            | 5-7          |
+| 5×5  | 3-6         | 5-8            | 8-12         |
+| 6×6  | 3-8         | 7-12           | 12-18        |
+
+### 3-state optimal click ranges:
+| Grid | Easy (1-10) | Medium (11-20) | Hard (21-30) |
+|------|-------------|----------------|--------------|
+| 4×4  | 3-7         | 7-10           | 10-14        |
+| 5×5  | 4-8         | 8-12           | 12-20        |
+| 6×6  | 5-10        | 10-18          | 18-30        |
+
+- All generated levels are verified mathematically solvable
+- Note: 4×4 and 5×5 grids have non-trivial null spaces, so solver finds minimum-weight solutions
 
 ## Progression & Unlocking
 - Game starts with only 4×4 available
@@ -50,7 +63,7 @@ Total score = sum of all completed level scores
     - Point value for that level
   - Visual indication of difficulty (color coding: green=easy, yellow=medium, red=hard)
 - "Back" button to Main Menu
-- Display: "Complete 10 levels in 5×5 to unlock larger grids" (if not unlocked)
+- Display: "Complete 10 levels in 4×4 to unlock other grids" (if not unlocked)
 
 ### 3. Game Screen
 - Center: The grid of lights (cells that can be clicked)
@@ -81,16 +94,16 @@ Total score = sum of all completed level scores
 ## Other Requirements
 - Leaderboard will use PlayMesa SDK available in /sdk folder, score will be stored there
 - Store progress using PlayMesa SDK  available in /sdk folder (completed levels, unlock status)
-- Implement a solver algorithm to verify levels are solvable and calculate optimal move count
+- Implement a solver algorithm using Gaussian elimination over finite fields (GF(2) for 2-state, GF(3) for 3-state) to verify solvability and calculate optimal move count. For grids with non-trivial null spaces (4×4, 5×5), the solver searches all null space combinations to find the minimum-weight solution.
 - Clean, responsive design that works on desktop and mobile
 - Visual polish: smooth transitions, hover states, satisfying click feedback
 
 ## Level Generation Strategy
 For each configuration:
 1. Start with all lights off
-2. Randomly click suitable amount of cells (based on difficulty)
+2. Randomly click cells (number based on target difficulty)
 3. Use this as the initial state
-4. Verify solvability using a solver algorithm
-5. Calculate optimal solution length
-6. If it matches target difficulty, save; otherwise regenerate
-7. For 6×6, explicitly check solvability before accepting
+4. Verify solvability using the solver algorithm
+5. Calculate true optimal solution length (accounting for null space)
+6. If it matches target difficulty range, save; otherwise regenerate
+7. Levels progress non-linearly through difficulty range with small random variations

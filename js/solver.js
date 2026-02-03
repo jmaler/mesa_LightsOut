@@ -45,22 +45,17 @@ const Solver = (function() {
     }
 
     /**
-     * Gaussian elimination over GF(p)
-     * Returns the solution vector or null if no solution exists
-     *
-     * @param {number[][]} augmentedMatrix - The augmented matrix [A|b]
-     * @param {number} modulus - 2 for 2-state, 3 for 3-state
-     * @returns {number[]|null} - Solution vector or null
+     * Gaussian elimination over GF(p) with null space computation
+     * Returns the solution vector, null space basis, or null if no solution exists
      */
-    function gaussianElimination(augmentedMatrix, modulus) {
+    function gaussianEliminationWithNullSpace(augmentedMatrix, modulus) {
         const n = augmentedMatrix.length;
-        const m = augmentedMatrix[0].length - 1; // Columns excluding augmented part
-        const matrix = augmentedMatrix.map(row => [...row]); // Deep copy
-
+        const m = augmentedMatrix[0].length - 1;
+        const matrix = augmentedMatrix.map(row => [...row]);
+        const pivotCols = [];
         let pivotRow = 0;
 
         for (let col = 0; col < m && pivotRow < n; col++) {
-            // Find pivot
             let maxRow = pivotRow;
             for (let row = pivotRow + 1; row < n; row++) {
                 if (Math.abs(matrix[row][col]) > Math.abs(matrix[maxRow][col])) {
@@ -68,27 +63,17 @@ const Solver = (function() {
                 }
             }
 
-            if (matrix[maxRow][col] === 0) {
-                continue; // No pivot in this column
-            }
+            if (matrix[maxRow][col] === 0) continue;
 
-            // Swap rows
             [matrix[pivotRow], matrix[maxRow]] = [matrix[maxRow], matrix[pivotRow]];
 
-            // Scale pivot row
             const pivotVal = matrix[pivotRow][col];
-            let inv;
-            if (modulus === 2) {
-                inv = 1; // In GF(2), 1 is its own inverse
-            } else {
-                inv = modInverse3(pivotVal);
-            }
+            const inv = modulus === 2 ? 1 : modInverse3(pivotVal);
 
             for (let j = col; j <= m; j++) {
                 matrix[pivotRow][j] = (matrix[pivotRow][j] * inv) % modulus;
             }
 
-            // Eliminate column
             for (let row = 0; row < n; row++) {
                 if (row !== pivotRow && matrix[row][col] !== 0) {
                     const factor = matrix[row][col];
@@ -98,34 +83,83 @@ const Solver = (function() {
                 }
             }
 
+            pivotCols.push(col);
             pivotRow++;
         }
 
-        // Check for inconsistency and extract solution
-        const solution = new Array(m).fill(0);
-
-        // Back-substitution (matrix is now in reduced row echelon form)
-        for (let row = 0; row < n; row++) {
-            // Find leading 1
-            let leadingCol = -1;
-            for (let col = 0; col < m; col++) {
-                if (matrix[row][col] !== 0) {
-                    leadingCol = col;
-                    break;
-                }
-            }
-
-            if (leadingCol === -1) {
-                // All zeros in this row - check if RHS is also zero
-                if (matrix[row][m] !== 0) {
-                    return null; // Inconsistent - no solution
-                }
-            } else {
-                solution[leadingCol] = matrix[row][m];
+        // Check for inconsistency
+        for (let row = pivotRow; row < n; row++) {
+            if (matrix[row][m] !== 0) {
+                return { solution: null, nullSpace: [] };
             }
         }
 
-        return solution;
+        // Find free columns (not pivot columns)
+        const freeCols = [];
+        for (let col = 0; col < m; col++) {
+            if (!pivotCols.includes(col)) {
+                freeCols.push(col);
+            }
+        }
+
+        // Build particular solution
+        const solution = new Array(m).fill(0);
+        for (let i = 0; i < pivotCols.length; i++) {
+            solution[pivotCols[i]] = matrix[i][m];
+        }
+
+        // Build null space basis vectors
+        const nullSpace = [];
+        for (const freeCol of freeCols) {
+            const basisVector = new Array(m).fill(0);
+            basisVector[freeCol] = 1;
+            for (let i = 0; i < pivotCols.length; i++) {
+                basisVector[pivotCols[i]] = (modulus - matrix[i][freeCol]) % modulus;
+            }
+            nullSpace.push(basisVector);
+        }
+
+        return { solution, nullSpace };
+    }
+
+    /**
+     * Find minimum weight solution by trying all null space combinations
+     */
+    function findMinWeightSolution(baseSolution, nullSpace, modulus) {
+        if (nullSpace.length === 0) {
+            return baseSolution;
+        }
+
+        const n = baseSolution.length;
+        let minWeight = Infinity;
+        let minSolution = baseSolution;
+
+        const numCombinations = Math.pow(modulus, nullSpace.length);
+
+        for (let combo = 0; combo < numCombinations; combo++) {
+            const candidate = [...baseSolution];
+            let temp = combo;
+
+            for (let i = 0; i < nullSpace.length; i++) {
+                const coeff = temp % modulus;
+                temp = Math.floor(temp / modulus);
+                for (let j = 0; j < n; j++) {
+                    candidate[j] = (candidate[j] + coeff * nullSpace[i][j]) % modulus;
+                }
+            }
+
+            let weight = 0;
+            for (let j = 0; j < n; j++) {
+                weight += candidate[j];
+            }
+
+            if (weight < minWeight) {
+                minWeight = weight;
+                minSolution = candidate;
+            }
+        }
+
+        return minSolution;
     }
 
     /**
@@ -140,7 +174,7 @@ const Solver = (function() {
     }
 
     /**
-     * Solve the puzzle and return the solution
+     * Solve the puzzle and return the minimum-click solution
      * @param {number[][]} grid - 2D array of cell states (values to reduce to 0)
      * @param {number} stateCount - 2 or 3
      * @returns {number[][]|null} - Solution grid (click counts) or null if unsolvable
@@ -151,12 +185,9 @@ const Solver = (function() {
         const toggleMatrix = createToggleMatrix(size);
 
         // Create target vector (negated current state mod stateCount)
-        // We want to add clicks such that the final state is 0
-        // So we need to find x where Ax = -b (mod stateCount)
         const target = [];
         for (let row = 0; row < size; row++) {
             for (let col = 0; col < size; col++) {
-                // For state s, we need (stateCount - s) % stateCount clicks to reach 0
                 target.push((stateCount - (grid[row][col] % stateCount)) % stateCount);
             }
         }
@@ -167,18 +198,21 @@ const Solver = (function() {
             augmented.push([...toggleMatrix[i], target[i]]);
         }
 
-        const solution = gaussianElimination(augmented, stateCount);
+        const { solution, nullSpace } = gaussianEliminationWithNullSpace(augmented, stateCount);
 
         if (solution === null) {
             return null;
         }
+
+        // Find minimum weight solution considering null space
+        const minSolution = findMinWeightSolution(solution, nullSpace, stateCount);
 
         // Convert flat solution to 2D grid
         const solutionGrid = [];
         for (let row = 0; row < size; row++) {
             solutionGrid.push([]);
             for (let col = 0; col < size; col++) {
-                solutionGrid[row].push(solution[row * size + col]);
+                solutionGrid[row].push(minSolution[row * size + col]);
             }
         }
 

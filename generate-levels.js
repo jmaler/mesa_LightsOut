@@ -4,7 +4,7 @@
  * Generates all 180 levels with verified optimal move counts
  */
 
-// Solver implementation (copied from solver.js)
+// Solver implementation with minimum weight solution finding
 function modInverse3(a) {
     if (a === 1) return 1;
     if (a === 2) return 2;
@@ -30,10 +30,14 @@ function createToggleMatrix(size) {
     return matrix;
 }
 
-function gaussianElimination(augmentedMatrix, modulus) {
+/**
+ * Gaussian elimination that also returns null space basis and pivot columns
+ */
+function gaussianEliminationWithNullSpace(augmentedMatrix, modulus) {
     const n = augmentedMatrix.length;
     const m = augmentedMatrix[0].length - 1;
     const matrix = augmentedMatrix.map(row => [...row]);
+    const pivotCols = [];
     let pivotRow = 0;
 
     for (let col = 0; col < m && pivotRow < n; col++) {
@@ -60,25 +64,85 @@ function gaussianElimination(augmentedMatrix, modulus) {
                 }
             }
         }
+        pivotCols.push(col);
         pivotRow++;
     }
 
-    const solution = new Array(m).fill(0);
-    for (let row = 0; row < n; row++) {
-        let leadingCol = -1;
-        for (let col = 0; col < m; col++) {
-            if (matrix[row][col] !== 0) {
-                leadingCol = col;
-                break;
-            }
-        }
-        if (leadingCol === -1) {
-            if (matrix[row][m] !== 0) return null;
-        } else {
-            solution[leadingCol] = matrix[row][m];
+    // Check for inconsistency
+    for (let row = pivotRow; row < n; row++) {
+        if (matrix[row][m] !== 0) return { solution: null, nullSpace: [] };
+    }
+
+    // Find free variables (columns that are not pivot columns)
+    const freeCols = [];
+    for (let col = 0; col < m; col++) {
+        if (!pivotCols.includes(col)) {
+            freeCols.push(col);
         }
     }
-    return solution;
+
+    // Build particular solution (set free variables to 0)
+    const solution = new Array(m).fill(0);
+    for (let i = 0; i < pivotCols.length; i++) {
+        solution[pivotCols[i]] = matrix[i][m];
+    }
+
+    // Build null space basis vectors
+    const nullSpace = [];
+    for (const freeCol of freeCols) {
+        const basisVector = new Array(m).fill(0);
+        basisVector[freeCol] = 1;
+        // For each pivot row, compute the value needed
+        for (let i = 0; i < pivotCols.length; i++) {
+            basisVector[pivotCols[i]] = (modulus - matrix[i][freeCol]) % modulus;
+        }
+        nullSpace.push(basisVector);
+    }
+
+    return { solution, nullSpace };
+}
+
+/**
+ * Find minimum weight solution by trying all null space combinations
+ */
+function findMinWeightSolution(baseSolution, nullSpace, modulus) {
+    if (nullSpace.length === 0) {
+        return baseSolution;
+    }
+
+    const n = baseSolution.length;
+    let minWeight = Infinity;
+    let minSolution = baseSolution;
+
+    // For 2-state: try all 2^k combinations
+    // For 3-state: try all 3^k combinations
+    const numCombinations = Math.pow(modulus, nullSpace.length);
+
+    for (let combo = 0; combo < numCombinations; combo++) {
+        const candidate = [...baseSolution];
+        let temp = combo;
+
+        for (let i = 0; i < nullSpace.length; i++) {
+            const coeff = temp % modulus;
+            temp = Math.floor(temp / modulus);
+            for (let j = 0; j < n; j++) {
+                candidate[j] = (candidate[j] + coeff * nullSpace[i][j]) % modulus;
+            }
+        }
+
+        // Calculate weight (sum of all values)
+        let weight = 0;
+        for (let j = 0; j < n; j++) {
+            weight += candidate[j];
+        }
+
+        if (weight < minWeight) {
+            minWeight = weight;
+            minSolution = candidate;
+        }
+    }
+
+    return minSolution;
 }
 
 function solve(grid, stateCount) {
@@ -95,14 +159,18 @@ function solve(grid, stateCount) {
     for (let i = 0; i < n; i++) {
         augmented.push([...toggleMatrix[i], target[i]]);
     }
-    const solution = gaussianElimination(augmented, stateCount);
+
+    const { solution, nullSpace } = gaussianEliminationWithNullSpace(augmented, stateCount);
     if (solution === null) return null;
+
+    // Find minimum weight solution
+    const minSolution = findMinWeightSolution(solution, nullSpace, stateCount);
 
     const solutionGrid = [];
     for (let row = 0; row < size; row++) {
         solutionGrid.push([]);
         for (let col = 0; col < size; col++) {
-            solutionGrid[row].push(solution[row * size + col]);
+            solutionGrid[row].push(minSolution[row * size + col]);
         }
     }
     return solutionGrid;
@@ -232,72 +300,57 @@ function getEasyLevel(size, stateCount, levelNum) {
 // Difficulty ranges by grid size (2-state)
 // Format: { easy: [min, max], medium: [min, max], hard: [min, max] }
 const difficultyRanges2State = {
-    4: { easy: [1, 4], medium: [4, 8], hard: [8, 14] },
-    5: { easy: [3, 8], medium: [8, 14], hard: [14, 25] },
-    6: { easy: [3, 10], medium: [10, 16], hard: [16, 30] }
+    4: { easy: [1, 3], medium: [3, 5], hard: [5, 7] },
+    5: { easy: [3, 6], medium: [5, 8], hard: [8, 12] },
+    6: { easy: [3, 8], medium: [7, 12], hard: [12, 18] }
 };
 
 // Difficulty ranges by grid size (3-state)
-// Higher ranges since 3-state needs ~1.4-1.6x more clicks for equivalent difficulty
 const difficultyRanges3State = {
-    4: { easy: [3, 8], medium: [6, 11], hard: [12, 21] },
-    5: { easy: [4, 11], medium: [12, 21], hard: [22, 38] },
-    6: { easy: [5, 14], medium: [15, 24], hard: [26, 48] }
+    4: { easy: [3, 7], medium: [7, 10], hard: [10, 14] },
+    5: { easy: [4, 8], medium: [8, 12], hard: [12, 20] },
+    6: { easy: [5, 10], medium: [10, 18], hard: [18, 30] }
 };
 
 /**
- * Get optimal range for a specific level
+ * Get target optimal for a specific level with progression and random variation
+ * Returns a target value (not a range) that progresses through the difficulty range
  */
-function getOptimalRange(size, levelNum, stateCount) {
+function getOptimalTarget(size, levelNum, stateCount) {
     const ranges = stateCount === 3 ? difficultyRanges3State[size] : difficultyRanges2State[size];
 
+    let rangeMin, rangeMax, difficulty, progress;
+
     if (levelNum <= 10) {
-        // Easy: Levels 1-10, gradually increase within easy range
-        const [min, max] = ranges.easy;
-        const progress = (levelNum - 1) / 9; // 0 to 1
-        let targetMin = Math.round(min + progress * (max - min) * 0.5);
-        let targetMax = Math.round(min + progress * (max - min) + 1);
-
-        // For 4x4 2-state: ensure levels 4-7 have min 3, levels 8-10 have min 4
-        if (size === 4 && stateCount === 2) {
-            if (levelNum >= 4 && levelNum <= 7) {
-                targetMin = Math.max(3, targetMin);
-                targetMax = Math.max(4, targetMax);
-            } else if (levelNum >= 8 && levelNum <= 10) {
-                targetMin = Math.max(4, targetMin);
-                targetMax = Math.max(5, targetMax);
-            }
-        }
-
-        return { min: Math.max(min, targetMin), max: Math.min(max, targetMax), difficulty: 'easy' };
+        [rangeMin, rangeMax] = ranges.easy;
+        difficulty = 'easy';
+        progress = (levelNum - 1) / 9; // 0 to 1
     } else if (levelNum <= 20) {
-        // Medium: Levels 11-20
-        const [min, max] = ranges.medium;
-        const progress = (levelNum - 11) / 9; // 0 to 1
-        const targetMin = Math.round(min + progress * (max - min) * 0.5);
-        const targetMax = Math.round(min + progress * (max - min) + 2);
-        return { min: Math.max(min, targetMin), max: Math.min(max, targetMax), difficulty: 'medium' };
+        [rangeMin, rangeMax] = ranges.medium;
+        difficulty = 'medium';
+        progress = (levelNum - 11) / 9; // 0 to 1
     } else {
-        // Hard: Levels 21-30
-        const [min, max] = ranges.hard;
-        const progress = (levelNum - 21) / 9; // 0 to 1
-        const targetMin = Math.round(min + progress * (max - min) * 0.5);
-        const targetMax = Math.round(min + progress * (max - min) + 3);
-        return { min: Math.max(min, targetMin), max: Math.min(max, targetMax), difficulty: 'hard' };
+        [rangeMin, rangeMax] = ranges.hard;
+        difficulty = 'hard';
+        progress = (levelNum - 21) / 9; // 0 to 1
     }
+
+    // Linear interpolation through the range
+    const baseTarget = rangeMin + progress * (rangeMax - rangeMin);
+
+    // Random variation: larger for higher numbers (0-1 for small, 0-3 for large)
+    const maxVariation = Math.max(1, Math.floor(baseTarget / 5));
+    const variation = Math.floor(Math.random() * (maxVariation * 2 + 1)) - maxVariation;
+
+    // Calculate target and clamp to range
+    let target = Math.round(baseTarget + variation);
+    target = Math.max(rangeMin, Math.min(rangeMax, target));
+
+    return { target, min: rangeMin, max: rangeMax, difficulty }
 }
 
-// Specific 2-state levels that need exact optimal clicks (applied to all grid sizes)
-const exactOptimal2State = {
-    3: 2,   // Level 3: 2 optimal clicks
-    5: 3,   // Level 5: 3 optimal clicks
-    6: 3,   // Level 6: 3 optimal clicks
-    10: 5,  // Level 10: 5 optimal clicks
-    13: 5   // Level 13: 5 optimal clicks
-};
-
 // Generate all levels
-function generateAllLevels() {
+function generateAllLevels(existingLevels = null) {
     const allLevels = [];
     const variants = [
         { size: 4, states: 2 },
@@ -312,43 +365,52 @@ function generateAllLevels() {
         console.log(`\nGenerating ${size}x${size} ${states}-state levels...`);
 
         for (let levelNum = 1; levelNum <= 30; levelNum++) {
-            const { min, max, difficulty } = getOptimalRange(size, levelNum, states);
-            let result = null;
-            let targetMin = min;
-            let targetMax = max;
-
-            // Check for exact optimal requirement (2-state only)
-            if (states === 2 && exactOptimal2State[levelNum] !== undefined) {
-                const exactOptimal = exactOptimal2State[levelNum];
-                targetMin = exactOptimal;
-                targetMax = exactOptimal;
-                result = generateWithOptimal(size, states, exactOptimal, 3000);
-            }
-
-            // For very first levels, try to get specific low optimal
-            if (!result && levelNum <= 3) {
-                result = getEasyLevel(size, states, levelNum);
-                if (result && result.optimalMoves >= targetMin && result.optimalMoves <= targetMax) {
-                    // Good, use it
-                } else {
-                    result = null;
+            // Keep first 12 levels of 4x4 2-state unchanged (good for onboarding)
+            // But recalculate optimal with fixed solver
+            if (size === 4 && states === 2 && levelNum <= 12 && existingLevels) {
+                const existing = existingLevels.find(l =>
+                    l.gridSize === 4 && l.stateCount === 2 && l.levelNumber === levelNum
+                );
+                if (existing) {
+                    // Recalculate correct optimal with fixed solver
+                    const correctOptimal = getOptimalMoves(existing.initialState, states);
+                    const level = {
+                        ...existing,
+                        optimalMoves: correctOptimal
+                    };
+                    allLevels.push(level);
+                    console.log(`  Level ${levelNum}: optimal=${correctOptimal} (kept grid, fixed optimal from ${existing.optimalMoves})`);
+                    continue;
                 }
             }
 
-            // Generate within range
+            const { target, min, max, difficulty } = getOptimalTarget(size, levelNum, states);
+            let result = null;
+
+            // Try to generate with exact target first
+            result = generateWithOptimal(size, states, target, 1500);
+
+            // If exact target fails, try nearby values within range
             if (!result) {
-                result = generateWithRange(size, states, targetMin, targetMax, 2000);
+                result = generateWithRange(size, states,
+                    Math.max(min, target - 1),
+                    Math.min(max, target + 1),
+                    1500);
             }
 
-            // Fallback: widen range
+            // Fallback: use full range
+            if (!result) {
+                result = generateWithRange(size, states, min, max, 2000);
+            }
+
+            // Emergency fallback: widen range
             if (!result) {
                 console.warn(`  Warning: Widening range for level ${levelNum}`);
-                result = generateWithRange(size, states, Math.max(1, targetMin - 2), targetMax + 2, 3000);
+                result = generateWithRange(size, states, Math.max(1, min - 2), max + 3, 3000);
             }
 
             if (!result) {
                 console.error(`  ERROR: Failed to generate level ${levelNum}`);
-                // Emergency fallback
                 result = generateWithRange(size, states, 1, 50, 5000);
             }
 
@@ -363,7 +425,7 @@ function generateAllLevels() {
             };
 
             allLevels.push(level);
-            console.log(`  Level ${levelNum}: optimal=${result.optimalMoves} (target: ${targetMin}-${targetMax})`);
+            console.log(`  Level ${levelNum}: optimal=${result.optimalMoves} (target: ${target}, range: ${min}-${max})`);
         }
     }
 
@@ -372,7 +434,22 @@ function generateAllLevels() {
 
 // Main
 console.log('Generating Lights Out levels...\n');
-const levels = generateAllLevels();
+
+// Load existing levels to preserve first 12 4x4 2-state levels
+let existingLevels = null;
+try {
+    const fs = require('fs');
+    const existingContent = fs.readFileSync('js/levels.js', 'utf8');
+    const match = existingContent.match(/const levelData = (\[[\s\S]*?\]);/);
+    if (match) {
+        existingLevels = JSON.parse(match[1]);
+        console.log('Loaded existing levels (will preserve first 12 4x4 2-state levels)');
+    }
+} catch (e) {
+    console.log('No existing levels found, generating all fresh');
+}
+
+const levels = generateAllLevels(existingLevels);
 
 // Output as JavaScript file content
 const output = `/**
