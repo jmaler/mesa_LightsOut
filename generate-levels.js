@@ -229,20 +229,27 @@ function getEasyLevel(size, stateCount, levelNum) {
     return null;
 }
 
-// Difficulty ranges by grid size
+// Difficulty ranges by grid size (2-state)
 // Format: { easy: [min, max], medium: [min, max], hard: [min, max] }
-// Note: 4×4 2-state has limited max complexity (~12 moves)
-const difficultyRanges = {
+const difficultyRanges2State = {
     4: { easy: [1, 4], medium: [4, 8], hard: [8, 14] },
     5: { easy: [3, 8], medium: [8, 14], hard: [14, 25] },
     6: { easy: [3, 10], medium: [10, 16], hard: [16, 30] }
 };
 
+// Difficulty ranges by grid size (3-state)
+// Higher ranges since 3-state needs ~1.4-1.6x more clicks for equivalent difficulty
+const difficultyRanges3State = {
+    4: { easy: [3, 8], medium: [6, 11], hard: [12, 21] },
+    5: { easy: [4, 11], medium: [12, 21], hard: [22, 38] },
+    6: { easy: [5, 14], medium: [15, 24], hard: [26, 48] }
+};
+
 /**
  * Get optimal range for a specific level
  */
-function getOptimalRange(size, levelNum) {
-    const ranges = difficultyRanges[size];
+function getOptimalRange(size, levelNum, stateCount) {
+    const ranges = stateCount === 3 ? difficultyRanges3State[size] : difficultyRanges2State[size];
 
     if (levelNum <= 10) {
         // Easy: Levels 1-10, gradually increase within easy range
@@ -251,8 +258,8 @@ function getOptimalRange(size, levelNum) {
         let targetMin = Math.round(min + progress * (max - min) * 0.5);
         let targetMax = Math.round(min + progress * (max - min) + 1);
 
-        // For 4x4: ensure levels 4-7 have min 3, levels 8-10 have min 4
-        if (size === 4) {
+        // For 4x4 2-state: ensure levels 4-7 have min 3, levels 8-10 have min 4
+        if (size === 4 && stateCount === 2) {
             if (levelNum >= 4 && levelNum <= 7) {
                 targetMin = Math.max(3, targetMin);
                 targetMax = Math.max(4, targetMax);
@@ -280,6 +287,15 @@ function getOptimalRange(size, levelNum) {
     }
 }
 
+// Specific 2-state levels that need exact optimal clicks (applied to all grid sizes)
+const exactOptimal2State = {
+    3: 2,   // Level 3: 2 optimal clicks
+    5: 3,   // Level 5: 3 optimal clicks
+    6: 3,   // Level 6: 3 optimal clicks
+    10: 5,  // Level 10: 5 optimal clicks
+    13: 5   // Level 13: 5 optimal clicks
+};
+
 // Generate all levels
 function generateAllLevels() {
     const allLevels = [];
@@ -296,13 +312,23 @@ function generateAllLevels() {
         console.log(`\nGenerating ${size}x${size} ${states}-state levels...`);
 
         for (let levelNum = 1; levelNum <= 30; levelNum++) {
-            const { min, max, difficulty } = getOptimalRange(size, levelNum);
+            const { min, max, difficulty } = getOptimalRange(size, levelNum, states);
             let result = null;
+            let targetMin = min;
+            let targetMax = max;
+
+            // Check for exact optimal requirement (2-state only)
+            if (states === 2 && exactOptimal2State[levelNum] !== undefined) {
+                const exactOptimal = exactOptimal2State[levelNum];
+                targetMin = exactOptimal;
+                targetMax = exactOptimal;
+                result = generateWithOptimal(size, states, exactOptimal, 3000);
+            }
 
             // For very first levels, try to get specific low optimal
-            if (levelNum <= 3) {
+            if (!result && levelNum <= 3) {
                 result = getEasyLevel(size, states, levelNum);
-                if (result && result.optimalMoves >= min && result.optimalMoves <= max) {
+                if (result && result.optimalMoves >= targetMin && result.optimalMoves <= targetMax) {
                     // Good, use it
                 } else {
                     result = null;
@@ -311,19 +337,19 @@ function generateAllLevels() {
 
             // Generate within range
             if (!result) {
-                result = generateWithRange(size, states, min, max, 2000);
+                result = generateWithRange(size, states, targetMin, targetMax, 2000);
             }
 
             // Fallback: widen range
             if (!result) {
                 console.warn(`  Warning: Widening range for level ${levelNum}`);
-                result = generateWithRange(size, states, Math.max(1, min - 2), max + 2, 3000);
+                result = generateWithRange(size, states, Math.max(1, targetMin - 2), targetMax + 2, 3000);
             }
 
             if (!result) {
                 console.error(`  ERROR: Failed to generate level ${levelNum}`);
                 // Emergency fallback
-                result = generateWithRange(size, states, 1, 30, 5000);
+                result = generateWithRange(size, states, 1, 50, 5000);
             }
 
             const level = {
@@ -337,7 +363,7 @@ function generateAllLevels() {
             };
 
             allLevels.push(level);
-            console.log(`  Level ${levelNum}: optimal=${result.optimalMoves} (target: ${min}-${max})`);
+            console.log(`  Level ${levelNum}: optimal=${result.optimalMoves} (target: ${targetMin}-${targetMax})`);
         }
     }
 
