@@ -258,7 +258,8 @@ const UI = (function() {
         const remaining = 10 - completed;
 
         if (remaining > 0) {
-            message.textContent = `Complete ${remaining} more level${remaining > 1 ? 's' : ''} in 4×4 to unlock all modes`;
+            const key = remaining === 1 ? 'unlock_message_one' : 'unlock_message_other';
+            message.textContent = I18n.t(key, { remaining });
             message.classList.add('visible');
         } else {
             message.classList.remove('visible');

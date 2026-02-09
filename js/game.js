@@ -280,10 +280,10 @@ const Game = (function() {
 
     /**
      * Calculate max points for a level
-     * maxPoints = (level_number + 4) * (grid_size - 3) * (state_count == 3 ? 3 : 1)
+     * maxPoints = (level_number + 4) * (grid_size - 3) * (state_count == 3 ? 2 : 1)
      */
     function calculateMaxPoints(level, size, states) {
-        return (level + 4) * (size - 3) * (states === 3 ? 3 : 1);
+        return (level + 4) * (size - 3) * (states === 3 ? 2 : 1);
     }
 
     /**
@@ -292,8 +292,16 @@ const Game = (function() {
     function updateUI() {
         document.getElementById('move-counter').textContent = moveCount;
         document.getElementById('optimal-moves').textContent = optimalMoves;
-        document.getElementById('game-level-text').textContent =
-            `${gridSize}×${gridSize} ${stateCount}-State · Level ${levelNumber}`;
+        const levelHeaderText = I18n.t('level_header', { gridSize, stateCount, levelNumber });
+        const lastDot = levelHeaderText.lastIndexOf('\u00b7');
+        const headerEl = document.getElementById('game-level-text');
+        if (lastDot !== -1) {
+            const mainPart = levelHeaderText.substring(0, lastDot).trim();
+            const statesPart = levelHeaderText.substring(lastDot);
+            headerEl.innerHTML = `${mainPart} <span class="header-states">${statesPart}</span>`;
+        } else {
+            headerEl.textContent = levelHeaderText;
+        }
 
         // Update points display
         const maxPoints = calculateMaxPoints(levelNumber, gridSize, stateCount);
@@ -321,7 +329,7 @@ const Game = (function() {
         // Update hint button text
         const hintBtn = document.getElementById('btn-hint');
         const hintsRemaining = maxHints - hintsUsed;
-        hintBtn.textContent = `HINT ${hintsRemaining}/${maxHints}`;
+        hintBtn.textContent = I18n.t('hint_remaining', { remaining: hintsRemaining, max: maxHints });
         hintBtn.disabled = hintsRemaining <= 0;
         if (hintsRemaining <= 0) {
             hintBtn.classList.add('disabled');

@@ -10,14 +10,14 @@
     <!-- Main Menu Screen -->
     <div id="screen-menu" class="screen active">
         <div class="menu-container">
-            <h1 class="game-title">LIGHTS OUT</h1>
+            <h1 class="game-title" data-i18n="game_title">LIGHTS OUT</h1>
             <div class="score-display">
-                <span class="score-label">TOTAL SCORE</span>
+                <span class="score-label" data-i18n="total_score">TOTAL SCORE</span>
                 <span id="menu-score" class="score-value">0</span>
             </div>
             <div class="menu-buttons">
-                <button class="btn btn-primary" id="btn-play">PLAY</button>
-                <button class="btn btn-secondary" id="btn-tutorial">HOW TO PLAY</button>
+                <button class="btn btn-primary" id="btn-play" data-i18n="play">PLAY</button>
+                <button class="btn btn-secondary" id="btn-tutorial" data-i18n="how_to_play">HOW TO PLAY</button>
             </div>
         </div>
     </div>
@@ -26,8 +26,8 @@
     <div id="screen-levels" class="screen">
         <div class="levels-container">
             <div class="header-bar">
-                <button class="btn-back" id="btn-back-menu">← BACK</button>
-                <span class="header-title">SELECT LEVEL</span>
+                <button class="btn-back" id="btn-back-menu" data-i18n="back">← BACK</button>
+                <span class="header-title" data-i18n="select_level">SELECT LEVEL</span>
             </div>
 
             <div class="mode-selector">
@@ -36,7 +36,7 @@
                 </div>
                 <div class="state-toggle" id="state-toggle">
                     <span class="toggle-label">2</span>
-                    <button class="toggle-switch" id="toggle-switch" aria-label="Toggle 3-state mode">
+                    <button class="toggle-switch" id="toggle-switch" aria-label="Toggle 3-state mode" data-i18n-aria="toggle_3state_aria">
                         <span class="toggle-knob"></span>
                     </button>
                     <span class="toggle-label">3</span>
@@ -54,21 +54,21 @@
     <div id="screen-game" class="screen">
         <div class="game-container">
             <div class="header-bar">
-                <button class="btn-back" id="btn-back-levels">← BACK</button>
+                <button class="btn-back" id="btn-back-levels" data-i18n="back">← BACK</button>
                 <span class="header-title" id="game-level-text">5×5 2-State - Level 1</span>
             </div>
 
             <div class="game-stats">
                 <div class="stat">
-                    <span class="stat-label">MOVES</span>
+                    <span class="stat-label" data-i18n="moves">MOVES</span>
                     <span id="move-counter" class="stat-value">0</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-label">OPTIMAL</span>
+                    <span class="stat-label" data-i18n="optimal">OPTIMAL</span>
                     <span id="optimal-moves" class="stat-value">?</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-label">POINTS</span>
+                    <span class="stat-label" data-i18n="points">POINTS</span>
                     <span id="points-display" class="stat-value">0</span>
                 </div>
             </div>
@@ -85,7 +85,7 @@
             </div>
 
             <div class="game-controls">
-                <button class="btn btn-secondary" id="btn-reset">RESET</button>
+                <button class="btn btn-secondary" id="btn-reset" data-i18n="reset">RESET</button>
                 <button class="btn btn-secondary" id="btn-hint">HINT</button>
             </div>
         </div>
@@ -94,66 +94,66 @@
     <!-- Tutorial Overlay -->
     <div id="screen-tutorial" class="overlay">
         <div class="tutorial-content">
-            <h2>HOW TO PLAY</h2>
+            <h2 data-i18n="how_to_play">HOW TO PLAY</h2>
             <div class="tutorial-section">
                 <div class="tutorial-demo" id="tutorial-demo">
                     <canvas id="tutorial-canvas" width="120" height="120"></canvas>
                 </div>
-                <p>Click a cell to toggle it and its <strong>adjacent neighbors</strong> (up, down, left, right).</p>
+                <p data-i18n-html="tutorial_click">Click a cell to toggle it and its <strong>adjacent neighbors</strong> (up, down, left, right).</p>
             </div>
             <div class="tutorial-section">
                 <div class="tutorial-states">
                     <div class="state-example">
                         <div class="cell-demo off"></div>
-                        <span>OFF</span>
+                        <span data-i18n="state_off">OFF</span>
                     </div>
                     <div class="state-example">
                         <div class="cell-demo on"></div>
-                        <span>ON</span>
+                        <span data-i18n="state_on">ON</span>
                     </div>
                 </div>
-                <p>In <strong>2-state</strong> mode, cells toggle between OFF and ON.</p>
+                <p data-i18n-html="tutorial_2state">In <strong>2-state</strong> mode, cells toggle between OFF and ON.</p>
             </div>
             <div class="tutorial-section tutorial-3state" id="tutorial-3state">
                 <div class="tutorial-states">
                     <div class="state-example">
                         <div class="cell-demo off"></div>
-                        <span>OFF</span>
+                        <span data-i18n="state_off">OFF</span>
                     </div>
                     <div class="state-example">
                         <div class="cell-demo dim"></div>
-                        <span>DIM</span>
+                        <span data-i18n="state_dim">DIM</span>
                     </div>
                     <div class="state-example">
                         <div class="cell-demo on"></div>
-                        <span>BRIGHT</span>
+                        <span data-i18n="state_bright">BRIGHT</span>
                     </div>
                 </div>
-                <p>In <strong>3-state</strong> mode, cells cycle: OFF → DIM → BRIGHT → OFF</p>
+                <p data-i18n-html="tutorial_3state">In <strong>3-state</strong> mode, cells cycle: OFF → DIM → BRIGHT → OFF</p>
             </div>
             <div class="tutorial-goal">
                 <span class="goal-icon">🎯</span>
-                <p><strong>GOAL:</strong> Turn ALL lights OFF to complete the level!</p>
+                <p data-i18n-html="tutorial_goal"><strong>GOAL:</strong> Turn ALL lights OFF to complete the level!</p>
             </div>
-            <button class="btn btn-primary" id="btn-got-it">GOT IT!</button>
+            <button class="btn btn-primary" id="btn-got-it" data-i18n="got_it">GOT IT!</button>
         </div>
     </div>
 
     <!-- Victory Popup -->
     <div id="screen-victory" class="overlay">
         <div class="victory-content">
-            <h2 class="victory-title">LEVEL COMPLETE!</h2>
+            <h2 class="victory-title" data-i18n="level_complete">LEVEL COMPLETE!</h2>
             <div class="victory-stats">
                 <div class="victory-stat">
-                    <span class="stat-label">YOUR MOVES</span>
+                    <span class="stat-label" data-i18n="your_moves">YOUR MOVES</span>
                     <span id="victory-moves" class="stat-value">0</span>
                 </div>
                 <div class="victory-stat">
-                    <span class="stat-label">OPTIMAL</span>
+                    <span class="stat-label" data-i18n="optimal">OPTIMAL</span>
                     <span id="victory-optimal" class="stat-value">0</span>
                 </div>
                 <div class="victory-stat">
-                    <span class="stat-label">POINTS EARNED</span>
+                    <span class="stat-label" data-i18n="points_earned">POINTS EARNED</span>
                     <span id="victory-points" class="stat-value highlight">+0</span>
                 </div>
             </div>
@@ -161,14 +161,15 @@
                 <!-- Stars will be added here -->
             </div>
             <div class="victory-buttons">
-                <button class="btn btn-secondary" id="btn-victory-levels">LEVELS</button>
-                <button class="btn btn-primary" id="btn-next-level">NEXT LEVEL</button>
+                <button class="btn btn-secondary" id="btn-victory-levels" data-i18n="levels">LEVELS</button>
+                <button class="btn btn-primary" id="btn-next-level" data-i18n="next_level">NEXT LEVEL</button>
             </div>
         </div>
     </div>
 
     <!-- Scripts -->
     <script src="sdk/mesa-sdk.js"></script>
+    <script src="js/i18n.js"></script>
     <script src="js/audio.js"></script>
     <script src="js/solver.js"></script>
     <script src="js/levels.js"></script>

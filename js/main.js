@@ -23,6 +23,10 @@
         await Mesa.init();
         console.log('[Lights Out] Mesa SDK initialized, environment:', Mesa.getEnvironment());
 
+        // Initialize localization
+        I18n.init();
+        console.log('[Lights Out] Language set to:', I18n.getLang());
+
         // Load saved progress
         await Storage.loadProgress();
         console.log('[Lights Out] Progress loaded');

@@ -242,6 +242,12 @@ html, body {
     letter-spacing: 1px;
 }
 
+.header-states {
+    font-size: 0.7em;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
 /* ===== Level Select ===== */
 .levels-container {
     display: flex;
@@ -569,6 +575,7 @@ html, body {
 
 .game-controls .btn {
     min-width: 120px;
+    white-space: nowrap;
 }
 
 #btn-hint {
@@ -922,3 +929,13 @@ html, body {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--text-dim);
 }
+
+/* ===== RTL Support (Arabic, Farsi) ===== */
+[dir="rtl"] .header-bar .btn-back {
+    left: auto;
+    right: 8px;
+}
+
+[dir="rtl"] .level-btn.easy { border-left: none; border-right: 3px solid var(--success); }
+[dir="rtl"] .level-btn.medium { border-left: none; border-right: 3px solid var(--warning); }
+[dir="rtl"] .level-btn.hard { border-left: none; border-right: 3px solid var(--error); }

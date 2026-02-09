@@ -35,11 +35,11 @@
 
 ## Scoring System
 Points for completing a level:
-`score = (level_number + 4) × (grid_size - 3) × (state_count == 3 ? 3 : 1) * stars`
+`score = (level_number + 4) × (grid_size - 3) × (state_count == 3 ? 2 : 1) * stars`
 
 Examples:
 - 4×4 2-state level 1, 1 star: (1+4) × (4-3) × 1 × 1 = 5 points
-- 4×4 3-state level 10, 2 stars: (10+4) × (4-3) × 3 × 2 = 84 points
+- 4×4 3-state level 10, 2 stars: (10+4) × (4-3) × 2 × 2 = 56 points
 - 6×6 2-state level 30, 3 stars: (30+4) × (6-3) × 1 × 3 = 306 points
 
 Total score = sum of all completed level scores
